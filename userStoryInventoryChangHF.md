@@ -28,6 +28,7 @@ This section shows the areas or sources thus far
 
 # User Story (Voltaire, API, CIP-1694, Community et al)
 
+# VOLTAIRE
 ## User Story ID:  CH.VO.001
 - [ ] Enabler
 ### User Story
@@ -46,7 +47,7 @@ Use as many lines as needed.
 - VOLTAIRE
 ### Link:
 
-
+# CARDANO-CLI
 ## User Story ID:  CLI.001
 - [ ] Enabler
 ### User Story
