@@ -92,7 +92,6 @@ So that the hash can be utilized in a governance action.
 - When I provide the off-chain text of the Constitution, the cardano-cli should calculate and return the corresponding blake2b-256 hash of the document.
 
 ### Acceptance Criteria
-
 - Given that a holder provides the off-chain text of the constitution then cardano-cli should return the corresponding blake2b-256 hash.
 
 ## User Story ID:  CLI.003
