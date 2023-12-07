@@ -14,11 +14,11 @@ This section shows the areas or sources thus far
 
 | Source          | Outline Contribution                                                     | State                    | Key Contract         |
 |-----------------|--------------------------------------------------------------------------|--------------------------|----------------------|
-| Voltaire        | Use Cases for Governance, voting, delegation                             | Initial Capture Complete | Outreach in progress |
 | CIP-1694        | Blockchain level User Stories on voting, delegation, identity, consensus | Initial Capture Complete | Outreach in progress |
+| Voltaire        | Use Cases for Governance, voting, delegation                             | Initial Capture Complete | Outreach in progress |
 | Smart Contracts | Plutus v3 and BLS                                                        | Initial Capture Complete | Outreach in progress |
 | CLI-API         | Interface outline and definition                                         | Initial Capture Complete | Outreach in progress |
-| Sidechains      | Interaction with BLS primitives                                          | Outreach in progress     | Outreach in progress |
+| Side chains      | Interaction with BLS primitives                                          | Outreach in progress     | Outreach in progress |
 | DApps           | To be defined and elaborated                                             | To be defined            | Outreach in progress |
 | Exchanges       | To be defined and elaborated                                             | To be defined            | Outreach in progress |
 | Other           | To be defined and elaborated                                             | To be defined            | Outreach in progress |
