@@ -28,7 +28,26 @@ This section shows the areas or sources thus far
 
 # User Story (Voltaire, API, CIP-1694, Community et al)
 
+# CIP-1694
+
+## User Story ID:  CIP1694.001
+- [ ] Enabler
+### User Story
+Write the story here.
+
+Use as many lines as needed.
+### Functional requirements
+- FR1
+- FR2
+- FR3
+### Acceptance Criteria
+- AC1
+- AC2
+- AC3
+### Link:
+
 # VOLTAIRE
+
 ## User Story ID:  CH.VO.001
 - [ ] Enabler
 ### User Story
@@ -43,11 +62,10 @@ Use as many lines as needed.
 - AC1
 - AC2
 - AC3
-### Source
-- VOLTAIRE
 ### Link:
 
 # CARDANO-CLI
+
 ## User Story ID:  CLI.001
 - [ ] Enabler
 ### User Story
@@ -62,6 +80,89 @@ Use as many lines as needed.
 - AC1
 - AC2
 - AC3
-### Source
-- VOLTAIRE
 ### Link:
+
+# SMART CONTRACTS
+
+## User Story ID:  SMC.001
+- [ ] Enabler
+### User Story
+Write the story here.
+
+Use as many lines as needed.
+### Functional requirements
+- FR1
+- FR2
+- FR3
+### Acceptance Criteria
+- AC1
+- AC2
+- AC3
+
+# SIDE CHAIN
+
+## User Story ID:  SCH.001
+- [ ] Enabler
+### User Story
+Write the story here.
+
+Use as many lines as needed.
+### Functional requirements
+- FR1
+- FR2
+- FR3
+### Acceptance Criteria
+- AC1
+- AC2
+- AC3
+
+# DAPPS
+
+## User Story ID:  DAPP.001
+- [ ] Enabler
+### User Story
+Write the story here.
+
+Use as many lines as needed.
+### Functional requirements
+- FR1
+- FR2
+- FR3
+### Acceptance Criteria
+- AC1
+- AC2
+- AC3
+
+# EXCHANGES
+
+## User Story ID:  EX.001
+- [ ] Enabler
+### User Story
+Write the story here.
+
+Use as many lines as needed.
+### Functional requirements
+- FR1
+- FR2
+- FR3
+### Acceptance Criteria
+- AC1
+- AC2
+- AC3
+
+# OTHER
+
+## User Story ID:  OTHER.001
+- [ ] Enabler
+### User Story
+Write the story here.
+
+Use as many lines as needed.
+### Functional requirements
+- FR1
+- FR2
+- FR3
+### Acceptance Criteria
+- AC1
+- AC2
+- AC3
