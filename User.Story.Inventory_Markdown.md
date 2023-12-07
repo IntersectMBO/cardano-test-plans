@@ -42,50 +42,29 @@ Upon agreement on the User Story Inventory, a suitable level of Change Managemen
 | UID | User Story | Functional Requirement | Acceptance Criteria | Link | Accepted | Source | Enabler(Y,N) |
 | --- |  --- |  --- |  --- |  --- |  --- |  --- |  --- | 
 | CH.VO1 | As a DRep or Ada Holder I want to connect my wallet to GovTool so that I can post transactions on-chain | Connect with multiple stake key wallet | Given I am on the homepage with no wallet connected.
-
 When I click the Connect Wallet button 
-
 Then a modal window opens showing my CIP-95 compatible wallets 
-
 When I select a wallet with multiple stake keys from this list
-
 Then I am asked which stake key I wish to connect with
-
 When I select a stake key 
-
 Then the wallet opens and I can connect with it on the selected stake key. | pending |  | Voltaire | N |
 |  |  |  | Given I am on the homepage without my wallet connected
-
 When I click the Connect Wallet button
-
 Then I am not shown any non CIP-95 compatible wallets.  | pending |  | Voltaire | N |
 |  |  |  | Given I am on the homepage without my wallet connected
-
 When I click the Connect Wallet button and select a CIP-95 compliant, multiple stake key wallet, containing zero ADA (or tADA for SanchoNet)
-
 Then a modal window opens showing my CIP-95 compatible wallets 
-
 When I select a wallet with multiple stake keys from this list
-
 Then I am asked which stake key I wish to connect with
-
 When I select a stake key 
-
 Then the wallet opens and I can connect with it on the selected stake key. | pending |  | Voltaire | N |
 |  |  |  | Given i am on the homepage without my wallet connected
-
 When I click the Connect Wallet button and select a CIP-95 compliant, single stake key wallet, containing more than zero ADA (or tADA for SanchoNet)
-
 Then a modal window opens showing my CIP-95 compatible wallets 
-
 When I select a wallet with multiple stake keys from this list
-
 Then I am asked which stake key I wish to connect with
-
 When I select a stake key 
-
-Then the wallet opens and I can connect with it on the selected stake key.
- | pending |  | Voltaire | N |
+Then the wallet opens and I can connect with it on the selected stake key. | pending |  | Voltaire | N |
 |  |  | Connect with single stake key wallet | Given I am on the homepage with no wallet connected
 
 When I click the Connect Wallet button and select a CIP-95 compliant single stake key wallet 
@@ -117,46 +96,29 @@ When I disconnect
 
 Then I will be redirected to the homepage, and will not have access to delegation or voting features. | pending |  | Voltaire | N |
 |  |  | Check the wallet is on the correct network | Given I am on the homepage
-
 When I compare the networkId with the environment value set on the deployment for the network.
-
 Then if there are exceptions raised, fail the test.
-
 If no exceptions, connect the wallet to the network (pass) | pending |  | Voltaire | N |
 | CH.VO2 | As an Ada Holder I want to delegate my voting power to a DRep so that I can claim my staking rewards | Delegate to DRep ID | Given that I have my wallet connected, and am on the Delegate to DRep page
-
 When I select the delegate to DRep ID option and I enter a DRep ID which has not been registered and I press delegate
-
 Then I will be presented with an error message explaining that the DRep ID was not found. | pending |  | Voltaire | N |
 |  |  |  | Given that I have my wallet connected, and am on the delegate to DRep page,
-
 When I choose the Delegate to DRep ID option and I enter a registered DRep ID and I press the Delegate button 
-
 Then I am able to delegate to that DRep ID via my connected wallet | pending |  | Voltaire | N |
 |  |  |  | Given that I have connected to GovTool with zero* ADA (or tADA in the case of SanchoNet)
-
 When I choose the Delegate to DRep ID option and I enter a registered DRep ID and I press the Delegate button 
-
 Then I am presented with a warning message and cannot proceed with delegation. 
-
 *or at least a number below transaction costs | pending |  | Voltaire | N |
 |  |  | Access Delegate to DRep page | Given that I do not have a compatible wallet connected to GovTool
-
 When I attempt to visit the URL of the Delegate to DRep page
-
 Then I am redirected to the homepage | pending |  | Voltaire | N |
 |  |  |  | Given that I  have a compatible wallet connected to GovTool and I am looking at the dashboard
-
 When I click on the the Delegate button (or Change Delegation button if you are already registered) 
-
 Then I am shown the Delegate to DRep page | pending |  | Voltaire | N |
 |  |  | Verify DRep behaviour in connected state  | Given that I'm not connected to the wallet
-
 When I visit the DRep delegation page, and I click the delegate-connect-wallet-button
- 
-Then the connect your wallet-modal is visible | pending |  | Voltaire | N |
+ Then the connect your wallet-modal is visible | pending |  | Voltaire | N |
 |  |  | Verify DRep behaviour in disconnected state | Given that I have a preset dRep wallet loaded
-
 Then Delegate button is clicked
 Then it is expected that delegation options card is visible
 delegate to myself is expected to be visible
@@ -165,161 +127,98 @@ Expect that signal no confidence card and vote abstain cards are visible
 Next, delegate to dRep card is clicked, followed by next step button
 Then expected that dRep ID input is visible along with delegate button | pending |  | Voltaire | N |
 |  |  | Delegate to myself | Given that I am a registered DRep who is connected to GovTool with my wallet, and I am on the Delegate to DRep page 
-
 When I choose the Delegate to DRep ID option and I enter my own DRep ID and I press the Delegate button 
-
 Then I am able to delegate to myself via my connected wallet | pending |  | Voltaire | N |
 |  |  |  | Given that I am a registered DRep who is connected to GovTool with my wallet, and I am on the Delegate to DRep page 
-
 When I select the Delegate to Myself option and press the Delegate button 
-
 Then I will be able to send a transaction to delegate to myself via my wallet | pending |  | Voltaire | N |
 |  |  |  | Given that I am not a registered DRep, and I am connected to GovTool with my wallet,
-
 When I am on the Delegate to DRep page
-
 I cannot see a Delegate to Myself option  | pending |  | Voltaire | N |
 |  |  | Change my DRep delegation | Given that I am I am already delegated to a DRep
-
 When I look at the dashboard 
-
 GovTool will know that I am delegated and  will invite me to “change my delegation” rather than to delegate.  | pending |  | Voltaire | N |
 |  |  |  | Given that I am already delegated 
-
 When I go to change my delegation
-
 I can delegate to any registered DRep, If I am delegated to myself then the option to “delegate to myself” will not be shown, If I am delegated to a specific predefined DRep then this predefined option will not be shown. | pending |  | Voltaire | N |
 |  |  | Check the validity of a DRep ID | Given that I have selected the “delegate to a DRep ID” option in the delegation user journey.
-
 When I enter anything in the  DRep ID input box that is not a registered DRep ID. 
-
 Then I will not be able to delegate to this DRep ID and will get a warning message. | pending |  | Voltaire | N |
 |  |  | Delegate to Abstain | Given that I am a DRep 
-
 When I delegate using the “delegate to abstain” feature 
-
 Then it will only delegate my own lovelace’s voting power to Abstain and NOT the voting power (if any) that has been delegated to me by others.  I will be notified that my delegation translation was sent. | pending |  | Voltaire |  |
 |  |  |  | Given that I am not a DRep
-
 When I delegate using the “delegate to abstain” feature 
-
 Then it will delegate any voting power I have to Abstain. I will be notified that my delegation translation was sent. | pending |  |  |  |
 |  |  | Delegate to No-Confidence | Given that I am a DRep 
-
 When I delegate using the “delegate to no-confidence” feature 
-
 Then it will only delegate my own lovelace’s voting power to No-Confidence and NOT the voting power (if any) that has been delegated to me by others.  I will be notified that my delegation translation was sent. | pending |  | Voltaire |  |
 |  |  |  | Given that I am not a DRep
-
 When I delegate using the “delegate to no-confidence” feature 
-
 Then it will delegate any voting power I have to No-Confi. I will be notified that my delegation translation was sent. | pending |  | Voltaire |  |
 |  |  | Guardrails for Voltaire  | This work is in progress | pending |  | Voltaire |  |
 | CH.VO3 | As a DRep I want to register so that I can vote on governance actions | Register as a DRep | Given that I am connected to GovTool with a compatible wallet
-
 When I go through the DRep registration process, and do not include a metadata anchor  
-
 Then I can register as a DRep via my wallet (because metadata anchors are optional) | pending |  | Voltaire | N |
 |  |  |  | Given that I am connected to GovTool with a compatible wallet
-
 When I go through the DRep registration process, and include metadata anchor information in the wrong format 
-
 Then I will not be able to progress further in the process and I will be told that it is because the format is incorrect. | pending |  | Voltaire | N |
 |  |  |  | Given that I am connected to GovTool with a compatible wallet
-
 When I go through the DRep registration process, and include metadata anchor information in the correct format 
-
 Then I will be able to register as a DRep via my wallet, GovTool will include the metadata anchor in the registration certificate transaction. | pending |  | Voltaire | N |
 |  |  | Confirm transaction has been sent | Given that I have gone through the DRep registration process 
-
 When I press the button on my wallet to submit the transaction 
-
 Then I will receive a confirmation message from GovTool that will include a link to the transaction in a block explorer. | pending |  | Voltaire | N |
 |  |  | Status of transaction is displayed | Given that I have just submitted a DRep registration transaction, and I am looking at the dashboard 
-
 When the registration has not yet been confirmed by the blockchain, 
-
 Then the registration status will show as “In Progress” until it is confirmed. | pending |  | Voltaire | N |
 | CH.VO4 | As a DRep I want to vote so that I can fulfil my role | Should be able to access the governance actions page as a DRep with my wallet connected | Given that I am a DRep and I am connected to GovTool
-
 When I visit the url of the governance actions page 
-
 Then the governance actions page is displayed | pending |  | Voltaire | N |
 |  |  |  | Given that I am a DRep and connected to GovTool
-
 When I look at the governance actions page 
-
 Then my voting power is displayed | pending |  |  |  |
 |  |  |  | Given that I am a DRep and Connected to GovTool, and I am on the governance actions page
-
 When I click Disconnect Wallet
-
 Then my wallet is disconnected and I am redirected to the same page, but without the DRep functionality (i.e. ability to vote) | pending |  |  |  |
 |  |  |  | Given that I am a DRep and I am on the governance actions page 
-
 When I click on the “view proposal details” button
-
 Then I will be shown the page for that individual governance action and be able to view its details  | pending |  |  |  |
 |  |  | A DRep should be able to vote on a live governance action | Given that I am a DRep 
-
 When I look at the details page of an individual governance action 
-
 Then I can see how many votes the governance action currently has for, against and abstaining. | pending |  | Voltaire | N |
 |  |  |  | Given that I am a DRep
-
 When I look at the details page of an individual governance action 
-
 Then there are buttons allowing me to vote for, against or abstain. | pending |  |  |  |
 |  |  |  | Given that I am a DRep, on the details page of an individual governance action
-
 When I select yes/ no/ abstain, and click vote 
-
 Then I can sign & submit this vote via my wallet | pending |  |  |  |
 |  |  |  | Given that I am a DRep
-
 When I have submitted a vote 
-
 Then Immediately after this GovTool will display a message informing me that my transaction has been sent and providing me with a link to a block explorer where I can view the transaction | pending |  |  |  |
 |  |  | People without the (t)ADA needed to pay for voting transactions should not be able to submit a voting transaction | Given I have less Lovelace in my wallet than a transaction costs
-
 When I attempt to vote
-
 The GovTool will tell me that there is an error | pending |  | Voltaire | N |
 |  |  | People without their wallet connected or who do have their wallet connected but have not registered as DReps should not be able to vote | Given that I do not have a wallet connected to GovTool
-
 When I visit the details of a governance action
-
 Then I am not shown a vote button. | pending |  | Voltaire | N |
 |  |  | No one should be able to vote on a governance action that has expired, or been ratified, or enacted.  | Given that I am on the governance action page
-
 When I examine the governance actions
-
 None of the governance actions shown on the page have expired or been ratified or enacted. | pending |  | Voltaire | N |
 |  |  | A DRep should be able to change their vote  | Given that I am a DRep and I have already voted on a given governance action 
-
 When I submit a different vote for the same transaction within the same snapshot 
-
 Then the most recent vote will be counted. | pending |  | Voltaire | N |
 |  |  |  | Given that I have already cast a vote on a governance action 
-
 When I examine this specific governance action’s page
-
 Then I can  see that I have already voted and what my most recent vote was | pending |  |  | N |
-|  |  |  | Given that I have already cast a vote on a given governance action 
-
+|  |  |  | Given that I have already cast a vote on a given governance action
 When I examine this specific governance action’s page
-
 Then instead of seeing a “vote” button I should see a “change vote” button | pending |  | Voltaire | N |
 |  |  | Only the votes of participants who are still DReps at the relevant epoch boundary will be accepted | Given that I am a DRep and I vote yes or abstain on a live governance action.
-
 At the epoch boundary
-
-My votes are counted.
- | pending |  | Voltaire | N |
+My votes are counted. | pending |  | Voltaire | N |
 |  |  |  | Given that I was a DRep that voted yes or abstain on a live governance action but then retired.
-
 At the next epoch boundary
-
 My votes will not be counted towards the total tally of DRep votes. | pending |  | Voltaire | N |
 |  |  | DReps can attach a metadata anchor to their votes | Given that I have chosen how to vote on the UI of a governance action’s details
 
@@ -327,29 +226,19 @@ When I add a metadata anchor to the UI also and click the vote button
 
 Then the resulting transaction will include my metadata anchor | pending |  | Voltaire | N |
 | CH.VO5 | As a DRep I want to retire so that I can reclaim my DRep Deposit | Only a user who is registered as a DRep can retire  | Given that I am not registered as a DRep, 
-
 When I look for a retirement option in GovTool 
-
 Then there is none. | pending |  | Voltaire | N |
 |  |  |  | Given that I am registered as a DRep, 
-
 When I look for a retirement option in GovTool there is one. And when I choose this option
-
 Then my wallet opens and I can sign a retirement action which is registered on-chain. | pending |  |  |  |
 |  |  | When I retire I get my deposit back | Given that I am a DRep
-
 When I register a valid retirement transaction on chain
-
 then my DRep registration deposit will be returned to me.  | pending |  |  | N |
 |  |  | Only a user who has the wallet that they registered as a DRep with can retire.  | Given that I am not connected to GovTool 
-
 When I look at the homepage
-
 Then I will not see an option to retire | pending |  | Voltaire | N |
 |  |  |  | Given that I am connected to GovTool with an account that is not associated with a registered DRep certificate
-
 When I look at the homepage 
-
 Then I see an option to register as a DRep | pending |  | Voltaire | N |
 |  |  |  | Given that I am a registered DRep with my wallet account connected
 
@@ -357,24 +246,16 @@ When I click the retire as a DRep option on the homepage and then send the retir
 
 Then the blockchain will register my retirement certificate, and I will be retired.  | pending |  | Voltaire | N |
 | CH.VO6 | As a DRep I want to update my details so that I can better advertise myself to Ada Holders  | A DRep can update their registration after registering | Given that I am a DRep and am connected to GovTool and am on the dashboard.
-
 Then when I click the “change metadata” button on the DRep tab.
-
 Then I am directed to update my metadata and can submit a DRep update certificate to register this on-chain. | pending |  | Voltaire | N |
 | CH.VO7 | As any user I want to view governance actions so I can see what is being proposed | Anyone should be able to access the governance actions page without a wallet connected | Given that I am on the GovTool homepage, 
-
 When I click the “Governance actions” in the topbar 
-
 Then I am sent to the governance actions page.  | pending |  | Voltaire | N |
 |  |  | I can see all live governance actions | Given that I am on the Governance Actions page 
-
 When I review the governance actions available to view on the page, 
-
 Then all of the non expired/ ratified/enacted governance actions. | pending |  | Voltaire | N |
 |  |  | Anyone with a CIP-95 compatible wallet connected should be able to access the governance actions page | Given that I am on the GovTool dashboard, 
-
 When I click the View Governance Actions tab, or “Governance actions” in the sidebar 
-
 Then I am sent to the governance actions page.  | pending |  | Voltaire | N |
 |  |  | Should be able to see if a governance action has been accepted or rejected by the Constitutional Committee | Given that I am looking at an individual governance action, When I look at how many votes it has, it shows the number of CC votes and whether this is acceptance/veto or neither.  | pending |  | Voltaire | N |
 |  |  | Should be able to view relevant information about governance actions | Given that I am looking at a Treasury Withdrawal governance action then I can see the amount of ADA that the proposal submitter wants to withdraw, and the address that they want to withdraw it to.  | pending |  | Voltaire | N |
@@ -443,7 +324,6 @@ I want to be able to submit a proposal to replace all or part of the current con
 So that committee members that have lost confidence of ada holders can be removed from their duties.  
  | It must be possible to replace the constitutional committee via a governance action
  | Any ada holder can submit a governance action that proposes to add or remove one or many new committee members. 
-
 Given that a governance action to update the committee has been proposed And both SPO and DRep YES votes are equal or greater than the required threshold (depending on state of no-confidence or normal state)
 The governance action is ratified and enacted automatically at the next epoch transition, otherwise it’s expired.  | pending | Detail Pending | CIP-1694
 L997 |  |
