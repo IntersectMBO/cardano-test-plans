@@ -68,6 +68,7 @@ Use as many lines as needed.
 
 ## User Story ID:  CLI.001
 - [ ] Enabler
+### Title: Obtain constitution hash for verification
 ### User Story
 As an Ada holder,
 I want to obtain the hash of the off-chain text of a Constitution
