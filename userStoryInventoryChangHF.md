@@ -28,7 +28,26 @@ This section shows the areas or sources thus far
 
 # User Story (Voltaire, API, CIP-1694, Community et al)
 
-## User Story ID:  001
+## User Story ID:  CH.VO.001
+- [ ] Enabler
+### User Story
+Write the story here.
+
+Use as many lines as needed.
+### Functional requirements
+- FR1
+- FR2
+- FR3
+### Acceptance Criteria
+- AC1
+- AC2
+- AC3
+### Source
+- VOLTAIRE
+### Link:
+
+
+## User Story ID:  CLI.001
 - [ ] Enabler
 ### User Story
 Write the story here.
