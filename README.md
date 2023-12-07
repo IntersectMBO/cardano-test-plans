@@ -27,15 +27,15 @@ We encourage contributions from the community to improve and expand the coverage
 1. Fork the repository.
 2. Create a new branch for your changes:
    ```bash
-   git checkout -b feature/new-user-story
+   git checkout -b user/user-story
    ```
 4. Make your changes and commit them:
    ```bash
-   git commit -m "Add new user story for..."
+   git commit -m "Describe your changes"
    ```
 5. Push your changes to your fork:
    ```bash
-   git push origin feature/new-user-story
+   git push origin user/user-story
    ```
 6. Open a pull request on the main repository.
 
