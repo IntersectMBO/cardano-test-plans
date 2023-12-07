@@ -70,7 +70,7 @@ Use as many lines as needed.
 - [ ] Enabler
 ### Title: Obtain constitution hash for verification
 ### User Story
-As an Ada holder,
+- As an Ada holder,
 I want to obtain the hash of the off-chain text of a Constitution
 So that I can compare it against the hash registered on-chain to verify its authenticity.
 
@@ -79,7 +79,50 @@ So that I can compare it against the hash registered on-chain to verify its auth
 ### Acceptance Criteria
 - Given that a holder provides the off-chain text of the constitution then cardano-cli should return the corresponding blake2b-256 hash. Provided that it is the same document, the resulting hash should match the one registered on-chain.
 
+## User Story ID:  CLI.002
+- [ ] Enabler
+### Title: Generate hash of the off-chain constitution
+### User Story
+- As an Ada holder,
+I want to generate the hash of the off-chain text for a proposed Constitution
+So that the hash can be utilized in a governance action.
+
+### Functional requirements
+
+- When I provide the off-chain text of the Constitution, the cardano-cli should calculate and return the corresponding blake2b-256 hash of the document.
+
+### Acceptance Criteria
+
+- Given that a holder provides the offchain text of the constitution then cardo-cli should return the corresponding blake2b-256 hash.
+
+## User Story ID:  CLI.003
+- [ ] Enabler
+### Title:
+### User Story
+### Functional requirements
+### Acceptance Criteria
 ### Link:
+
+## User Story ID:  CLI.004
+- [ ] Enabler
+### Title:
+### User Story
+### Functional requirements
+### Acceptance Criteria
+
+## User Story ID:  CLI.005
+- [ ] Enabler
+### Title:
+### User Story
+### Functional requirements
+### Acceptance Criteria
+
+## User Story ID:  CLI.006
+- [ ] Enabler
+### Title:
+### User Story
+### Functional requirements
+### Acceptance Criteria
 
 # SMART CONTRACTS
 
