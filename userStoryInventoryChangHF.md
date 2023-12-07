@@ -69,17 +69,15 @@ Use as many lines as needed.
 ## User Story ID:  CLI.001
 - [ ] Enabler
 ### User Story
-Write the story here.
+As an Ada holder,
+I want to obtain the hash of the off-chain text of a Constitution
+So that I can compare it against the hash registered on-chain to verify its authenticity.
 
-Use as many lines as needed.
 ### Functional requirements
-- FR1
-- FR2
-- FR3
+- When I provide the off-chain text of the Constitution, the cardano-cli should calculate and return the corresponding blake2b-256 hash of the document.
 ### Acceptance Criteria
-- AC1
-- AC2
-- AC3
+- Given that a holder provides the off-chain text of the constitution then cardano-cli should return the corresponding blake2b-256 hash. Provided that it is the same document, the resulting hash should match the one registered on-chain.
+
 ### Link:
 
 # SMART CONTRACTS
