@@ -371,16 +371,100 @@ and ada holders can use the DrepId to delegate their votes to me.
 - Running `cardano-cli conway governance drep id` --help displays the command usage page.
 - If any required input parameter is missing or incorrect, the command should raise an error indicating the missing or incorrect parameter.
 
-## User Story ID:  CLI.0010
+## User Story ID:  CLI.010
 - [ ] Enabler
-### Title:
+### Title: DRep Registration Certificate Generation
 ### User Story
-- As a DRep,<br>
-I want to generate a Drep registration certificate,<br>
-so that I can submit it on a transaction and the ada holders can delegate their votes to me.
+As a DRep,<br>
+I want to generate a DRep registration certificate,<br>
+so that I can submit it in a transaction and be eligible for receiving delegation.
 
 ### Functional requirements
+- The command is implemented as `cardano-cli conway governance drep registration-certificate`.
+- Requires the user to provide the DRep key deposit amount.
+- The command allows the user to provide the DRep credential in the following ways:
+  - DRep verification key
+  - DRep verification key file
+  - DRep ID
+- The command allows adding an optional anchor (url/hash) to submit any DRep metadata.
+- When both `--drep-metadata-url` and `--drep-metadata-hash` are provided, the resulting certificate should include the URL and hash in the anchor position; otherwise, the field is null.
+- The `--out-file FILE` option is mandatory and used to specify the file where the generated DRep registration certificate will be saved.
+- Generates a registration certificate compliant with the Conway CDDL.
+- The certificate should be in a text envelope format, containing a json object with the fields type, description and cborHex.
+- The feature implementation should be well-documented, providing clear usage instructions for the `cardano-cli conway governance drep registration-certificate` command.
+- Handles errors gracefully and provide helpful error messages when required options are missing or invalid inputs are provided.
+
 ### Acceptance Criteria
+- Running `cardano-cli conway governance drep registration-certificate` with accepted input parameters generates a DRep registration certificate.
+- The flag `--key-reg-deposit-amt` is mandatory and takes the deposit amount in lovelace as an argument.
+- The command presents the options to pass the DRep credential:
+  - `--drep-verification-key STRING`
+  - `--drep-verification-key-file FILE`
+  - `--drep-id STRING`
+- Using one of these flags is mandatory but mutually exclusive.
+- Failing to provide the right input results in a clear error message that helps the user identify the problem.
+- If the user wants to include an anchor with the DRep's metadata, then the command requires both the URL and the hash to be provided. Only URL or only hash is not allowed.
+  - `--drep-metadata-url TEXT`
+  - `--drep-metadata-hash HASH`
+- Failing to provide the right input results in a clear error message that helps the user identify the problem.
+- The anchor is included in the certificate on the last position: `reg_drep_cert = (16, drep_credential, coin, anchor / null)`.
+- The flag `--out-file` is mandatory and takes the file path and name as an argument.
+- Failure to provide the flag and its argument generates an exception.
+- Given that the certificate is saved, it should be in a text envelope format consisting of a JSON object with type, description, and CBOR hex fields, where:
+  ```json
+  {
+      "type": "CertificateConway",
+      "description": "DRep Registration Certificate",
+      "cborHex": "00000000"
+  }
+- Typing `cardano-cli conway governance drep registration-certificate --help` displays the command usage page.
+- If any required input parameter is missing or incorrect, the command should raise an error indicating the missing or incorrect parameter.
+
+## User Story ID:  CLI.011
+- [ ] Enabler
+### Title: DRep Retirement Certificate Generation
+### User Story
+As a DRep,<br>
+I want to generate a DRep retirement (unregistration) certificate,<br>
+so that I can submit it in a transaction stop acting as a governance actor,<br>
+and retrieve my DRep deposit.
+
+### Functional requirements
+- The command is impremented as `cardano-cli conway governance drep retirement-certificate`.
+- Allows supplying the DRep credentials in the following ways:
+    - DRep verification key
+    - DRep verification key file
+    - Drep Id
+- Typing `cardano-cli conway governance drep retirement-certificate` with accepted input parameters will generate a DRep retirement certificate.
+- The command has the mandatory flag `--deposit-amt` to require the user to provide the DRep deposited amount that is to be returned.
+  - Must match the deposit originally paid when registering as DRep but is only checked when submitting the transaction.
+- The `--out-file FILE` option should be mandatory and used to specify the file where the generated DRep retirement certificate will be saved.
+- The certificate should be in a text envelope format similar to stake pools deregistration certificates.
+- The output certificate complies with the Conway CDDL: `unreg_drep_cert = (17, drep_credential, coin)`.
+- The feature implementation should be well-documented, providing clear usage instructions.
+- The command handles errors gracefully and provides helpful error messages when required options are missing or invalid inputs are provided.
+
+### Acceptance Criteria
+- Running `cardano-cli conway governance drep retirement-certificate` with accepted input parameters generatea a DRep retirement certificate.
+- The command accepts any the flags:
+    - `--drep-verification-key STRING`
+    - `--drep-verification-key-file FILE`
+    - `--drep-id STRING`
+    Supplying the credential is mandatory, so is using any of these flags.
+- The flag `--deposit-amt` is mandatory and takes the deposit amount in lovelace as an argument.
+- Not providing the flag and its argument generates an exception.
+- The flag `--out-file` is mandatory and takes the file path and name as an argument.
+- Failure to provide the flag and its argument generates an exception.
+- Given that the certificate is saved, it should be in a text envelope format consisting of a JSON object with type, description, and CBOR hex fields, where:
+   ```json
+   {
+       "type": "CertificateConway",
+       "description": "DRep Retirement Certificate",
+       "cborHex": "00000000"
+   }
+-- The cborHex field conforms to the conway cddl: `unreg_drep_cert = (17, drep_credential, coin)`.
+- Typing `cardano-cli conway governance drep retirement-certificate --help` displays the command usage page.
+- If any required input parameter is missing or incorrect, the command should raise an error indicating the missing or incorrect parameter.
 
 ## User Story ID:  CLI.011
 - [ ] Enabler
