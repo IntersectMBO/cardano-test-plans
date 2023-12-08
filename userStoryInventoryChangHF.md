@@ -163,22 +163,13 @@ I want to generate the key hashes for my cold verification key,<br>
 so that it can be used by third parties to propose me as a new committee member;<br>
 and for identification purposes once Ive been elected as committee member.
 ### Functional requirements
-- The implementation includes the new command `cardano-cli conway governance committee key-hash`
-- Generates the blake2b 256 hash of the verification key.
-- Allows passing credentials as follows:
-    - Cold verification key <- string
-    - Cold verification key file <- file
-- Gives the option to save the key hash to a file, default is printing to stdout
-- Handles potential errors, such as missing flags or invalid input, and provides appropriate error messages or exceptions to guide the user.
-- Documentation should be provided, including a corresponding CLI usage, describing the feature, its purpose, and how to use it, along with the expected types of inputs and outputs.
-
-### Acceptance Criteria
-- Running `cardano-cli conway governance committee key-hash` with accepted input parameters generates blake2b 256 hash of the verification key. If a parameter or the command format is incorrect an error is raised
-- Passing the cold-verification-key or cold-verification-key-file is mandatory,
-- Given that the user specifies the –out-file parameter and a valid path and file name, then the key hash is saved on that file and location.
-- Given that the user has *not* specified the `–out-file`, then the key hash must be returned in clear text through stdout (cmd output).
-- Given that the user has executed the correct command but has either filled incorrectly any of the parameters, missed any mandatory flag and/or parameter  then an exception should be raised and an error message should be returned with clear indication as to how to fix the issue. When not feasible, the user should be directed to the usage page of the command (cardano-cli conway governance committee key-hash --help).
-- Running  `cardano-cli conway governance committee key-hash --help` display the command usage page.
+| Requirements  | Acceptance Criteria  |
+|:----|:----|
+| The implementation includes the new command `cardano-cli conway governance committee key-hash`<br> Generates the blake2b 256 hash of the verification key. | Running `cardano-cli conway governance committee key-hash` with accepted input parameters generates blake2b 256 hash of the verification key. If a parameter or the command format is incorrect an error is raised
+| Allows passing credentials with Cold verification key <- string and Cold verification key file <- file | Passing the cold-verification-key or cold-verification-key-file is mandatory. If the key or file is of a different type, an exception is raised |
+| Gives the option to save the key hash to a file, default is printing to stdout | Given that the user specifies the `-–out-file` option and a valid path and file name, then the key hash is saved on that file and location.<br> If `--out-file` is not used, the hash in printed to stdout |
+| Handles potential errors, such as missing flags or invalid input, and provides appropriate error messages or exceptions to guide the user. | Given that the user has executed the correct command but has either filled incorrectly any of the parameters, missed any mandatory flag and/or parameter  then an exception should be raised and an error message should be returned with clear indication as to how to fix the issue. When not feasible, the user should be directed to the usage page of the command (`cardano-cli conway governance committee key-hash --help`). |
+| Documentation should be provided, including a corresponding CLI usage, describing the feature, its purpose, and how to use it, along with the expected types of inputs and outputs. | Running  `cardano-cli conway governance committee key-hash --help` display the command usage page. |
 
 ## User Story ID:  CLI.007
 - [ ] Enabler
@@ -189,44 +180,16 @@ I want to be able to generate a resignation certificate,<br>
 so that i can submit it to the chain on a transaction to signal to the ada holders that I’m resigning from my duties.
 
 ### Functional requirements
-- The command should be implemented in the cardano-cli as `cardano-cli conway governance committee create-cold-resignation-certificate`
-- Allows passing credentials as follows:
-    - Cold verification key <- string
-    - Cold verification key file <- file
-    - Cold verification key hash <- string
-- Allows an optional anchor (url/hash) to express motives for resignation. The CLI does not need to check for the validity of the URL, the contents, or that the documents and declared hash match.
-- Includes a mandatory flag for saving the certificate to a file.
-- The resignation certificate follows the text envelope format of other existing certificates, including the type, description, and CBOR hex fields
-- The certificate type must be "ConwayResignCommitteeColdKey".
-- The certificate description must be "Constitutional Committee Cold Key Resignation Certificate".
-- Generates a resignation certificate compliant with the conway cddl: `resign_committee_cold_cert = (15, committee_cold_credential, anchor / null)`
-- The command handles potential errors, such as missing or invalid flags or keys, and provide appropriate error messages indicating the missing or required parameters.
-- Documentation should be provided, including a corresponding CLI usage, describing the feature, its purpose, and how to use it, along with the expected types of inputs and outputs.
-
-### Acceptance Criteria
-- Running `cardano-cli governance committee create-cold-resignation-certificate` with accepted input parameters generates a cold resignation certificate.
-- Allows passing credentials as follows
-    - `--cold-verification-key`
-    - `--cold-verification-key-file`
-    - `--cold-verification-key-hash`
-
-    If any of the inputs has the wrong format the cli raises an error message indicating the missing or incorrect parameter.
-- Allows for an optional anchor comprised of a URL containing a document where the resigning CC member expresses the motivations and the hash of the document.
-    - `--resignation-metadata-url`
-    - `--resignation-metadata-hash`
-- Given that a valid path and file name are specified, then the certificate is saved on the specified location.
-- Given that the resignation certificate is saved, then it is in a text envelope format consisting of a json object with type, description and cbor hex fields.
-
-    ```json
-    {
-    "type": "CertificateConway",
-    "description": "Constitutional Committee Cold Key Resignation Certificate",
-    "cborHex": ""
-    }
-    ````
-- The cborHex field conforms to the conway cddl: `resign_committee_cold_cert = (15, committee_cold_credential, anchor / null)`
-- Handles potential errors, such as missing or invalid flags or keys, and provide appropriate error messages indicating the missing or required parameters.
-- Documentation should be provided, including a corresponding CLI usage, describing the feature, its purpose, and how to use it, along with the expected types of inputs and outputs.
+| Requirements  | Acceptance Criteria  |
+|:----|:----|
+| The command should be implemented in the cardano-cli as `cardano-cli conway governance committee create-cold-resignation-certificate` | Running `cardano-cli governance committee create-cold-resignation-certificate` with accepted input parameters generates a cold resignation certificate. |
+| Allows passing credentials via:<br> Cold verification key <- string<br> Cold verification key file <- file<br>Cold verification key hash <- string | Passing the cold credential is mandatory, achieved with any of the flags:<br> `--cold-verification-key-file`<br> `--cold-verification-key-hash`<br> `--cold-verification-key`<br> If the input has the wrong format or type the cli raises an exception. |
+| Allows an optional anchor (url/hash) to express motives for resignation. The CLI does not need to check for the validity of the URL, the contents, or that the documents and declared hash match. | Passing an anchor is achieved with the flags:<br> `--resignation-metadata-url`<br> `--resignation-metadata-hash`.<br> If the user chooses to pass an achor both flags are mandatory, passing only the url or only the hash is not allowed.
+| Includes a mandatory flag for saving the certificate to a file. | Given that a valid path and file name are specified, then the certificate is saved on the specified location. |
+| The resignation certificate follows the text envelope format of other existing certificates, including the type, description, and CBOR hex fields<br> The certificate type must be `CertificateConway`.<br> The certificate description must be `Constitutional Committee Cold Key Resignation Certificate`. | Given that the resignation certificate is saved, then it is in a text envelope format consisting of a json object with type, description and cbor hex fields. <br><br> {<br>"type": "CertificateConway",<br> "description": "Constitutional Committee Cold Key Resignation Certificate",<br> "cborHex": ""<br>} |
+| Generates a resignation certificate compliant with the conway cddl: `resign_committee_cold_cert = (15, committee_cold_credential, anchor / null)` | The cborHex field conforms to the conway cddl: `resign_committee_cold_cert = (15, committee_cold_credential, anchor / null)` |
+| The command handles potential errors, such as missing or invalid flags or keys, and provide appropriate error messages indicating the missing or required parameters. | Given that the user has executed the correct command but has either filled incorrectly any of the parameters, missed any mandatory flag and/or parameter  then an exception should be raised and an error message should be returned with clear indication as to how to fix the issue. When not feasible, the user should be directed to the usage page of the command (`cardano-cli conway governance committee key-hash --help`). |
+| Documentation should be provided, including a corresponding CLI usage, describing the feature, its purpose, and how to use it, along with the expected types of inputs and outputs. | Running `cardano-cli conway governance committee create-cold-resignation-certificate --help` displays the command usage page |
 
 ## User Story ID:  CLI.008
 - [ ] Enabler
@@ -237,38 +200,13 @@ I want to generate Ed25519 keys,<br>
 so that I can register as a DRep.
 
 ### Functional requirements
-- The command is implemented as `cardano-cli conway governance drep key-gen`
-- Supports the `--verification-key-file` option to specify the file where the verification key will be saved.
-- Supports the `--signing-key-file` option to specify the file where the signing key will be saved
-- The generated keys must adhere to text envelope format used for other artifacts and contains the fields Type, Description and cborHex.
-- The signing key text envelope contains the correct type, description, and cborHex values.
-    - Type: "DRepVerificationKey_ed25519"
-    - Description: "Delegate Representative Verification Key"
-- The verification key text envelope has:
-    - Type:  "DRepSigningKey_ed25519"
-    - Description: "Delegate Representative Signing Key"
+| Requirements  | Acceptance Criteria  |
+|:----|:----|
+| The command is implemented as `cardano-cli conway governance drep key-gen` | Running `cardano-cli conway governance drep key-gen` with accepted input parameters generates an Ed25519 key pair |
+| Supports the `--verification-key-file` option to specify the file where the verification key will be saved. | When valid paths and file names are specified, the key files is saved on the specified location. <br> The flag `--verification-key-file` is mandatory, failing to provide it raises an error. |
+| Supports the `--signing-key-file` option to specify the file where the signing key will be saved |When valid paths and file names are specified, the key files is saved on the specified location.<br> The flag `--signing-key-file` is mandatory, failing to provide it raises an error. |
+| The generated key files must adhere to text envelope format used for other artifacts and contains the fields Type, Description and cborHex. | The signing key text envelope contains the correct type, description, and cborHex values.<br> `Type: "DRepVerificationKey_ed25519"` <br> `Description: "Delegate Representative Verification Key"` |
 
-### Acceptance Criteria
-- Running cardano-cli conway governance drep key-gen with accepted input parameters generates an Ed25519 key pair
-- The flag --verification-key-file is mandatory, failing to provide it raises an error.
-- The flag --signing-key-file is mandatory, failing to provide it raises an error.
-- When valid paths and file names are specified, the  corresponding verification and signing key files are saved on the respective locations.
-- Given that the verification and signing key files are saved, then they are in a text envelope format consisting of a json object with type, description and cbor hex fields, where:
-
-    ```json
-    {
-     "type": "DRepVerificationKey_ed25519",
-     "description": "Delegate Representative Verification Key",
-     "cborHex": ""
-    }
-    ```
-    ```json
-    {
-     "type": "DRepSigningKey_ed25519",
-     "description": "Delegate Representative VSigning Key",
-     "cborHex": ""
-     }
-    ```
 ## User Story ID:  CLI.009
 - [ ] Enabler
 ### Title: Generate Drep ID
@@ -279,27 +217,14 @@ so that my voting record can be tracked,<br>
 and ada holders can use the DrepId to delegate their votes to me.
 
 ### Functional requirements
-- The command is implemented as `cardano-cli conway governance drep id` and generates the blake2b-224 hash digest of the serialised DRep credential (verification key).
-- The command accepts supplying the verification key with either:
-    - `--drep-verification-key`
-    - `–-drep-verification-key-file options`
-- Supports the --out-file FILE flag (optional) to allow users to save the generated DRep ID to a file. Default is printing to stdout.
-- Provides an option to specify the output format. Accepted output formats are "hex" and "bech32". "bech32" is the default format.
-- Handles errors gracefully and provides helpful error messages when required options are missing or invalid inputs are provided.
-- The feature is well-documented, providing clear usage instructions for the cardano-cli conway governance drep id command.
-
-### Acceptance Criteria
-- Running  `cardano-cli conway governance drep id` with accepted input parameters generates a DRep ID: the blake2b-224 hash digest of the verification key.
-- Using one of the flags is mandatory, the flags are mutually exclusive:
-    - `--drep-verification-key <- string`
-    - `-–drep-verification-key-file  <- file`
-- Given that a valid path and file name are supplied, then, using the –out-file flag saves the drep id to a file on the specified location. If the specified path does not exist or is inaccessible the cli returns an error message.
-- If the –out-flag is not used the Drep ID is printed on stdout
-- Given that the optional --output-format flag is used, and  “bech32” is given as an argument, then the DRep Id is printed in bech32 format with the “drep” prefix.
-- Given that the optional --output-format flag is used, and the hex is given as an argument, then the DRep Id is printed in hex format.
-- If the --output-format STRING option is not specified, the DRep ID should be displayed in "bech32" format by default.
-- Running `cardano-cli conway governance drep id` --help displays the command usage page.
-- If any required input parameter is missing or incorrect, the command should raise an error indicating the missing or incorrect parameter.
+| Requirements  | Acceptance Criteria  |
+|:----|:----|
+| The command is implemented as `cardano-cli conway governance drep id` and generates the blake2b-224 hash digest of the serialized DRep credential (verification key). | Running  `cardano-cli conway governance drep id` with accepted input parameters generates a DRep ID: the blake2b-224 hash digest of the verification key.|
+| The command accepts supplying the verification key with either:<br> Drep verification key<br> Drep verification key file |Using one of the flags is mandatory, the flags are mutually exclusive:<br> `--drep-verification-key <- string`<br> `-–drep-verification-key-file  <- file` |
+| Supports an optional flag to allow users to save the generated DRep ID to a file. Default is printing to stdout. | Given that a valid path and file name are supplied, then, using the `–out-file` flag saves the drep id to a file on the specified location. If the specified path does not exist or is inaccessible the cli returns an error message.<br> If the –out-flag is not used the Drep ID is printed on stdout |
+| Provides an option to specify the output format. Accepted output formats are "hex" and "bech32". "bech32" is the default format.| The flag `--output-format` is optional. <br> When not used, the output defaults to bech32. <br> When used with “bech32” as argument, then the DRep Id is printed in bech32 format with the “drep” prefix.<br> When used with "hex" as argument, then the DRep Id is printed in hex format.|
+| Handles errors gracefully and provides helpful error messages when required options are missing or invalid inputs are provided. | If any required input parameter is missing or incorrect, the command should raise an error indicating the missing or incorrect argument. |
+| Documentation should be provided, including a corresponding CLI usage, describing the feature, its purpose, and how to use it, along with the expected types of inputs and outputs. | Running `cardano-cli conway governance drep id --help` displays the command usage page. |
 
 ## User Story ID:  CLI.010
 - [ ] Enabler
@@ -310,45 +235,17 @@ I want to generate a DRep registration certificate,<br>
 so that I can submit it in a transaction and be eligible for receiving delegation.
 
 ### Functional requirements
-- The command is implemented as `cardano-cli conway governance drep registration-certificate`.
-- Requires the user to provide the DRep key deposit amount.
-- The command allows the user to provide the DRep credential in the following ways:
-  - DRep verification key
-  - DRep verification key file
-  - DRep ID
-- The command allows adding an optional anchor (url/hash) to submit any DRep metadata.
-- When both `--drep-metadata-url` and `--drep-metadata-hash` are provided, the resulting certificate should include the URL and hash in the anchor position; otherwise, the field is null.
-- The `--out-file FILE` option is mandatory and used to specify the file where the generated DRep registration certificate will be saved.
-- Generates a registration certificate compliant with the Conway CDDL.
-- The certificate should be in a text envelope format, containing a json object with the fields type, description and cborHex.
-- The feature implementation should be well-documented, providing clear usage instructions for the `cardano-cli conway governance drep registration-certificate` command.
-- Handles errors gracefully and provide helpful error messages when required options are missing or invalid inputs are provided.
-
-### Acceptance Criteria
-- Running `cardano-cli conway governance drep registration-certificate` with accepted input parameters generates a DRep registration certificate.
-- The flag `--key-reg-deposit-amt` is mandatory and takes the deposit amount in lovelace as an argument.
-- The command presents the options to pass the DRep credential:
-  - `--drep-verification-key STRING`
-  - `--drep-verification-key-file FILE`
-  - `--drep-id STRING`
-- Using one of these is mandatory but mutually exclusive.
-- Failing to provide the right input results in a clear error message that helps the user identify the problem.
-- If the user wants to include an anchor with the DRep's metadata, then the command requires both the URL and the hash to be provided. Only URL or only hash is not allowed.
-  - `--drep-metadata-url TEXT`
-  - `--drep-metadata-hash HASH`
-- Failing to provide the right input results in a clear error message that helps the user identify the problem.
-- The anchor is included in the certificate on the last position: `reg_drep_cert = (16, drep_credential, coin, anchor / null)`.
-- The flag `--out-file` is mandatory and takes the file path and name as an argument.
-- Failure to provide the flag and its argument generates an exception.
-- Given that the certificate is saved, it should be in a text envelope format consisting of a JSON object with type, description, and CBOR hex fields, where:
-  ```json
-  {
-      "type": "CertificateConway",
-      "description": "DRep Registration Certificate",
-      "cborHex": "00000000"
-  }
-- Typing `cardano-cli conway governance drep registration-certificate --help` displays the command usage page.
-- If any required input parameter is missing or incorrect, the command should raise an error indicating the missing or incorrect parameter.
+| Requirements  | Acceptance Criteria  |
+|:----|:----|
+| The command is implemented as `cardano-cli conway governance drep registration-certificate`. | Running `cardano-cli conway governance drep registration-certificate` with accepted input parameters generates a DRep registration certificate.|
+| Requires the user to provide the DRep key deposit amount. | The flag `--key-reg-deposit-amt` is mandatory and takes the deposit amount in lovelace as an argument.|
+| The command allows the user to provide the DRep credential in the following ways:<br> DRep verification key. <br> DRep verification key file <br> DRep ID | The command presents the options to pass the DRep credential: <br>`--drep-verification-key STRING` <br> `--drep-verification-key-file FILE`<br>`--drep-id STRING`<br> Using one of these flags is mandatory but mutually exclusive. |
+| Allows adding an optional anchor (url/hash) to submit any DRep metadata. | Adding metadata is optional, but when used the flags are mandatory<br>  `--drep-metadata-url TEXT`<br> `--drep-metadata-hash HASH`<br> When used, the anchor is included in the certificate on the last position, otherwise the field is null: `reg_drep_cert = (16, drep_credential, coin, anchor / null)`.|
+| Supports a mandatory flag to specify the file where the generated DRep registration certificate will be saved. | The flag `--out-file` is mandatory and takes the file path and name as an argument.<br> Failing to provide the right input results in a clear error message that helps the user identify the problem. |
+| Generates a registration certificate compliant with the Conway CDDL. | The ccborHex of the certificate complies with the format specified on the cddl `reg_drep_cert = (16, drep_credential, coin, anchor / null)`|
+| The certificate should be in a text envelope format, containing a json object with the fields type, description and cborHex.| Given that the certificate is saved, it should be in a text envelope format consisting of a JSON object with type, description, and CBOR hex fields, where:<br>{<br> "type": "CertificateConway",<br> "description": "DRep Registration Certificate",<br> "cborHex": ""<br>}<br> |
+| The feature implementation should be well-documented, providing clear usage instructions.| Running `cardano-cli conway governance drep registration-certificate --help` displays the command usage page. |
+| Handles errors gracefully and provide helpful error messages when required options are missing or invalid inputs are provided. |If any required input parameter is missing or incorrect, the command should raise an error indicating the missing or incorrect parameter.|
 
 ## User Story ID:  CLI.011
 - [ ] Enabler
