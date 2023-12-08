@@ -380,7 +380,163 @@ I want to generate a Drep registration certificate,<br>
 so that I can submit it on a transaction and the ada holders can delegate their votes to me.
 
 ### Functional requirements
+
+- Running `cardano-cli conway governance drep registration-certificate` with accepted input parameters generates a DRep registration certificate.
+- The flag `--key-reg-deposit-amt` is mandatory and takes the deposit amount in lovelace as an argument.
+- The command presents the options to pass the DRep credential:
+  - `--drep-verification-key STRING`
+  - `--drep-verification-key-file FILE`
+  - `--drep-id STRING`
+- Using one of these flags is mandatory but mutually exclusive.
+- Failing to provide the right input results in a clear error message that helps the user identify the problem.
+- If the user wants to include an anchor with the DRep's metadata, then the command requires both the URL and the hash to be provided. Only URL or only hash is not allowed.
+  - `--drep-metadata-url TEXT`
+  - `--drep-metadata-hash HASH`
+- Failing to provide the right input results in a clear error message that helps the user identify the problem.
+- The anchor is included in the certificate on the last position: `reg_drep_cert = (16, drep_credential, coin, anchor / null)`.
+- The flag `--out-file` is mandatory and takes the file path and name as an argument.
+- Failure to provide the flag and its argument generates an exception.
+
 ### Acceptance Criteria
+- Running `cardano-cli conway governance drep registration-certificate` with accepted input parameters generates a DRep registration certificate.
+- The flag `--key-reg-deposit-amt` is mandatory and takes the deposit amount in lovelace as an argument.
+- The command presents the options to pass the DRep credential:
+  - `--drep-verification-key STRING`
+  - `--drep-verification-key-file FILE`
+  - `--drep-id STRING`
+- Using one of these is mandatory but mutually exclusive.
+- Failing to provide the right input results in a clear error message that helps the user identify the problem.
+- If the user wants to include an anchor with the DRep's metadata, then the command requires both the URL and the hash to be provided. Only URL or only hash is not allowed.
+  - `--drep-metadata-url TEXT`
+  - `--drep-metadata-hash HASH`
+- Failing to provide the right input results in a clear error message that helps the user identify the problem.
+- The anchor is included in the certificate on the last position: `reg_drep_cert = (16, drep_credential, coin, anchor / null)`.
+- Given that the certificate is saved, it should be in a text envelope format consisting of a JSON object with type, description, and CBOR hex fields, where:
+  ```json
+  {
+      "type": "CertificateConway",
+      "description": "DRep Registration Certificate",
+      "cborHex": "00000000"
+  }
+- The flag `--out-file` is mandatory and takes the file path and name as an argument.
+- Failure to provide the flag and its argument generates an exception.
+
+## User Story ID:  CLI.011
+- [ ] Enabler
+### Title: DRep Retirement Certificate Generation
+### User Story
+As a DRep,<br>
+I want to generate a DRep retirement (unregistration) certificate,<br>
+so that I can submit it in a transaction stop acting as a governance actor,<br>
+and retrieve my DRep deposit.
+
+### Functional requirements
+- The command is impremented as `cardano-cli conway governance drep retirement-certificate`.
+- Allows supplying the DRep credentials in the following ways:
+    - DRep verification key
+    - DRep verification key file
+    - Drep Id
+- Typing `cardano-cli conway governance drep retirement-certificate` with accepted input parameters will generate a DRep retirement certificate.
+- The command has the mandatory flag `--deposit-amt` to require the user to provide the DRep deposited amount that is to be returned.
+  - Must match the deposit originally paid when registering as DRep but is only checked when submitting the transaction.
+- The `--out-file FILE` option should be mandatory and used to specify the file where the generated DRep retirement certificate will be saved.
+- The certificate should be in a text envelope format similar to stake pools deregistration certificates.
+- The output certificate complies with the Conway CDDL: `unreg_drep_cert = (17, drep_credential, coin)`.
+- The feature implementation should be well-documented, providing clear usage instructions.
+- The command handles errors gracefully and provides helpful error messages when required options are missing or invalid inputs are provided.
+
+### Acceptance Criteria
+- Running `cardano-cli conway governance drep retirement-certificate` with accepted input parameters generatea a DRep retirement certificate.
+- The command accepts any the flags:
+    - `--drep-verification-key STRING`
+    - `--drep-verification-key-file FILE`
+    - `--drep-id STRING`
+    Supplying the credential is mandatory, so is using any of these flags.
+- The flag `--deposit-amt` is mandatory and takes the deposit amount in lovelace as an argument.
+- Not providing the flag and its argument generates an exception.
+- The flag `--out-file` is mandatory and takes the file path and name as an argument.
+- Failure to provide the flag and its argument generates an exception.
+- Given that the certificate is saved, it should be in a text envelope format consisting of a JSON object with type, description, and CBOR hex fields, where:
+   ```json
+   {
+       "type": "CertificateConway",
+       "description": "DRep Retirement Certificate",
+       "cborHex": "00000000"
+   }
+- The cborHex field conforms to the conway cddl: `unreg_drep_cert = (17, drep_credential, coin)`.
+- Typing `cardano-cli conway governance drep retirement-certificate --help` displays the command usage page.
+- If any required input parameter is missing or incorrect, the command raise an error indicating the missing or incorrect parameter.
+
+## User Story ID:  CLI.012
+- [ ] Enabler
+### Title: DRep Metadata Hash Generation
+### User Story
+As a DRep,<br>
+I want to generate the hash of my DRep metadata, <br>
+so that I can supply it when registering as a DRep.
+
+### Functional requirements
+- The command is implemented as `cardano-cli conway governance drep metadata-hash`.
+- Calculates the blake2b 256 hash of the file supplied by the user.
+- Requires the `--drep-metadata-file FILE` option to specify the file containing the DRep metadata.
+- Supports the `--out-file FILE` option (optional) to enable users to save the calculated metadata hash to the specified file. If the flag is not used, the hash is printed to stdout.
+- The command handles errors gracefully and provides helpful error messages when required options are missing or invalid inputs are provided.
+
+### Acceptance Criteria
+- Running `cardano-cli conway governance drep metadata-hash` successfully generates the blake2b 256 hash of the specified DRep metadata file.
+- The command requires the user to provide the DRep metadata file using the `--drep-metadata-file FILE` option.
+- The command allows users to use the optional `--out-file FILE` option to save the calculated metadata hash to the specified file. If not used, the hash is printed to stdout.
+- Typing `cardano-cli conway governance drep metadata-hash --help` displays the command usage page.
+- If any required input parameter is missing or incorrect, the command raises an error indicating the missing or incorrect parameter.
+
+## User Story ID:  CLI.013
+- [ ] Enabler
+### Title: Create Update Constitution Governance Action
+### User Story
+As an ADA holder,<br>
+I want to create a governance action that updates the constitution,<br>
+so that it can be submitted to the chain and be voted on by the governance bodies.
+
+### Functional requirements
+- The command is implemented as `cardano-cli conway governance action create-constitution`.
+- The command requires the user to specify the target network for which the governance action is created.
+- The command requires the user to provide the deposit amount for submitting governance actions via the flag `--governance-action-deposit`.
+- The command requires the user to provide the stake credential that will receive the deposit return when the action is enacted/expired. It accepts:
+  - stake verification key
+  - stake verification key file
+  - stake key hash (stake address)
+- The command allows the user to provide the transaction ID and index of the previously enacted action of this type. These flags are optional, but if one is used, the other one must be used too, to support the very first action of this type on the system that does not require information about previously enacted actions. The flags are:
+  - `--prev-governance-action-tx-id`
+  - `--prev-governance-action-index`
+- Asks the user to provide a mandatory anchor (URL/hash) of the proposal, a document where the proposer exposes the reasoning behind the proposed change.
+- Requires the user to provide an anchor (URL/
+- The command has a flag to specify the path where the output file will be saved.
+- The generated governance action complies with the Conway CDDL, where:
+    - proposal_procedure = [ deposit : coin, reward_account, gov_action, anchor ]
+    -  new_constitution = (5, gov_action_id / null, constitution)
+    -  constitution = [ anchor, scripthash / null ]
+
+### Acceptance Criteria
+- Running `cardano-cli conway governance action create-constitution` successfully creates a governance action for updating the constitution.
+- The command requires the user to specify the target network using either `--mainnet` or `--testnet-magic NATURAL`.
+- The command prompts the user to provide the deposit amount for submitting governance actions via the flag `--governance-action-deposit`.
+    - The deposit amount must match the original deposit when registering the governance action but is only checked when submitting the transaction.
+- The user provides the deposit return stake credential using one of the following options:
+    - `--deposit-return-stake-verification-key STRING`
+    - `--deposit-return-stake-verification-key-file FILE` to specify the file containing the deposit return stake verification key.
+    - `--deposit-return-stake-key-hash HASH` to directly specify the deposit return stake key hash as a string.
+- The optional flags `--prev-governance-action-tx-id` and `--prev-governance-action-index`are available to support the very first action of this type on the system, which does not require information about previously enacted actions.
+- The user provides an anchor (URL/hash) of the proposal document using one of the following options:
+    - `--anchor-url`
+    - `--anchor-data-hash`
+- The user provides an anchor (URL/hash) of the new constitution using one of the following options:
+    - `--constitution-url`
+    - `--constitution-hash`
+- The `--out-file` flag is available to specify the file where the generated governance action (proposal) will be saved.
+- The generated governance action complies with the Conway CDDL:
+    - proposal_procedure = [ deposit : coin, reward_account, gov_action, anchor ]
+    - new_constitution = (5, gov_action_id / null, constitution)
+    - constitution = [ anchor, scripthash / null ]
 
 ## User Story ID:  CLI.011
 - [ ] Enabler
