@@ -732,11 +732,12 @@ Use as many lines as needed.
 Write the story here.
 
 Use as many lines as needed.
-### Functional requirements
-- FR1
-- FR2
-- FR3
-### Acceptance Criteria
-- AC1
-- AC2
-- AC3
+### Functional requirements (n.m) with Associated Criteria (AC n.m.o)
+- FR1.1.1
+- AC1.1.1.1 - this is the 1st AC for FR1.1
+- FR1.1.2
+- AC1.1.2.1 - this is the 1st AC for FR1.1
+- AC1.1.2.1 - this is the 1st AC for FR1.1
+- FR1.1.3
+- AC1.1.3.1 - this is the 1st AC for FR1.1
+- AC1.1.3.1 - this is the 1st AC for FR1.1
