@@ -498,13 +498,10 @@ so that it can be submitted to the chain and be voted on by the governance bodie
 
 ### Functional requirements
 - The command is implemented as `cardano-cli conway governance action create-constitution`.
-- The command requires the user to specify the target network for which the governance action is created.
-- The command requires the user to provide the deposit amount for submitting governance actions via the flag `--governance-action-deposit`.
-- The command requires the user to provide the stake credential that will receive the deposit return when the action is enacted/expired. It accepts:
-  - stake verification key
-  - stake verification key file
-  - stake key hash (stake address)
-- The command allows the user to provide the transaction ID and index of the previously enacted action of this type. These flags are optional, but if one is used, the other one must be used too, to support the very first action of this type on the system that does not require information about previously enacted actions. The flags are:
+- Requires the user to specify the target network for which the governance action is created.
+- Requires the user to provide the deposit amount for submitting governance actions via the flag `--governance-action-deposit`.
+- Requires the user to provide the stake credential that will receive the deposit return when the action is enacted/expired. It accepts:
+- Allows the user to provide the transaction ID and index of the previously enacted action of this type. These flags are optional, but if one is used, the other one must be used too, to support the very first action of this type on the system that does not require information about previously enacted actions. The flags are:
   - `--prev-governance-action-tx-id`
   - `--prev-governance-action-index`
 - Asks the user to provide a mandatory anchor (URL/hash) of the proposal, a document where the proposer exposes the reasoning behind the proposed change.
