@@ -123,8 +123,8 @@ So that the hash can be utilized in a governance action.
 - Failing to provide a file name for any of `--cold-verification-key-file` `--cold-signing-key-file` returns an appropriate error message.
 ### Acceptance Criteria
 
-- Typing `cardano-cli conway governance committee key-gen-cold` with accepted input parameters generates a COLD key pair. If a parameter or the command format is incorrect an error is raised
-- Typing `cardano-cli conway governance committee key-gen-cold —-help` displays command usage page.
+- Running `cardano-cli conway governance committee key-gen-cold` with accepted input parameters generates a COLD key pair. If a parameter or the command format is incorrect an error is raised
+- Running `cardano-cli conway governance committee key-gen-cold —-help` displays command usage page.
 - Both flags are mandatory and each produces the corresponding verification or signing key file.
 - Given that the user specifies a valid path and file name, then the keys are saved on that file and location.
 - Given that the cli has created the verification and signing keys, then these conform to the text envelope format used  consisting of a json object with `type`, `description` and `cborHex` fields.
@@ -151,7 +151,7 @@ So that I can authorize the Hot key to sign votes on behalf of the Cold key.
 
 ### Functional requirements
 - The feature implementation includes a new command `cardano-cli conway governance committee key-gen-hot`
-- Typing `cardano-cli conway governance committee key-gen-hot —-help` displays command usage page.
+- Running `cardano-cli conway governance committee key-gen-hot —-help` displays command usage page.
 - The command must accept two flags
     - `--verification-key-file`
     - `--signing-key-file`
@@ -169,7 +169,7 @@ So that I can authorize the Hot key to sign votes on behalf of the Cold key.
 
 ### Acceptance Criteria
 - Running `cardano-cli conway governance committee key-gen-hot` command with all the required and correct parameters then the command is executed successfully and a HOT key pair is generated.  If an argument or the command format is incorrect an error is raised.
-- Typing `cardano-cli conway governance committee key-gen-hot` displays command usage.
+- Running `cardano-cli conway governance committee key-gen-hot` displays command usage.
 - Both `--verification-key-file` and `--signing-key-file` are mandatory and each produces the corresponding verification or signing key file.
 - Given that the user specifies a valid path and file name, then the keys are saved on that file and location.
 - Given that the cli has created the verification and signing keys, then these conform to the text envelope format consisting of a json object with `type`, `description` and `cborHex` fields.
@@ -185,6 +185,45 @@ So that I can authorize the Hot key to sign votes on behalf of the Cold key.
 - [ ] Enabler
 ### Title:
 ### User Story
+- As a committee member I want to issue an authorization certificate from my cold key to a hot key so that I can sign votes using the hot key and keep the cold key in cold storage.
+
+### Functional requirements
+- The feature implementation should include a new command `cardano-cli conway governance committee create-hot-key-authorization-certificate`
+- The command includes the necessary flags to obtain cold and hot credentials.
+- Running the command with the appropriate flags should generate a hot key authorization certificate and be saved in the specified output file.
+- The hot key authorization certificate follows the text envelope format of other existing certificates, including the type, description, and CBOR hex fields
+- The certificate must comply with the cddl: `auth_committee_hot_cert = (14, committee_cold_credential, committee_hot_credential)`
+- The command handles potential errors, such as missing or invalid flags, and provide appropriate error messages indicating the missing or required parameters.
+- Documentation should be provided, including a corresponding CLI usage, describing the feature, its purpose, and how to use it, along with the expected types of inputs and outputs.
+
+### Acceptance Criteria
+- Running `cardano-cli conway governance committee create-hot-key-authorization-certificate` with accepted input parameters generates a hot key authorization certificate. If a parameter or the command format is incorrect an error is raised
+- The command allows passing credentials as follows
+    - Cold verification key <- string
+    - Cold verification key file <- file
+    - Cold verification key hash <- string
+    - Hot verification key <- string
+    - Hot verification key file <- file
+    - Hot verification key hash <- string
+- Given that the user specifies a valid path and file name, then the command produces a Cold to Hot authorization certificate on the right location and name.
+- Given that the authorization certificate is saved, then it is in a text envelope format consisting of a json object with type, description and cbor hex fields.
+
+    ```json
+    {
+        "type": "CertificateConway",
+        "description": "Constitutional Committee Hot Key Authorization Certificate",
+        "cborHex": ""
+    }
+    ```
+- Failing to provide the right input results in a clear error message that helps the user to identify the problem
+- The cbor hex field conforms to the authorization certificate as defined on the cddl `auth_committee_hot_cert = (14, committee_cold_credential, committee_hot_credential)`
+- The command handles potential errors, such as missing or invalid flags, and provide appropriate error messages indicating the missing or required parameters.
+- Running `cardano-cli conway governance committee create-hot-key-authorization-certificate —-help` displays command usage
+
+## User Story ID:  CLI.006
+- [ ] Enabler
+### Title:
+### User Story
 ### Functional requirements
 ### Acceptance Criteria
 
@@ -194,6 +233,35 @@ So that I can authorize the Hot key to sign votes on behalf of the Cold key.
 ### User Story
 ### Functional requirements
 ### Acceptance Criteria
+
+## User Story ID:  CLI.007
+- [ ] Enabler
+### Title:
+### User Story
+### Functional requirements
+### Acceptance Criteria
+
+## User Story ID:  CLI.008
+- [ ] Enabler
+### Title:
+### User Story
+### Functional requirements
+### Acceptance Criteria
+
+## User Story ID:  CLI.009
+- [ ] Enabler
+### Title:
+### User Story
+### Functional requirements
+### Acceptance Criteria
+
+## User Story ID:  CLI.010
+- [ ] Enabler
+### Title:
+### User Story
+### Functional requirements
+### Acceptance Criteria
+
 
 # SMART CONTRACTS
 
