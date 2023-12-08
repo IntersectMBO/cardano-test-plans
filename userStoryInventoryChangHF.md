@@ -51,14 +51,273 @@ Use as many lines as needed.
 ## User Story ID:  CH.VO.001
 - [ ] Enabler
 ### User Story
-Write the story here.
+As a DRep or Ada Holder I want to connect my wallet to GovTool so that I can post transactions on-chain
 
-Use as many lines as needed.
+
 ### Functional requirements
-| Requirements  | Acceptance Criteria  |
-|:----|:----|
-|Requirement text| AC with <ul><li>bullet</li><li>points</li></ul>|
+<table border="1">
+  <tr>
+    <th>Requirement</th>
+    <th>Acceptance Criteria</th>
+  </tr>
+  <tr>
+    <td rowspan="3">Connect with multiple stake key wallet</td>
+    <td>Given I am on the homepage and my wallet is not connected. <br><br> When I click the Connect Wallet button and select (one of) my CIP-95 compatible wallet(s) with multiple stake keys containing one or more ADA (or tADA for SanchoNet) and select from a list which stake key I wish to connect with <br> <br> Then the wallet will prompt me to connect and I can connect to GovTool with it on the selected stake key.</td>
+  </tr>
+  <tr>
+    <td>Given I am on the homepage, and my wallet is not connected <br><br> When I click the Connect Wallet button <br><br> Then I am not shown any non CIP-95 compatible wallets.</td>
+  </tr>
+  <tr>
+    <td>Given I am on the homepage,and my wallet is not connected <br><br> When I click the Connect Wallet button and select a CIP-95 compliant, multiple stake key wallet, containing zero ADA (or tADA for SanchoNet), and I select a wallet with multiple stake keys from this list, and select which stake key I wish to connect with <br><br> When I select a stake key <br><br> Then the wallet will prompt me to connect and I can connect to GovTool with it on the selected stake key.</td>
+  </tr>
+   <tr>
+    <td rowspan="3">Connect with single stake key wallet</td>
+    <td>Given I am on the homepage with no wallet connected <br><br>When I click the Connect Wallet button and select a CIP-95 compliant single stake key wallet  containing 1 or more ADA (or tADA for SanchoNet)<br><br>Then my wallet appears and I can connect with it
+</td>
+  </tr>
+  <tr>
+    <td>Given I am on the homepage without my wallet connected<br><br>When I click the Connect Wallet button<br><br>Then I am not shown any non CIP-95 compatible wallets. 
+</td>
+  </tr>
+  <tr>
+    <td>Given I am on the homepage without my wallet connected<br><br>When I click the Connect Wallet button and select a CIP-95 compliant, single stake key wallet, containing more than zero ADA (or tADA for SanchoNet)<br><br>Then my wallet appears and I can connect with it
+</td>
+  </tr>
+    <tr>
+    <td>Disconnect wallet (most cases)</td>
+    <td>Given that I am connected to GovTool with my wallet and I am not on the governance action page or reviewing a specific governance action<br><br>When I disconnect <br><br>Then I will be redirected to the homepage, and will not have access to delegation or voting features.</td>
+  </tr>
+     <tr>
+    <td>Disconnect wallet (governance action page)</td>
+    <td>Given that I am a DRep connected to GovTool with my wallet and I am on the governance action page<br><br>When I disconnect <br><br>Then I will remain on the governance action page, but will not have access to delegation or voting features (GovTool will treat me like any other user with no wallet connected).
+</td>
+  </tr>
+   <tr>
+    <td>Disconnect wallet (specific governance action)</td>
+    <td>Given that I am a DRep connected to GovTool with my wallet and I am viewing a specific governance action <br><br>When I disconnect <br><br>Then I will remain on the page of that specific governance action, but will not have access to voting features (GovTool will treat me like any other user with no wallet connected).
+</td>
+  </tr>
+     <tr>
+    <td>Check the wallet is on the correct network</td>
+    <td>Given I am on the homepage <br><br>When I compare the networkId with the environment value set on the deployment for the network.<br><br>Then if there are exceptions raised, fail the test. <br><br>If no exceptions, connect the wallet to the network (pass)
+</td>
+  </tr>
+</table>
+
 ### Link:
+
+## User Story ID:  CH.VO.002
+- [ ] Enabler
+### User Story
+As an Ada Holder I want to delegate my voting power to a DRep so that I can claim my staking rewards
+
+
+### Functional requirements
+<table border="1">
+  <tr>
+    <th>Requirement</th>
+    <th>Acceptance Criteria</th>
+  </tr>
+  <tr>
+    <td rowspan="3">Delegate to DRep ID</td>
+    <td>Given that I have my wallet connected, and I am on the Delegate to DRep page, and I have selected the “delegate to a DRep ID” option in the delegation user journey.<br><br>When I enter anything in the  DRep ID input box that is not a registered DRep ID.<br><br>Then I will not be able to delegate to this DRep ID and will get a warning message.</td>
+  </tr>
+  <tr>
+    <td>Given that I have my wallet connected, and I am on the delegate to DRep page, and my wallet contains more than 1 ADA  (or tADA in the case of SanchoNet)<br><br>When I choose the Delegate to DRep ID option and I enter a registered DRep ID and I press the Delegate button<br><br>Then I am able to delegate to that DRep ID via my connected wallet
+</td>
+  </tr>
+  <tr>
+    <td>Given that I have connected to GovTool with zero* ADA (or tADA in the case of SanchoNet)<br><br>When I choose the Delegate to DRep ID option and I enter a registered DRep ID and I press the Delegate button<br><br>Then I am presented with a warning message and cannot proceed with delegation.<br><br>*or at least a number below transaction costs
+</td>
+  </tr>
+  <tr>
+    <td rowspan="2">Access Delegate to DRep page</td>
+    <td>Given that I do not have a compatible wallet connected to GovTool<br><br>When I attempt to visit the URL of the Delegate to DRep page<br><br>Then I am redirected to the homepage
+</td>
+  </tr>
+  <tr>
+    <td>Given that I  have a compatible wallet connected to GovTool and I am looking at the dashboard<br><br>When I click on the the Delegate button (or Change Delegation button if you are already registered)<br><br>Then I am shown the Delegate to DRep page
+</td>
+  </tr>
+  <tr>
+    <td>Verify the connect to delegate button is working</td>
+    <td>Given that I'm not connected to GovTool with a wallet<br><br>When on the homepageI click the delegate-connect-wallet-button<br><br>Then the connect your wallet-modal is visible
+</td>
+  </tr>
+  <tr>
+    <td rowspan="3">Delegate to myself</td>
+    <td>Given that I am a registered DRep who is connected to GovTool with my wallet, and I am on the Delegate to DRep page<br><br>When I choose the Delegate to DRep ID option and I enter my own DRep ID and I press the Delegate button<br><br>Then I am able to delegate to myself via my connected wallet
+</td>
+  </tr>
+  <tr>
+    <td>Given that I am a registered DRep who is connected to GovTool with my wallet, and I am on the Delegate to DRep page<br><br>When I select the Delegate to Myself option and press the Delegate button<br><br>Then I will be able to send a transaction to delegate to myself via my wallet
+</td>
+  </tr>
+  <tr>
+    <td>Given that I am not a registered DRep, and I am connected to GovTool with my wallet,<br><br>When I am on the Delegate to DRep page<br><br>I cannot see a Delegate to Myself option 
+</td>
+  </tr><tr>
+    <td rowspan="2">Change my DRep delegation</td>
+    <td>Given that I am I am already delegated to a DRep<br><br>When I look at the dashboard<br><br>GovTool will know that I am delegated and  will invite me to “change my delegation” rather than to delegate. 
+</td>
+  </tr>
+  <tr>
+    <td>Given that I am already delegated<br><br>When I go to change my delegation<br><br>I can delegate to any registered DRep, if I am delegated to myself then the option to “delegate to myself” will not be shown, if I am delegated to a specific predefined DRep then this predefined option will not be shown.
+</td>
+  </tr>
+  <tr>
+    <td rowspan="2">Delegate to Abstain</td>
+    <td>Given that I am a DRep<br><br>When I delegate using the “delegate to abstain” feature<br><br>Then it will only delegate my own lovelace’s voting power to Abstain and NOT the voting power (if any) that has been delegated to me by others.  I will be notified that my delegation translation was sent.
+</td>
+  </tr>
+  <tr>
+    <td>Given that I am not a DRep<br><br>When I delegate using the “delegate to abstain” feature<br><br>Then it will delegate any voting power I have to Abstain. I will be notified that my delegation translation was sent.
+</td>
+  </tr>
+<tr>
+    <td rowspan="2">Delegate to No-Confidence</td>
+    <td>Given that I am a DRep<br><br>When I delegate using the “delegate to no-confidence” feature<br><br>Then it will only delegate my own lovelace’s voting power to No-Confidence and NOT the voting power (if any) that has been delegated to me by others.  I will be notified that my delegation translation was sent.
+</td>
+  </tr>
+  <tr>
+    <td>Given that I am not a DRep<br><br>When I delegate using the “delegate to no-confidence” feature<br><br>Then it will delegate any voting power I have to No-Confidence. I will be notified that my delegation translation was sent.
+</td>
+  </tr>
+</table>
+### Link:
+
+## User Story ID:  CH.VO.003
+- [ ] Enabler
+### User Story
+As a DRep I want to register so that I can vote on governance actions
+### Functional requirements
+<table border="1">
+  <tr>
+    <th>Requirement</th>
+    <th>Acceptance Criteria</th>
+  </tr>
+  <tr>
+    <td rowspan="4">Register as a DRep</td>
+    <td>Given that I am connected to GovTool with a compatible wallet and I have enough ADA (or tADA on SanchoNet) to pay for transaction fees and a deposit<br><br>When I go through the DRep registration process, and do not include a metadata anchor<br><br>Then I can register as a DRep via my wallet (because metadata anchors are optional)
+</td>
+  </tr>
+  <tr>
+    <td>Given that I am connected to GovTool with a compatible wallet and I have enough ADA (or tADA on SanchoNet) to pay for transaction fees and a deposit<br><br>When I go through the DRep registration process, and include metadata anchor information in the wrong format<br><br>Then I will not be able to progress further in the process and I will be told that it is because the format is incorrect.
+</td>
+  </tr>
+  <tr>
+    <td>Given that I am connected to GovTool with a compatible wallet and I have enough ADA (or tADA on SanchoNet) to pay for transaction fees and a deposit<br><br>When I go through the DRep registration process, and include metadata anchor information in the correct format<br><br>Then I will be able to register as a DRep via my wallet, GovTool will include the metadata anchor in the registration certificate transaction.
+</td>
+  </tr>
+    <tr>
+    <td>Given that I am connected to GovTool with a compatible wallet and I DO NOT have enough ADA (or tADA on SanchoNet) to pay for transaction fees and/or a deposit<br><br>When I go through the DRep registration process<br><br>Then I cannot register as a DRep via my wallet (because metadata anchors are optional), Instead I am shown an error message
+</td>
+  </tr>
+   <tr>
+    <td>Confirm transaction has been sent</td>
+    <td>Given that I have gone through the DRep registration process<br><br>When I press the button on my wallet to submit the transaction<br><br>Then I will receive a confirmation message from GovTool that will include a link to the transaction in a block explorer.
+</td>
+  </tr>
+   <tr>
+    <td>Status of transaction is displayed</td>
+    <td>Given that I have just submitted a DRep registration transaction, and I am looking at the dashboard<br><br>When the registration has not yet been confirmed by the blockchain,<br><br>Then the registration status will show as “In Progress” until it is confirmed.
+</td>
+  </tr>
+</table>
+
+### Link:
+
+## User Story ID:  CH.VO.004
+- [ ] Enabler
+### User Story
+As a DRep I want to vote so that I can fulfil my role
+### Functional requirements
+<table border="1">
+  <tr>
+    <th>Requirement</th>
+    <th>Acceptance Criteria</th>
+  </tr>
+  <tr>
+    <td rowspan="4">Should be able to access the governance actions page as a DRep with my wallet connected
+</td>
+    <td>Given that I am a DRep and I am connected to GovTool<br><br>When I visit the url of the governance actions page<br><br>Then the governance actions page is displayed
+</td>
+  </tr>
+  <tr>
+    <td>Given that I am a DRep and connected to GovTool<br><br>When I look at the governance actions page<br><br>Then my voting power is displayed
+</td>
+  </tr>
+  <tr>
+    <td>Given that I am a DRep and Connected to GovTool, and I am on the governance actions page<br><br>When I click Disconnect Wallet<br><br>Then my wallet is disconnected and I am redirected to the same page, but without the DRep functionality (i.e. ability to vote)
+</td>
+  </tr>
+  <tr>
+    <td>Given that I am a DRep and I am on the governance actions page<br><br>When I click on the “view proposal details” button<br><br>Then I will be shown the page for that individual governance action and be able to view its details 
+</td>
+  </tr>
+    <tr>
+    <td rowspan="4">A DRep should be able to vote on a live governance action</td>
+    <td>Given that I am a DRep<br><br>When I look at the details page of an individual governance action<br><br>Then I can see how many votes the governance action currently has for, against and abstaining.
+</td>
+  </tr>
+  <tr>
+    <td>Given that I am a DRep<br><br>When I look at the details page of an individual governance action<br><br>Then there are buttons allowing me to vote for, against or abstain.
+</td>
+  </tr>
+  <tr>
+    <td>Given that I am a DRep, on the details page of an individual governance action<br><br>When I select yes/ no/ abstain, and click vote<br><br>Then I can sign & submit this vote via my wallet
+</td>
+  </tr>
+  <tr>
+    <td>Given that I am a DRep<br><br>When I have submitted a vote<br><br>Then Immediately after this GovTool will display a message informing me that my transaction has been sent and providing me with a link to a block explorer where I can view the transaction
+</td>
+  </tr>
+      <tr>
+    <td>People without the (t)ADA needed to pay for voting transactions should not be able to submit a voting transaction</td>
+    <td>Given I have less Lovelace in my wallet than a transaction costs<br><br>When I attempt to vote<br><br>The GovTool will tell me that there is an error
+</td>
+  </tr>
+      <tr>
+    <td>People without their wallet connected or who do have their wallet connected but have not registered as DReps should not be able to vote</td>
+    <td>Given that I do not have a wallet connected to GovTool<br><br>When I visit the details of a governance action<br><br>Then I am not shown a vote button.
+</td>
+  </tr>
+    <tr>
+    <td>No one should be able to vote on a governance action that has expired, or been ratified, or enacted. 
+</td>
+    <td>Given that I am on the governance action page<br><br>When I examine the governance actions<br><br>None of the governance actions shown on the page have expired or been ratified or enacted.
+</td>
+  </tr>
+      <tr>
+    <td rowspan="3">A DRep should be able to change their vote</td>
+    <td>Given that I am a DRep and I have already voted on a given governance action<br><br>When I submit a different vote for the same transaction within the same snapshot<br><br>Then the most recent vote will be counted.
+</td>
+  </tr>
+  <tr>
+    <td>Given that I have already cast a vote on a governance action<br><br>When I examine this specific governance action’s page<br><br>Then I can  see that I have already voted and what my most recent vote was
+</td>
+  </tr>
+  <tr>
+    <td>Given that I have already cast a vote on a given governance action<br><br>When I examine this specific governance action’s page<br><br>Then instead of seeing a “vote” button I should see a “change vote” button
+</td>
+  </tr>
+       <tr>
+    <td rowspan="2">Only the votes of participants who are still DReps at the relevant epoch boundary will be accepted</td>
+    <td>Given that I am a DRep and I vote yes or abstain on a live governance action.<br><br>At the epoch boundary<br><br>My votes are counted.
+</td>
+  </tr>
+  <tr>
+    <td>Given that I was a DRep that voted yes or abstain on a live governance action but then retired.<br><br>At the next epoch boundary<br><br>My votes will not be counted towards the total tally of DRep votes.
+</td>
+  </tr>
+       <tr>
+    <td>DReps can attach a metadata anchor to their votes</td>
+    <td>Given that I have chosen how to vote on the UI of a governance action’s details<br><br>When I add a metadata anchor to the UI also and click the vote button<br><br>Then the resulting transaction will include my metadata anchor
+</td>
+  </tr>
+</table>
+### Link:
+
 
 # CARDANO-CLI
 
