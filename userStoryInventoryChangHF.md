@@ -73,7 +73,7 @@ So that I can compare it against the hash registered on-chain to verify its auth
 ### Functional requirements
 | Requirements  | Acceptance Criteria  |
 |:----|:----|
-|When I provide the off-chain text of the Constitution, the cardano-cli calculatea and returns the corresponding blake2b-256 hash of the document.|Given that a holder provides the off-chain text of the constitution then cardano-cli returns the corresponding blake2b-256 hash. Provided that it is the same document, the resulting hash match the one registered on-chain.|
+| When I provide the off-chain text of the Constitution, the cardano-cli calculatea and returns the corresponding blake2b-256 hash of the document.| Given that a holder provides the off-chain text of the constitution then cardano-cli returns the corresponding blake2b-256 hash. Provided that it is the same document, the resulting hash match the one registered on-chain.|
 
 ## User Story ID:  CLI.002
 - [ ] Enabler
@@ -86,7 +86,7 @@ So that the hash can be utilized in a governance action.
 ### Functional requirements
 | Requirements  | Acceptance Criteria  |
 |:----|:----|
-|When I provide the off-chain text of the Constitution, the cardano-cli calculates and returns the corresponding blake2b-256 hash of the document.|Given that a holder provides the off-chain text of the constitution then cardano-cli returns the corresponding blake2b-256 hash.|
+| When I provide the off-chain text of the Constitution, the cardano-cli calculates and returns the corresponding blake2b-256 hash of the document.| Given that a holder provides the off-chain text of the constitution then cardano-cli returns the corresponding blake2b-256 hash.|
 
 
 ## User Story ID:  CLI.003
@@ -104,11 +104,11 @@ so that I can be proposed for the Committee in a Governance action
 | Includes a corresponding CLI usage  describing the feature, how to use it and the types of the inputs and outputs.   | Running `cardano-cli conway governance committee key-gen-cold —-help` displays command usage page.    |
 | The command must accept two flags to be consistent with similar commands:  <br>`--cold-verification-key-file`<br>`--cold-signing-key-file`  |  Running `cardano-cli conway governance committee key-gen-cold` with accepted input parameters generates a COLD key pair. If a parameter or the command format is incorrect an error is raised    |
 | The generated key pair must be stored in the specified files:<ul><li>the verification key is saved in the file specified by `--cold-verification-key-file`</li><li>the signing key saved in the file specified by `--cold-signing-key-file`</li></ul>|Both flags are mandatory and each produces the corresponding verification or signing key file.|
-||Given that the user specifies a valid path and file name, then the keys are saved on that file and location.|
-|The generated keys adhere to text envelope format used for other artifacts, and contains the fields Type, Description and cborHex.|Given that the cli has created the verification and signing keys, then these conform to the text envelope format used  consisting of a json object with `type`, `description` and `cborHex` fields.|
-|The signing key text envelope contains the correct type and description <ul><li>Type: "ConstitutionalCommitteeColdSigningKey_ed25519"</li><li>Description: "Constitutional Committee Cold Signing Key"</li></ul>|Given that the signing key is saved on a text envelope format, the type and description fields are: <ul><li>Type: "ConstitutionalCommitteeColdSigningKey_ed25519"</li><li>Description: "Constitutional Committee Cold Signing Key"</li></ul>|
-|The verification key text envelope has: <ul><li>Type: "CConstitutionalCommitteeColdVerificationKey_ed25519"<br>Description: "Constitutional Committee Cold Verification Key"</li></ul>|Given the user has *not* inputted either `--cold-verification-key-file` OR `--cold-signing-key-file`, then the command fails and returns an error to the users informing them to fill those parameters in. The error message should prompt the user to consult the command usage (--help)|
-|Failing to provide a file name for any of `--cold-verification-key-file` `--cold-signing-key-file` returns an appropriate error message.|Given the user has inputted *wrong* `--cold-verification-key-file` OR `--cold-signing-key-file`, then the command fails and returns an error to the users informing them that the supplied files do not match the expected type.|
+| Given that the user specifies a valid path and file name, then the keys are saved on that file and location.|
+| The generated keys adhere to text envelope format used for other artifacts, and contains the fields Type, Description and cborHex.|Given that the cli has created the verification and signing keys, then these conform to the text envelope format used  consisting of a json object with `type`, `description` and `cborHex` fields.|
+| The signing key text envelope contains the correct type and description <ul><li>Type: "ConstitutionalCommitteeColdSigningKey_ed25519"</li><li>Description: "Constitutional Committee Cold Signing Key"</li></ul>|Given that the signing key is saved on a text envelope format, the type and description fields are: <ul><li>Type: "ConstitutionalCommitteeColdSigningKey_ed25519"</li><li>Description: "Constitutional Committee Cold Signing Key"</li></ul>|
+| The verification key text envelope has: <ul><li>Type: "CConstitutionalCommitteeColdVerificationKey_ed25519"<br>Description: "Constitutional Committee Cold Verification Key"</li></ul>|Given the user has *not* inputted either `--cold-verification-key-file` OR `--cold-signing-key-file`, then the command fails and returns an error to the users informing them to fill those parameters in. The error message should prompt the user to consult the command usage (--help)|
+| Failing to provide a file name for any of `--cold-verification-key-file` `--cold-signing-key-file` returns an appropriate error message.|Given the user has inputted *wrong* `--cold-verification-key-file` OR `--cold-signing-key-file`, then the command fails and returns an error to the users informing them that the supplied files do not match the expected type.|
 
 
 ### Link:
@@ -124,14 +124,14 @@ So that I can authorize the Hot key to sign votes on behalf of the Cold key.
 ### Functional requirements
 | Requirements  | Acceptance Criteria  |
 |:----|:----|
-|The feature implementation includes a new command `cardano-cli conway governance committee key-gen-hot`|Running `cardano-cli conway governance committee key-gen-hot` command with all the required and correct parameters then the command is executed successfully and a HOT key pair is generated.  If an argument or the command format is incorrect an error is raised.|
-|Running `cardano-cli conway governance committee key-gen-hot —-help` displays command usage page.
-|The command must accept two flags <ul><li>`--verification-key-file`</li><li>`--signing-key-file`</li></ul>|Running `cardano-cli conway governance committee key-gen-hot` displays command usage.|
-|The generated key pair must be saved in the specified files:<ul><li>The verification key saved in the file specified by `--verification-key-file`</li><li>The signing key saved in the file specified by  `--signing-key-file`</li></ul>|Both `--verification-key-file` and `--signing-key-file` are mandatory and each produces the corresponding verification or signing key file.|
-|The generated keys must adhere to text envelope format used for other artifacts and contains the fields Type, Description and cborHex.|Given that the user specifies a valid path and file name, then the keys are saved on that file and location.|
-|The signing key text envelope contains the correct type, description, and cborHex values.<ul><li>Type: "ConstitutionalCommitteeColdSigningKey_ed25519"</li><li>Description: "Constitutional Committee Cold Signing Key"</li></ul>|Given that the cli has created the verification and signing keys, then these conform to the text envelope format consisting of a json object with `type`, `description` and `cborHex` fields.|
-|The verification key text envelope has: <ul><li> Type:  "CConstitutionalCommitteeColdVerificationKey_ed25519" </li><li>Description: "Constitutional Committee Cold Verification Key" </li></ul>|Given that the verification key is saved on a text envelope format, the type and description fields are: <ul><li> Type: "CConstitutionalCommitteeColdVerificationKey_ed25519" </li><li> Description: "Constitutional Committee Cold Verification Key" </li></ul>|
-|Failing to provide a file name for any of the flags `--verification-key-file` `--signing-key-file` returns an appropriate error message.|Given the user has not inputted either `--verification-key-file` OR `--signing-key-file`, then the command fails and returns an error.|
+| The feature implementation includes a new command `cardano-cli conway governance committee key-gen-hot`|Running `cardano-cli conway governance committee key-gen-hot` command with all the required and correct parameters then the command is executed successfully and a HOT key pair is generated.  If an argument or the command format is incorrect an error is raised.|
+| Running `cardano-cli conway governance committee key-gen-hot —-help` displays command usage page.
+| The command must accept two flags <ul><li>`--verification-key-file`</li><li>`--signing-key-file`</li></ul>|Running `cardano-cli conway governance committee key-gen-hot` displays command usage.|
+| The generated key pair must be saved in the specified files:<ul><li>The verification key saved in the file specified by `--verification-key-file`</li><li>The signing key saved in the file specified by  `--signing-key-file`</li></ul>|Both `--verification-key-file` and `--signing-key-file` are mandatory and each produces the corresponding verification or signing key file.|
+| The generated keys must adhere to text envelope format used for other artifacts and contains the fields Type, Description and cborHex.|Given that the user specifies a valid path and file name, then the keys are saved on that file and location.|
+| The signing key text envelope contains the correct type, description, and cborHex values.<ul><li>Type: "ConstitutionalCommitteeColdSigningKey_ed25519"</li><li>Description: "Constitutional Committee Cold Signing Key"</li></ul>|Given that the cli has created the verification and signing keys, then these conform to the text envelope format consisting of a json object with `type`, `description` and `cborHex` fields.|
+| The verification key text envelope has: <ul><li> Type:  "CConstitutionalCommitteeColdVerificationKey_ed25519" </li><li>Description: "Constitutional Committee Cold Verification Key" </li></ul>|Given that the verification key is saved on a text envelope format, the type and description fields are: <ul><li> Type: "CConstitutionalCommitteeColdVerificationKey_ed25519" </li><li> Description: "Constitutional Committee Cold Verification Key" </li></ul>|
+| Failing to provide a file name for any of the flags `--verification-key-file` `--signing-key-file` returns an appropriate error message.|Given the user has not inputted either `--verification-key-file` OR `--signing-key-file`, then the command fails and returns an error.|
 
 
 ## User Story ID:  CLI.005
@@ -143,37 +143,16 @@ I want to issue an authorization certificate from my cold key to a hot key,<br>
 so that I can sign votes using the hot key and keep the cold key in cold storage.
 
 ### Functional requirements
-- The feature implementation should include a new command `cardano-cli conway governance committee create-hot-key-authorization-certificate`
-- Includes the necessary flags to obtain cold and hot credentials.
-- Running the command with the appropriate flags should generate a hot key authorization certificate and be saved in the specified output file.
-- The hot key authorization certificate follows the text envelope format of other existing certificates, including the type, description, and CBOR hex fields
-- The certificate must comply with the cddl: `auth_committee_hot_cert = (14, committee_cold_credential, committee_hot_credential)`
-- The command handles potential errors, such as missing or invalid flags, and provide appropriate error messages indicating the missing or required parameters.
-- Documentation should be provided, including a corresponding CLI usage, describing the feature, its purpose, and how to use it, along with the expected types of inputs and outputs.
+| Requirements  | Acceptance Criteria  |
+|:----|:----|
+| The feature implementation should include a new command `cardano-cli conway governance committee create-hot-key-authorization-certificate`| Running `cardano-cli conway governance committee create-hot-key-authorization-certificate` with accepted input parameters generates a hot key authorization certificate. If a parameter or the command format is incorrect an error is raised |
+| Includes the necessary flags to obtain cold and hot credentials.| The command allows passing credentials as follows <ul><li> Cold verification key <- string </li><li> Cold verification key file <- file </li><li> Cold verification key hash <- string </li><li> Hot verification key <- string </li><li> Hot verification key file <- file </li><li> Hot verification key hash <- string </li></ul> |
+| Running the command with the appropriate flags should generate a hot key authorization certificate and be saved in the specified output file.| Given that the user specifies a valid path and file name, then the command produces a Cold to Hot authorization certificate on the right location and name.  |
+| The hot key authorization certificate follows the text envelope format of other existing certificates, including the type, description, and CBOR hex fields| Given that the authorization certificate is saved, then it is in a text envelope format consisting of a json object with type, description and cbor hex field ```json { "type": "CertificateConway", "description": "Constitutional Committee Hot Key Authorization Certificate", "cborHex": ""}```
+| The certificate must comply with the cddl: `auth_committee_hot_cert = (14, committee_cold_credential, committee_hot_credential)`| Generates a authorization certificate compliant with the conway cddl.   `auth_committee_hot_cert = (14, committee_cold_credential, committee_hot_credential)`  |
+| The command handles potential errors, such as missing or invalid flags, and provide appropriate error messages indicating the missing or required parameters.| The command handles potential errors, such as missing or invalid flags, and provide appropriate error messages indicating the missing or required parameters. Failing to provide the right input results in a clear error message that helps the user to identify the problem  |
+| Documentation should be provided, including a corresponding CLI usage, describing the feature, its purpose, and how to use it, along with the expected types of inputs and outputs.| Running `cardano-cli conway governance committee create-hot-key-authorization-certificate —-help` displays command usage  |
 
-### Acceptance Criteria
-- Running `cardano-cli conway governance committee create-hot-key-authorization-certificate` with accepted input parameters generates a hot key authorization certificate. If a parameter or the command format is incorrect an error is raised
-- The command allows passing credentials as follows
-    - Cold verification key <- string
-    - Cold verification key file <- file
-    - Cold verification key hash <- string
-    - Hot verification key <- string
-    - Hot verification key file <- file
-    - Hot verification key hash <- string
-- Given that the user specifies a valid path and file name, then the command produces a Cold to Hot authorization certificate on the right location and name.
-- Given that the authorization certificate is saved, then it is in a text envelope format consisting of a json object with type, description and cbor hex fields.
-
-    ```json
-    {
-        "type": "CertificateConway",
-        "description": "Constitutional Committee Hot Key Authorization Certificate",
-        "cborHex": ""
-    }
-    ```
-- Failing to provide the right input results in a clear error message that helps the user to identify the problem
-- Generates a authorization certificate compliant with the conway cddl.   `auth_committee_hot_cert = (14, committee_cold_credential, committee_hot_credential)`
-- The command handles potential errors, such as missing or invalid flags, and provide appropriate error messages indicating the missing or required parameters.
-- Running `cardano-cli conway governance committee create-hot-key-authorization-certificate —-help` displays command usage
 
 ## User Story ID:  CLI.006
 - [ ] Enabler
