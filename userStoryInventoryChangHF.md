@@ -28,32 +28,6 @@ This section shows the areas or sources thus far
 
 # User Story (Voltaire, API, CIP-1694, Community et al)
 
-# VOLTAIRE
-
-## User Story ID: VO1
-- [ ] Enabler
-### Title: As a DRep or Ada Holder I want to connect my wallet to GovTool so that I can post transactions on-chain
-### User Story
- - As a DRep or Ada Holder I want to connect my wallet to GovTool so that I can post transactions on-chain
-### Functional Requirements
-|Requirements|Acceptance Criteria|
-|:----|:----|
-| Connect with multiple stake key wallet | Given I am on the homepage <br>And my wallet is not connected.<br>When I click the Connect Wallet button <br>And select (one of) my CIP-95 compatible wallet(s) with multiple stake keys containing more than zero ADA (or tADA for SanchoNet)<br>And select from a list which stake key I wish to connect with<br>Then the wallet will prompt me to connect and I can connect to GovTool with it on the selected stake key. |
-|  | Given I am on the homepage
-<br>And my wallet is not connected
-<br>When I click the Connect Wallet button
-<br>Then I am not shown any non CIP-95 compatible wallets. |
-|  | Given I am on the homepage <br>And my wallet is not connected<br>When I click the Connect Wallet button and select a CIP-95 compliant, multiple stake key wallet, containing zero ADA (or tADA for SanchoNet) <br>And I select a wallet with multiple stake keys from this list<br>Ans select which stake key I wish to connect with<br>When I select a stake key <br>Then the wallet will prompt me to connect and I can connect to GovTool with it on the selected stake key. |
-| Connect with single stake key wallet | Given I am on the homepage with no wallet connected
-<br>When I click the Connect Wallet button and select a CIP-95 compliant single stake key wallet
-<br>Then my wallet appears and I can connect with it |
-|  | Given I am on the homepage without my wallet connected<br>When I click the Connect Wallet button<br>Then I am not shown any non CIP-95 compatible wallets. |
-|  | Given I am on the homepage without my wallet connected<br>When I click the Connect Wallet button and select a CIP-95 compliant, single stake key wallet, containing zero ADA (or tADA for SanchoNet)<br>Then my wallet appears and I can connect with it |
-|  | Given I am on the homepage without my wallet connected<br>When I click the Connect Wallet button and select a CIP-95 compliant, single stake key wallet, containing more than zero ADA (or tADA for SanchoNet)<br>Then my wallet appears and I can connect with it |
-| Disconnect wallet | Given that I am on the dashboard with my wallet connected<br>If I click the Disconnect button<br>Then my wallet is disconnected from GovTool and I am redirected to the homepage |
-|  | Check the wallet is on the correct network<br>Given I am on the homepage<br>When I compare the networkId with the environment value set on the deployment for the network.<br>Then if there are exceptions raised, fail the test.<br>If no exceptions, connect the wallet to the network (pass)<br> |
-
-
 
 # CIP-1694
 
@@ -127,7 +101,7 @@ Use as many lines as needed.
 ### Link:
 
 
-## User Story ID: VO3
+## User Story ID: CH.VO.003
 - [ ] Enabler
 ### Title: As a DRep I want to register so that I can vote on governance actions
 ### User Story
@@ -171,6 +145,130 @@ Use as many lines as needed.
 
 
 ### Link:
+
+## User Story ID: CH.VO.005
+- [ ] Enabler
+### Title: As a DRep I want to retire so that I can reclaim my DRep Deposit
+### User Story
+ - As a DRep<br>I want to retire<br>So that I can reclaim my DRep Deposit
+### Functional Requirements
+|Requirements|Acceptance Criteria|
+|:----|:----|
+| Only a user who is registered as a DRep can retire  | Given that I am not registered as a DRep, when I look for a retirement option in GovTool, then there is none.<br> |
+|  | Given that I am registered as a DRep, when I look for a retirement option in GovTool there is one. And when I choose this option, then my wallet opens and I can sign a retirement action which is registered on-chain. |
+| When I retire I get my deposit back | Given that I am a DRep, when I register a valid retirement transaction on chain, then my DRep registration deposit will be returned to me. <br> |
+| Only a user who has the wallet that they registered as a DRep with can retire. | Given that I am not connected to GovTool, when I look at the homepage, then I will not see an option to retire<br> |
+|  | Given that I am connected to GovTool with an account that is not associated with a registered DRep certificate, when I look at the homepage, then I see an option to register as a DRep<br> |
+|  | Given that I am a registered DRep with my wallet account connected, when I click the retire as a DRep option on the homepage and then send the retirement transaction with my wallet, then the blockchain will register my retirement certificate, and I will be retired. <br> |
+
+### Link:
+
+## User Story ID: CH.VO.006
+- [ ] Enabler
+### Title: As a DRep I want to update my details so that I can better advertise myself to Ada Holders 
+### User Story
+ - As a DRep <br>I want to update my details <br>so that I can better advertise myself to Ada Holders 
+### Functional Requirements
+|Requirements|Acceptance Criteria|
+|:----|:----|
+| A DRep can update their registration after registering | Given that I am a DRep and am connected to GovTool and am on the dashboard, when I click the “change metadata” button on the DRep tab, then I am directed to update my metadata and can submit a DRep update certificate to register this on-chain.<br> |
+
+### Link:
+
+## User Story ID: CH.VO.007
+- [ ] Enabler
+### Title: As any user I want to view governance actions so I can see what is being proposed 
+### User Story
+ - As any user <br>I want to view governance actions <br>so I can see what is being proposed
+### Functional Requirements
+|Requirements|Acceptance Criteria|
+|:----|:----|
+| Anyone should be able to access the governance actions page without a wallet connected | Given that I am on the GovTool homepage, when I click the “Governance actions” in the topbar, then I am sent to the governance actions page.|
+| I can see all live governance actions | Given that I am on the Governance Actions page, when I review the governance actions available to view on the page, then all of the non expired/ ratified/enacted governance actions.|
+| Anyone with a CIP-95 compatible wallet connected should be able to access the governance actions page | Given that I am on the GovTool dashboard, when I click the View Governance Actions tab, or “Governance actions” in the sidebar, then I am sent to the governance actions page.|
+| Should be able to see if a governance action has been accepted or rejected by the Constitutional Committee | Given that I am looking at an individual governance action, when I look at how many votes it has, then it shows the number of CC votes and whether this is acceptance/veto or neither.|
+| Should be able to view relevant information about governance actions | Given that I am on the governance action page, when I click on the “view proposal details” button of a treasury withdrawal governance action, and it opens, then I can see the amount of ADA that the proposal submitter wants to withdraw, and the address that they want to withdraw it to.|
+|  | Given that I am on the governance action page, when I click on the “view proposal details” button of a proposal parameter change governance action, then on the page that opens I can see the parameter(s) that the Proposal Submitter is proposing to change along with what the current values are, and what he wants to change them to.  |
+|  | Given that I am on the governance action page, when I click on the “view proposal details” button of a Constitutional Committee update governance action, then on the page that opens I can see the following (where applicable): <br>* Old Committee Member Cold Key Hash to be removed<br>* Float, (a rational number in the range from 0 to 1 inclusive. Of course if all you have in a tool is Floats, than that is what it will have to be)<br>* Map of committee cold key credentials that will be added to the committee with absolute epoch number number when they will expire |
+|  | Given that I am on the governance action page, when I click on the “view proposal details” button of an update to the Constitution governance action, then on the page that opens I should be able to see:<br>* The Constitution URL<br>* The Constitution hash<br>* The proposal policy script (if provided when the governance action was submitted) |
+|  | Given that I am on the governance action page, when I click on the “view proposal details” button of a hard fork initiation governance action, then on the page that opens I should be able to see:<br>* The new major protocol version |
+| The governance action as displayed should include a link to its metadata  | Given that I am reviewing the details of a specific governance action, when I click on the “view other details” link on the governance action details page, then I will be shown a warning asking if I want to continue to an external url (which will be displayed). If I continue then the external url will open in a new tab.<br> |
+| Verify the integrity of a governance action’s metadata | Given that I am looking at a governance action <br><br>Then I can see whether a hash of that governance action’s metadata matches the metadata hash included in the anchor. |
+
+### Link:
+
+## User Story ID: CH.VO.008
+- [ ] Enabler
+### Title: As a potential Constitutional Committee Member I want to become a Constitutional Committee Member so that I can vote on the corresponding governance actions
+### User Story
+ - As a potential Constitutional Committee Member <br>I want to become a Constitutional Committee Member <br>so that I can vote on the corresponding governance actions
+### Functional Requirements
+|Requirements|Acceptance Criteria|
+|:----|:----|
+| Create a set of keys  | Given that I have the CLI open in front of me, when I run the corresponding command, then I can verify that I have created a new key pair |
+| Include these keys in a New Committee Cold Key Hash or Script Hash | Given that I am using CLI and I have created my set of cold keys, when I submit an action to be voted on adding the cold key hash, then I can verify that my CC credentials are recorded in the ledger |
+| Create an authorization certificate | Given that I am using CLI and I have created my set of cold/hot key pairs, when I run the corresponding command, then I can verify that the certificate is stored on-chain and it delegates rights from the cold key to the hot key |
+| Only votes from active Committee members are considered | Given that my set of keys does not correspond to an active CC member, when I try to vote as a CC member using CLI, then I can see that my vote has zero voting power because my credentials are not valid |
+
+### Link:
+
+## User Story ID: CH.VO.009
+- [ ] Enabler
+### Title: As a CC Member I want to review a governance action so that I can scrutinise whether or not it is aligned with the Constitution
+### User Story
+ - As a CC Member <br>I want to review a governance action <br>so that I can scrutinise whether or not it is aligned with the Constitution
+### Functional Requirements
+|Requirements|Acceptance Criteria|
+|:----|:----|
+| Access GovTool | Given that I am on the GovTool homepage, when I click the “Governance actions” in the topbar then I am sent to the governance actions page.  |
+| See list of current governance actions | Given that I am on the Governance Actions page When I review the governance actions available to view on the page, then all of the non expired/ ratified/enacted governance actions. |
+| See details of a specific governance action | Given that I am on the Governance Actions page, When I click on an individual governance action, Then I can see the relevant information |
+| See metadata | Given that I am looking at an individual governance action page, when I click on “view other details” and I click on continue in the warning message, Then an external url will open in a new tab. |
+| Verify metadata integrity | Given that I am looking at a governance action then I can see whether a hash of that governance action’s metadata matches the metadata hash included in the anchor. |
+
+### Link:
+
+## User Story ID: CH.VO.010
+- [ ] Enabler
+### Title: As a CC Member I want to vote on a governance action so that I can approve governance actions that align with the constitution
+### User Story
+ - As a CC Member <br>I want to vote on a governance action <br>so that I can approve governance actions that align with the constitution
+### Functional Requirements
+|Requirements|Acceptance Criteria|
+|:----|:----|
+| Find a specific governance action using CLI | Given that I am using CLI and I know the governance action ID, When I run the command to review a specific governance action, Then I can see the details of that individual governance action. |
+| Vote as a Constitutional Committee member using CLI | Given that I am using CLI and I know the governance action ID, When I build the transaction to vote on a governance action, Then I can specify my role (ccm), the action ID, and the intent to vote (YES/NO/ABSTAIN) |
+|  | Given that I am using CLI and I have built the transaction to vote on a specific governance action, When I run the command to sign the transaction, Then I can submit the transaction and pay the transaction costs |
+| Provide rationale for vote with a metadata anchor | Given that I am using CLI, When I am building a transaction to vote on a specific governance action, Then I can use the metadata anchor to provide a rationale for my vote |
+| Change vote | Given that I have submitted a vote on a specific governance action, When I vote again on the same governance action before the snapshot, Then I can change the intent to vote (YES/NO/ABSTAIN) |
+
+### Link:
+
+## User Story ID: CH.VO.011
+- [ ] Enabler
+### Title: As a CC Member I want to change my voting credentials so I can manage my organisation’s voting
+### User Story
+ - As a CC Member <br>I want to change my voting credentials <br>so I can manage my organisation’s voting
+### Functional Requirements
+|Requirements|Acceptance Criteria|
+|:----|:----|
+| Create a new authorization certificate | Given that I am a CC member and I have enough funds to pay the transaction fees, When I create a new authorisation certificate using the same cold key, Then a new hot key is authorised to vote as a valid CC member |
+
+## User Story ID: CH.VO.012
+- [ ] Enabler
+### Title: As a CC Member I want to retire so my credentials are no longer valid
+### User Story
+ - As a CC Member <br>I want to retire <br>so my credentials are no longer valid
+### Functional Requirements
+|Requirements|Acceptance Criteria|
+|:----|:----|
+| Create a resignation certificate | Given that I am a CC member and I have enough funds to pay the transaction fees, When I create a resignation certificate, Then my cold key and the derived hote keys are no longer valid to vote as a CC member |
+
+### Link:
+
+
+
+
 
 
 # CARDANO-CLI
