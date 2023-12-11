@@ -94,6 +94,9 @@ Use as many lines as needed.
 |  | Check the wallet is on the correct network<br>Given I am on the homepage<br>When I compare the networkId with the environment value set on the deployment for the network.<br>Then if there are exceptions raised, fail the test.<br>If no exceptions, connect the wallet to the network (pass) |
 
 
+### Link:
+
+
 ## User Story ID:  CH.VO.002
 - [ ] Enabler
 ### Title: As an Ada Holder I want to delegate my voting power to a DRep so that I can claim my staking rewards
@@ -121,6 +124,8 @@ Use as many lines as needed.
 |  | Given that I am not a DRep<br>When I delegate using the “delegate to no-confidence” feature <br>Then it will delegate any voting power I have to No-Confi. I will be notified that my delegation transaction was sent |
 
 
+### Link:
+
 
 ## User Story ID: VO3
 - [ ] Enabler
@@ -135,6 +140,7 @@ Use as many lines as needed.
 |  | Given that I am connected to GovTool with a compatible wallet<br>When I go through the DRep registration process, and include metadata anchor information in the correct format <br>Then I will be able to register as a DRep via my wallet, GovTool will include the metadata anchor in the registration certificate transaction. |
 | Confirm transaction has been sent | Given that I have gone through the DRep registration process <br>When I press the button on my wallet to submit the transaction <br>Then I will receive a confirmation message from GovTool that will include a link to the transaction in a block explorer |
 | Status of transaction is displayed | Given that I have just submitted a DRep registration transaction, and I am looking at the dashboard <br>When the registration has not yet been confirmed by the blockchain, <br>Then the registration status will show as “In Progress” until it is confirmed |
+
 
 ### Link:
 
