@@ -28,7 +28,7 @@ This section shows the areas or sources thus far
 
 # User Story (Voltaire, API, CIP-1694, Community et al)
 
-# VOLTAIRE 
+# VOLTAIRE
 
 ## User Story ID: VO1
 - [ ] Enabler
@@ -39,13 +39,13 @@ This section shows the areas or sources thus far
 |Requirements|Acceptance Criteria|
 |:----|:----|
 | Connect with multiple stake key wallet | Given I am on the homepage <br>And my wallet is not connected.<br>When I click the Connect Wallet button <br>And select (one of) my CIP-95 compatible wallet(s) with multiple stake keys containing more than zero ADA (or tADA for SanchoNet)<br>And select from a list which stake key I wish to connect with<br>Then the wallet will prompt me to connect and I can connect to GovTool with it on the selected stake key. |
-|  | Given I am on the homepage 
+|  | Given I am on the homepage
 <br>And my wallet is not connected
 <br>When I click the Connect Wallet button
 <br>Then I am not shown any non CIP-95 compatible wallets. |
 |  | Given I am on the homepage <br>And my wallet is not connected<br>When I click the Connect Wallet button and select a CIP-95 compliant, multiple stake key wallet, containing zero ADA (or tADA for SanchoNet) <br>And I select a wallet with multiple stake keys from this list<br>Ans select which stake key I wish to connect with<br>When I select a stake key <br>Then the wallet will prompt me to connect and I can connect to GovTool with it on the selected stake key. |
 | Connect with single stake key wallet | Given I am on the homepage with no wallet connected
-<br>When I click the Connect Wallet button and select a CIP-95 compliant single stake key wallet 
+<br>When I click the Connect Wallet button and select a CIP-95 compliant single stake key wallet
 <br>Then my wallet appears and I can connect with it |
 |  | Given I am on the homepage without my wallet connected<br>When I click the Connect Wallet button<br>Then I am not shown any non CIP-95 compatible wallets. |
 |  | Given I am on the homepage without my wallet connected<br>When I click the Connect Wallet button and select a CIP-95 compliant, single stake key wallet, containing zero ADA (or tADA for SanchoNet)<br>Then my wallet appears and I can connect with it |
@@ -103,7 +103,7 @@ As a DRep or Ada Holder I want to connect my wallet to GovTool so that I can pos
 </td>
   </tr>
   <tr>
-    <td>Given I am on the homepage without my wallet connected<br><br>When I click the Connect Wallet button<br><br>Then I am not shown any non CIP-95 compatible wallets. 
+    <td>Given I am on the homepage without my wallet connected<br><br>When I click the Connect Wallet button<br><br>Then I am not shown any non CIP-95 compatible wallets.
 </td>
   </tr>
   <tr>
@@ -181,11 +181,11 @@ As an Ada Holder I want to delegate my voting power to a DRep so that I can clai
 </td>
   </tr>
   <tr>
-    <td>Given that I am not a registered DRep, and I am connected to GovTool with my wallet,<br><br>When I am on the Delegate to DRep page<br><br>I cannot see a Delegate to Myself option 
+    <td>Given that I am not a registered DRep, and I am connected to GovTool with my wallet,<br><br>When I am on the Delegate to DRep page<br><br>I cannot see a Delegate to Myself option
 </td>
   </tr><tr>
     <td rowspan="2">Change my DRep delegation</td>
-    <td>Given that I am I am already delegated to a DRep<br><br>When I look at the dashboard<br><br>GovTool will know that I am delegated and  will invite me to “change my delegation” rather than to delegate. 
+    <td>Given that I am I am already delegated to a DRep<br><br>When I look at the dashboard<br><br>GovTool will know that I am delegated and  will invite me to “change my delegation” rather than to delegate.
 </td>
   </tr>
   <tr>
@@ -279,7 +279,7 @@ As a DRep I want to vote so that I can fulfil my role
 </td>
   </tr>
   <tr>
-    <td>Given that I am a DRep and I am on the governance actions page<br><br>When I click on the “view proposal details” button<br><br>Then I will be shown the page for that individual governance action and be able to view its details 
+    <td>Given that I am a DRep and I am on the governance actions page<br><br>When I click on the “view proposal details” button<br><br>Then I will be shown the page for that individual governance action and be able to view its details
 </td>
   </tr>
     <tr>
@@ -310,7 +310,7 @@ As a DRep I want to vote so that I can fulfil my role
 </td>
   </tr>
     <tr>
-    <td>No one should be able to vote on a governance action that has expired, or been ratified, or enacted. 
+    <td>No one should be able to vote on a governance action that has expired, or been ratified, or enacted.
 </td>
     <td>Given that I am on the governance action page<br><br>When I examine the governance actions<br><br>None of the governance actions shown on the page have expired or been ratified or enacted.
 </td>
@@ -741,7 +741,7 @@ so that it can be submitted to the chain and be voted on by the governance bodie
 
 ## User Story ID: CLI.021
 - [ ] Enabler
-### Title: Create a governance action vote (DRep/SPO/CCM) 
+### Title: Create a governance action vote (DRep/SPO/CCM)
 ### User Story
  - As a Drep, SPO or CC member <br>I want to create a vote for a governance action <br>So that I can include it in a transaction and submit it to the chain <br>
 ### Functional Requirements
@@ -874,7 +874,7 @@ so that it can be submitted to the chain and be voted on by the governance bodie
 
 ## User Story ID: CLI.030
 - [ ] Enabler
-### Title: Delegate stake to SPO and votes to DRep with a single certificate (HOLDER) 
+### Title: Delegate stake to SPO and votes to DRep with a single certificate (HOLDER)
 ### User Story
  - As an ada holder<br>I want to delegate my stake to a stake pool AND my votes to a DRep (registered or default) with a single certificate.<br><br>`stake-address`<br>
 ### Functional Requirements
@@ -889,6 +889,43 @@ so that it can be submitted to the chain and be voted on by the governance bodie
 | The certificate should be saved on a text envelope format | The certificate should be saved on a text envelope format: <br>`{`<br> `"type": "CertificateConway",`<br> `"description": "Stake and Vote Delegation Certificate",`<br> `"cborHex": ""`<br>`}` |
 | The resulting certificate conforms with the conway cddl | The resulting certificate conforms with the conway cddl, where <br><br>`stake_vote_deleg_cert = (10, stake_credential, pool_keyhash, drep)` |
 
+## User Story ID:  CLI.031
+- [ ] Enabler
+### Title: Query governance state
+### User Story
+- As any persona<br>I want to query the nodes for the current Governance state<br>so that I can inform my decisions.
+### Functional requirements
+|Requirements|Acceptance Criteria|
+|:----|:----|
+| The new command is implemented as `cardano-cli conway query gov-state` | Running `cardano-cli conway query gov-state` dumps the entire governance state. |
+| The command requires the user to specify the network id (mainnet or testnet magic) | The flags –mainnet –-testnet-magic are used to specify the network id. |
+| The command has the flag –out-file to specify the file where the output  will be saved.  | The optional `--out-file` flag is available to specify the file where the governance state dump will be saved. |
+| The output is a JSON showing, at least,  the following information:<br>Proposals<br>EnactState<br>DrepPulsingState | The output is in a json format so that it can be further processed programmatically. |
+| The command handles errors gracefully and provides helpful error messages when required options are missing or invalid inputs are provided. | If any required input parameter is missing or incorrect, the command raises an error indicating the missing or incorrect parameter.<br> The command requires a connection to the node, an exception is raised if there is non. |
+
+## User Story ID:  CLI.033
+- [ ] Enabler
+### Title:
+### User Story
+- As a CC member<br>I want to query the committee state<br>so that I can find my expiration term,<br> and whether my hot key authorization certificate has been recorded on chain correctly.
+### Functional requirements
+|Requirements|Acceptance Criteria|
+|:----|:----|
+| The command is implemented as `cardano-cli conway query committee-state` | Running `cardano-cli conway query committee-state` returns the map of committee member key hashes and the current state. |
+| Requires the user to provide the network id  | The flags –mainnet –-testnet-magic are used to specify the network id.|
+| Supports a query for an specific CC credential <br> CC cold verification key<br>CC cold verification key file<br>CC cold verification key hash<br>CC hot verification key<br>CC hot verification key file<br>CC hot verification key hash | The command allows querying the committee state with either cold or hot credentials of a target committee member, so that running `cardano-cli conway query committee-state` with any of the flags:<br>`--cold-verification-key STRING`<br>`--cold-verification-key-file FILE`<br>`--cold-verification-key-hash STRING`<br>`--hot-key STRING`<br>`--hot-key-file FILE`<br>`--hot-key-hash STRING`<br>returns the state of the target committee member.<br>The command allows zero to many credentials.|
+| When no CC key is specified, the command outputs information for all committee members | Running `cardano-cli conway query committee-state` without any credential flags returns the state of all committee members |
+| The command allows filtering by active, expired and unrecognized members (registered hot keys to an unknown cc cold key)  | The command supports the flags `--active`, `--expired` and `--unrecognized` to filter committee members by their current status |
+| The output is a JSON showing, the following information:<br>Cold key hash<br> Hot credential status (Authorized/NotAuthorized)<br> When Authorized, shows the hot key hash<br>Status (Active, Expired, Unrecognized)<br>Expiration epoch<br>Current epoch<br>Quorum | The output is in a json format so that it can be further processed programmatically.<br>`{"committee": {"keyHash-": {"expiration":, "hotCredsAuthStatus": {"tag": ""},"nextEpochChange": "","status": ""}}, "epoch":,"quorum": }`
+| The command has a flag to specify the path where the output file will be saved. | The `--out-file` flag is available to specify the file where the committee state dump will be saved. |
+| The command handles errors gracefully and provides helpful error messages when required options are missing or invalid inputs are provided. | If any required input parameter is missing or incorrect, the command raises an error indicating the missing or incorrect parameter. |
+
+## User Story ID:  CLI.0n
+- [ ] Enabler
+### Title:
+### User Story
+### Functional requirements
+### Acceptance Criteria
 
 ## User Story ID:  CLI.0n
 - [ ] Enabler
