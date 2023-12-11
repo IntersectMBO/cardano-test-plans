@@ -39,85 +39,310 @@ This section shows the areas or sources thus far
 |Requirements|Acceptance Criteria|
 |:----|:----|
 | Connect with multiple stake key wallet | Given I am on the homepage <br>And my wallet is not connected.<br>When I click the Connect Wallet button <br>And select (one of) my CIP-95 compatible wallet(s) with multiple stake keys containing more than zero ADA (or tADA for SanchoNet)<br>And select from a list which stake key I wish to connect with<br>Then the wallet will prompt me to connect and I can connect to GovTool with it on the selected stake key. |
-|  | Given I am on the homepage <br>And my wallet is not connected<br>When I click the Connect Wallet button<br>Then I am not shown any non CIP-95 compatible wallets. |
+|  | Given I am on the homepage 
+<br>And my wallet is not connected
+<br>When I click the Connect Wallet button
+<br>Then I am not shown any non CIP-95 compatible wallets. |
 |  | Given I am on the homepage <br>And my wallet is not connected<br>When I click the Connect Wallet button and select a CIP-95 compliant, multiple stake key wallet, containing zero ADA (or tADA for SanchoNet) <br>And I select a wallet with multiple stake keys from this list<br>Ans select which stake key I wish to connect with<br>When I select a stake key <br>Then the wallet will prompt me to connect and I can connect to GovTool with it on the selected stake key. |
-| Connect with single stake key wallet | Given I am on the homepage with no wallet connected<br>When I click the Connect Wallet button and select a CIP-95 compliant single stake key wallet <br>Then my wallet appears and I can connect with it |
+| Connect with single stake key wallet | Given I am on the homepage with no wallet connected
+<br>When I click the Connect Wallet button and select a CIP-95 compliant single stake key wallet 
+<br>Then my wallet appears and I can connect with it |
 |  | Given I am on the homepage without my wallet connected<br>When I click the Connect Wallet button<br>Then I am not shown any non CIP-95 compatible wallets. |
 |  | Given I am on the homepage without my wallet connected<br>When I click the Connect Wallet button and select a CIP-95 compliant, single stake key wallet, containing zero ADA (or tADA for SanchoNet)<br>Then my wallet appears and I can connect with it |
 |  | Given I am on the homepage without my wallet connected<br>When I click the Connect Wallet button and select a CIP-95 compliant, single stake key wallet, containing more than zero ADA (or tADA for SanchoNet)<br>Then my wallet appears and I can connect with it |
 | Disconnect wallet | Given that I am on the dashboard with my wallet connected<br>If I click the Disconnect button<br>Then my wallet is disconnected from GovTool and I am redirected to the homepage |
-|  | Check the wallet is on the correct network<br>Given I am on the homepage<br>When I compare the networkId with the environment value set on the deployment for the network.<br>Then if there are exceptions raised, fail the test.<br>If no exceptions, connect the wallet to the network (pass) |
+|  | Check the wallet is on the correct network<br>Given I am on the homepage<br>When I compare the networkId with the environment value set on the deployment for the network.<br>Then if there are exceptions raised, fail the test.<br>If no exceptions, connect the wallet to the network (pass)<br> |
 
 
-## User Story ID: VO2
+
+# CIP-1694
+
+## User Story ID:  CIP1694.001
 - [ ] Enabler
-### Title: As an Ada Holder I want to delegate my voting power to a DRep so that I can claim my staking rewards
 ### User Story
- - As an Ada Holder I want to delegate my voting power to a DRep so that I can claim my staking rewards
-### Functional Requirements
-|Requirements|Acceptance Criteria|
-|:----|:----|
-| Delegate to DRep ID | Given that I have my wallet connected, and I am on the Delegate to DRep page<br>When I select the delegate to DRep ID option and I enter a DRep ID which has not been registered and I press delegate<br>Then I will be presented with an error message explaining that the DRep ID was not found |
-|  | Given that I have my wallet connected, and I am on the delegate to DRep page,<br>When I choose the Delegate to DRep ID option and I enter a registered DRep ID and I press the Delegate button <br>Then I am able to delegate to that DRep ID via my connected wallet |
-|  | Given that I have connected to GovTool with zero* ADA (or tADA in the case of SanchoNet)<br>When I choose the Delegate to DRep ID option and I enter a registered DRep ID and I press the Delegate button <br>Then I am presented with a warning message and cannot proceed with delegation. <br>*or at least a number below transaction costs |
-| Access Delegate to DRep page | Given that I do not have a compatible wallet connected to GovTool<br>When I attempt to visit the URL of the Delegate to DRep page<br>Then I am redirected to the homepage |
-|  | Given that I  have a compatible wallet connected to GovTool and I am looking at the dashboard<br>When I click on the the Delegate button (or Change Delegation button if you are already registered) <br>Then I am shown the Delegate to DRep page |
-| Verify DRep behaviour in connected state  | Given that I'm not connected to the wallet<br>When I visit the DRep delegation page, and I click the delegate-connect-wallet-button<br>Then the connect your wallet-modal is visible |
-| Verify DRep behaviour in disconnected state | Given that I have a preset DdRep wallet loaded<br>Then Delegate button is clicked<br>Then it is expected that delegation options card is visible<br>delegate to myself is expected to be visible<br>Then Other options is clicked<br>Expect that signal no confidence card and vote abstain cards are visible <br>Next, delegate to dRep card is clicked, followed by next step button<br>Then expected that dRep ID input is visible along with delegate button |
-| Delegate to myself | Given that I am a registered DRep who is connected to GovTool with my wallet, and I am on the Delegate to DRep page <br>When I choose the Delegate to DRep ID option and I enter my own DRep ID and I press the Delegate button <br>Then I am able to delegate to myself via my connected wallet |
-|  | Given that I am a registered DRep who is connected to GovTool with my wallet, and I am on the Delegate to DRep page <br>When I select the Delegate to Myself option and press the Delegate button <br>Then I will be able to send a transaction to delegate to myself via my wallet |
-|  | Given that I am not a registered DRep, and I am connected to GovTool with my wallet,<br>When I am on the Delegate to DRep page<br>I cannot see a Delegate to Myself option |
-| Change my DRep delegation | Given that I am I am already delegated to a DRep<br>When I look at the dashboard <br>GovTool will know that I am delegated and it will invite me to “change my delegation” rather than to delegate. |
-|  | Given that I am already delegated <br>When I go to change my delegation<br>I can delegate to any registered DRep, If I am delegated to myself then the option to “delegate to myself” will not be shown, If I am delegated to a specific predefined DRep then this predefined option will not be shown |
-| Check the validity of a DRep ID | Given that I have selected the “delegate to a DRep ID” option in the delegation user journey.<br>When I enter anything in the DRep ID input box that is not a registered DRep ID. <br>Then I will not be able to delegate to this DRep ID and will get a warning message. |
-| Delegate to Abstain | Given that I am a DRep <br>When I delegate using the “delegate to abstain” feature <br>Then it will only delegate my own lovelace’s voting power to Abstain and NOT the voting power (if any) that has been delegated to me by others.  I will be notified that my delegation transaction was sent. |
-|  | Given that I am not a DRep<br>When I delegate using the “delegate to abstain” feature <br>Then it will delegate any voting power I have to Abstain. I will be notified that my delegation transaction was sent |
-| Delegate to No-Confidence | Given that I am a DRep <br>When I delegate using the “delegate to no-confidence” feature <br>Then it will only delegate my own lovelace’s voting power to No-Confidence and NOT the voting power (if any) that has been delegated to me by others.  I will be notified that my delegation transaction was sent. |
-|  | Given that I am not a DRep<br>When I delegate using the “delegate to no-confidence” feature <br>Then it will delegate any voting power I have to No-Confi. I will be notified that my delegation transaction was sent |
+Write the story here.
 
+Use as many lines as needed.
+### Functional requirements
+- FR1
+- FR2
+- FR3
+### Acceptance Criteria
+- AC1
+- AC2
+- AC3
+### Link:
 
-## User Story ID: VO3
+# VOLTAIRE
+
+## User Story ID:  CH.VO.001
 - [ ] Enabler
-### Title: As a DRep I want to register so that I can vote on governance actions
 ### User Story
- - As a DRep I want to register so that I can vote on governance actions
-### Functional Requirements
-|Requirements|Acceptance Criteria|
-|:----|:----|
-| Register as a DRep | Given that I am connected to GovTool with a compatible wallet<br>When I go through the DRep registration process, and do not include a metadata anchor  <br>Then I can register as a DRep via my wallet (because metadata anchors are optional) |
-|  | Given that I am connected to GovTool with a compatible wallet<br>When I go through the DRep registration process, and include metadata anchor information in the wrong format <br>Then I will not be able to progress further in the process and I will be told that it is because the format is incorrect |
-|  | Given that I am connected to GovTool with a compatible wallet<br>When I go through the DRep registration process, and include metadata anchor information in the correct format <br>Then I will be able to register as a DRep via my wallet, GovTool will include the metadata anchor in the registration certificate transaction. |
-| Confirm transaction has been sent | Given that I have gone through the DRep registration process <br>When I press the button on my wallet to submit the transaction <br>Then I will receive a confirmation message from GovTool that will include a link to the transaction in a block explorer |
-| Status of transaction is displayed | Given that I have just submitted a DRep registration transaction, and I am looking at the dashboard <br>When the registration has not yet been confirmed by the blockchain, <br>Then the registration status will show as “In Progress” until it is confirmed |
+As a DRep or Ada Holder I want to connect my wallet to GovTool so that I can post transactions on-chain
 
 
-## User Story ID: V04
+### Functional requirements
+<table border="1">
+  <tr>
+    <th>Requirement</th>
+    <th>Acceptance Criteria</th>
+  </tr>
+  <tr>
+    <td rowspan="3">Connect with multiple stake key wallet</td>
+    <td>Given I am on the homepage and my wallet is not connected. <br><br> When I click the Connect Wallet button and select (one of) my CIP-95 compatible wallet(s) with multiple stake keys containing one or more ADA (or tADA for SanchoNet) and select from a list which stake key I wish to connect with <br> <br> Then the wallet will prompt me to connect and I can connect to GovTool with it on the selected stake key.</td>
+  </tr>
+  <tr>
+    <td>Given I am on the homepage, and my wallet is not connected <br><br> When I click the Connect Wallet button <br><br> Then I am not shown any non CIP-95 compatible wallets.</td>
+  </tr>
+  <tr>
+    <td>Given I am on the homepage,and my wallet is not connected <br><br> When I click the Connect Wallet button and select a CIP-95 compliant, multiple stake key wallet, containing zero ADA (or tADA for SanchoNet), and I select a wallet with multiple stake keys from this list, and select which stake key I wish to connect with <br><br> When I select a stake key <br><br> Then the wallet will prompt me to connect and I can connect to GovTool with it on the selected stake key.</td>
+  </tr>
+   <tr>
+    <td rowspan="3">Connect with single stake key wallet</td>
+    <td>Given I am on the homepage with no wallet connected <br><br>When I click the Connect Wallet button and select a CIP-95 compliant single stake key wallet  containing 1 or more ADA (or tADA for SanchoNet)<br><br>Then my wallet appears and I can connect with it
+</td>
+  </tr>
+  <tr>
+    <td>Given I am on the homepage without my wallet connected<br><br>When I click the Connect Wallet button<br><br>Then I am not shown any non CIP-95 compatible wallets. 
+</td>
+  </tr>
+  <tr>
+    <td>Given I am on the homepage without my wallet connected<br><br>When I click the Connect Wallet button and select a CIP-95 compliant, single stake key wallet, containing more than zero ADA (or tADA for SanchoNet)<br><br>Then my wallet appears and I can connect with it
+</td>
+  </tr>
+    <tr>
+    <td>Disconnect wallet (most cases)</td>
+    <td>Given that I am connected to GovTool with my wallet and I am not on the governance action page or reviewing a specific governance action<br><br>When I disconnect <br><br>Then I will be redirected to the homepage, and will not have access to delegation or voting features.</td>
+  </tr>
+     <tr>
+    <td>Disconnect wallet (governance action page)</td>
+    <td>Given that I am a DRep connected to GovTool with my wallet and I am on the governance action page<br><br>When I disconnect <br><br>Then I will remain on the governance action page, but will not have access to delegation or voting features (GovTool will treat me like any other user with no wallet connected).
+</td>
+  </tr>
+   <tr>
+    <td>Disconnect wallet (specific governance action)</td>
+    <td>Given that I am a DRep connected to GovTool with my wallet and I am viewing a specific governance action <br><br>When I disconnect <br><br>Then I will remain on the page of that specific governance action, but will not have access to voting features (GovTool will treat me like any other user with no wallet connected).
+</td>
+  </tr>
+     <tr>
+    <td>Check the wallet is on the correct network</td>
+    <td>Given I am on the homepage <br><br>When I compare the networkId with the environment value set on the deployment for the network.<br><br>Then if there are exceptions raised, fail the test. <br><br>If no exceptions, connect the wallet to the network (pass)
+</td>
+  </tr>
+</table>
+
+### Link:
+
+## User Story ID:  CH.VO.002
 - [ ] Enabler
-### Title: As a DRep I want to vote so that I can fulfil my role
 ### User Story
- - As a DRep I want to vote so that I can fulfil my role
-### Functional Requirements
-|Requirements|Acceptance Criteria|
-|:----|:----|
-| Should be able to access the governance actions page as a DRep with my wallet connected | Given that I am a DRep and I am connected to GovTool<br>When I visit the url of the governance actions page <br>Then the governance actions page is displayed |
-|  | Given that I am a DRep and connected to GovTool<br>When I look at the governance actions page <br>Then my voting power is displayed |
-|  | Given that I am a DRep and Connected to GovTool, and I am on the governance actions page<br>When I click Disconnect Wallet<br>Then my wallet is disconnected and I am redirected to the same page, but without the DRep functionality (i.e. ability to vote) |
-|  | Given that I am a DRep and I am on the governance actions page <br>When I click on the “view proposal details” button<br>Then I will be shown the page for that individual governance action and be able to view its details |
-| A DRep should be able to vote on a live governance action | Given that I am a DRep <br>When I look at the details page of an individual governance action <br>Then I can see how many votes the governance action currently has for, against and abstaining |
-|  | Given that I am a DRep<br>When I look at the details page of an individual governance action <br>Then there are buttons allowing me to vote for, against or abstain. |
-|  | Given that I am a DRep, on the details page of an individual governance action<br>When I select yes/ no/ abstain, and click vote <br>Then I can sign & submit this vote via my wallet |
-|  | Given that I am a DRep<br>When I have submitted a vote <br>Then Immediately after this GovTool will display a message informing me that my transaction has been sent and providing me with a link to a block explorer where I can view the transaction |
-| People without the (t)ADA needed to pay for voting transactions should not be able to submit a voting transaction | Given that I do not have a wallet connected to GovTool<br>When I visit the details of a governance action<br>Then I am not shown a vote button |
-| People without their wallet connected or who do have their wallet connected but have not registered as DReps should not be able to vote | Given that I am on the governance action page<br>When I examine the governance actions<br>None of the governance actions shown on the page have expired or been ratified or enacted. |
-| No one should be able to vote on a governance action that has expired, or been ratified, or enacted. | Given that I am a DRep and I have already voted on a given governance action <br>When I submit a different vote for the same transaction within the same snapshot <br>Then the most recent vote will be counted |
-|  | Given that I have already cast a vote on a given governance action <br>When I examine this specific governance action’s page<br>Then instead of seeing a “vote” button I should see a “change vote” button |
-| Only the votes of participants who are still DReps at the relevant epoch boundary will be accepted | Given that I am a DRep and I vote yes or abstain on a live governance action.<br>At the epoch boundary<br>My votes are counted |
-|  | Given that I was a DRep that voted yes or abstain on a live governance action but then retired.<br>At the next epoch boundary<br>My votes will not be counted towards the total tally of DRep votes. |
-| DReps can attach a metadata anchor to their votes | Given that I have chosen how to vote on the UI of a governance action’s details<br>When I add a metadata anchor to the UI also and click the vote button <br>Then the resulting transaction will include my metadata anchor |
+As an Ada Holder I want to delegate my voting power to a DRep so that I can claim my staking rewards
 
 
+### Functional requirements
+<table border="1">
+  <tr>
+    <th>Requirement</th>
+    <th>Acceptance Criteria</th>
+  </tr>
+  <tr>
+    <td rowspan="3">Delegate to DRep ID</td>
+    <td>Given that I have my wallet connected, and I am on the Delegate to DRep page, and I have selected the “delegate to a DRep ID” option in the delegation user journey.<br><br>When I enter anything in the  DRep ID input box that is not a registered DRep ID.<br><br>Then I will not be able to delegate to this DRep ID and will get a warning message.</td>
+  </tr>
+  <tr>
+    <td>Given that I have my wallet connected, and I am on the delegate to DRep page, and my wallet contains more than 1 ADA  (or tADA in the case of SanchoNet)<br><br>When I choose the Delegate to DRep ID option and I enter a registered DRep ID and I press the Delegate button<br><br>Then I am able to delegate to that DRep ID via my connected wallet
+</td>
+  </tr>
+  <tr>
+    <td>Given that I have connected to GovTool with zero* ADA (or tADA in the case of SanchoNet)<br><br>When I choose the Delegate to DRep ID option and I enter a registered DRep ID and I press the Delegate button<br><br>Then I am presented with a warning message and cannot proceed with delegation.<br><br>*or at least a number below transaction costs
+</td>
+  </tr>
+  <tr>
+    <td rowspan="2">Access Delegate to DRep page</td>
+    <td>Given that I do not have a compatible wallet connected to GovTool<br><br>When I attempt to visit the URL of the Delegate to DRep page<br><br>Then I am redirected to the homepage
+</td>
+  </tr>
+  <tr>
+    <td>Given that I  have a compatible wallet connected to GovTool and I am looking at the dashboard<br><br>When I click on the the Delegate button (or Change Delegation button if you are already registered)<br><br>Then I am shown the Delegate to DRep page
+</td>
+  </tr>
+  <tr>
+    <td>Verify the connect to delegate button is working</td>
+    <td>Given that I'm not connected to GovTool with a wallet<br><br>When on the homepageI click the delegate-connect-wallet-button<br><br>Then the connect your wallet-modal is visible
+</td>
+  </tr>
+  <tr>
+    <td rowspan="3">Delegate to myself</td>
+    <td>Given that I am a registered DRep who is connected to GovTool with my wallet, and I am on the Delegate to DRep page<br><br>When I choose the Delegate to DRep ID option and I enter my own DRep ID and I press the Delegate button<br><br>Then I am able to delegate to myself via my connected wallet
+</td>
+  </tr>
+  <tr>
+    <td>Given that I am a registered DRep who is connected to GovTool with my wallet, and I am on the Delegate to DRep page<br><br>When I select the Delegate to Myself option and press the Delegate button<br><br>Then I will be able to send a transaction to delegate to myself via my wallet
+</td>
+  </tr>
+  <tr>
+    <td>Given that I am not a registered DRep, and I am connected to GovTool with my wallet,<br><br>When I am on the Delegate to DRep page<br><br>I cannot see a Delegate to Myself option 
+</td>
+  </tr><tr>
+    <td rowspan="2">Change my DRep delegation</td>
+    <td>Given that I am I am already delegated to a DRep<br><br>When I look at the dashboard<br><br>GovTool will know that I am delegated and  will invite me to “change my delegation” rather than to delegate. 
+</td>
+  </tr>
+  <tr>
+    <td>Given that I am already delegated<br><br>When I go to change my delegation<br><br>I can delegate to any registered DRep, if I am delegated to myself then the option to “delegate to myself” will not be shown, if I am delegated to a specific predefined DRep then this predefined option will not be shown.
+</td>
+  </tr>
+  <tr>
+    <td rowspan="2">Delegate to Abstain</td>
+    <td>Given that I am a DRep<br><br>When I delegate using the “delegate to abstain” feature<br><br>Then it will only delegate my own lovelace’s voting power to Abstain and NOT the voting power (if any) that has been delegated to me by others.  I will be notified that my delegation translation was sent.
+</td>
+  </tr>
+  <tr>
+    <td>Given that I am not a DRep<br><br>When I delegate using the “delegate to abstain” feature<br><br>Then it will delegate any voting power I have to Abstain. I will be notified that my delegation translation was sent.
+</td>
+  </tr>
+<tr>
+    <td rowspan="2">Delegate to No-Confidence</td>
+    <td>Given that I am a DRep<br><br>When I delegate using the “delegate to no-confidence” feature<br><br>Then it will only delegate my own lovelace’s voting power to No-Confidence and NOT the voting power (if any) that has been delegated to me by others.  I will be notified that my delegation translation was sent.
+</td>
+  </tr>
+  <tr>
+    <td>Given that I am not a DRep<br><br>When I delegate using the “delegate to no-confidence” feature<br><br>Then it will delegate any voting power I have to No-Confidence. I will be notified that my delegation translation was sent.
+</td>
+  </tr>
+</table>
+### Link:
 
+## User Story ID:  CH.VO.003
+- [ ] Enabler
+### User Story
+As a DRep I want to register so that I can vote on governance actions
+### Functional requirements
+<table border="1">
+  <tr>
+    <th>Requirement</th>
+    <th>Acceptance Criteria</th>
+  </tr>
+  <tr>
+    <td rowspan="4">Register as a DRep</td>
+    <td>Given that I am connected to GovTool with a compatible wallet and I have enough ADA (or tADA on SanchoNet) to pay for transaction fees and a deposit<br><br>When I go through the DRep registration process, and do not include a metadata anchor<br><br>Then I can register as a DRep via my wallet (because metadata anchors are optional)
+</td>
+  </tr>
+  <tr>
+    <td>Given that I am connected to GovTool with a compatible wallet and I have enough ADA (or tADA on SanchoNet) to pay for transaction fees and a deposit<br><br>When I go through the DRep registration process, and include metadata anchor information in the wrong format<br><br>Then I will not be able to progress further in the process and I will be told that it is because the format is incorrect.
+</td>
+  </tr>
+  <tr>
+    <td>Given that I am connected to GovTool with a compatible wallet and I have enough ADA (or tADA on SanchoNet) to pay for transaction fees and a deposit<br><br>When I go through the DRep registration process, and include metadata anchor information in the correct format<br><br>Then I will be able to register as a DRep via my wallet, GovTool will include the metadata anchor in the registration certificate transaction.
+</td>
+  </tr>
+    <tr>
+    <td>Given that I am connected to GovTool with a compatible wallet and I DO NOT have enough ADA (or tADA on SanchoNet) to pay for transaction fees and/or a deposit<br><br>When I go through the DRep registration process<br><br>Then I cannot register as a DRep via my wallet (because metadata anchors are optional), Instead I am shown an error message
+</td>
+  </tr>
+   <tr>
+    <td>Confirm transaction has been sent</td>
+    <td>Given that I have gone through the DRep registration process<br><br>When I press the button on my wallet to submit the transaction<br><br>Then I will receive a confirmation message from GovTool that will include a link to the transaction in a block explorer.
+</td>
+  </tr>
+   <tr>
+    <td>Status of transaction is displayed</td>
+    <td>Given that I have just submitted a DRep registration transaction, and I am looking at the dashboard<br><br>When the registration has not yet been confirmed by the blockchain,<br><br>Then the registration status will show as “In Progress” until it is confirmed.
+</td>
+  </tr>
+</table>
 
+### Link:
+
+## User Story ID:  CH.VO.004
+- [ ] Enabler
+### User Story
+As a DRep I want to vote so that I can fulfil my role
+### Functional requirements
+<table border="1">
+  <tr>
+    <th>Requirement</th>
+    <th>Acceptance Criteria</th>
+  </tr>
+  <tr>
+    <td rowspan="4">Should be able to access the governance actions page as a DRep with my wallet connected
+</td>
+    <td>Given that I am a DRep and I am connected to GovTool<br><br>When I visit the url of the governance actions page<br><br>Then the governance actions page is displayed
+</td>
+  </tr>
+  <tr>
+    <td>Given that I am a DRep and connected to GovTool<br><br>When I look at the governance actions page<br><br>Then my voting power is displayed
+</td>
+  </tr>
+  <tr>
+    <td>Given that I am a DRep and Connected to GovTool, and I am on the governance actions page<br><br>When I click Disconnect Wallet<br><br>Then my wallet is disconnected and I am redirected to the same page, but without the DRep functionality (i.e. ability to vote)
+</td>
+  </tr>
+  <tr>
+    <td>Given that I am a DRep and I am on the governance actions page<br><br>When I click on the “view proposal details” button<br><br>Then I will be shown the page for that individual governance action and be able to view its details 
+</td>
+  </tr>
+    <tr>
+    <td rowspan="4">A DRep should be able to vote on a live governance action</td>
+    <td>Given that I am a DRep<br><br>When I look at the details page of an individual governance action<br><br>Then I can see how many votes the governance action currently has for, against and abstaining.
+</td>
+  </tr>
+  <tr>
+    <td>Given that I am a DRep<br><br>When I look at the details page of an individual governance action<br><br>Then there are buttons allowing me to vote for, against or abstain.
+</td>
+  </tr>
+  <tr>
+    <td>Given that I am a DRep, on the details page of an individual governance action<br><br>When I select yes/ no/ abstain, and click vote<br><br>Then I can sign & submit this vote via my wallet
+</td>
+  </tr>
+  <tr>
+    <td>Given that I am a DRep<br><br>When I have submitted a vote<br><br>Then Immediately after this GovTool will display a message informing me that my transaction has been sent and providing me with a link to a block explorer where I can view the transaction
+</td>
+  </tr>
+      <tr>
+    <td>People without the (t)ADA needed to pay for voting transactions should not be able to submit a voting transaction</td>
+    <td>Given I have less Lovelace in my wallet than a transaction costs<br><br>When I attempt to vote<br><br>The GovTool will tell me that there is an error
+</td>
+  </tr>
+      <tr>
+    <td>People without their wallet connected or who do have their wallet connected but have not registered as DReps should not be able to vote</td>
+    <td>Given that I do not have a wallet connected to GovTool<br><br>When I visit the details of a governance action<br><br>Then I am not shown a vote button.
+</td>
+  </tr>
+    <tr>
+    <td>No one should be able to vote on a governance action that has expired, or been ratified, or enacted. 
+</td>
+    <td>Given that I am on the governance action page<br><br>When I examine the governance actions<br><br>None of the governance actions shown on the page have expired or been ratified or enacted.
+</td>
+  </tr>
+      <tr>
+    <td rowspan="3">A DRep should be able to change their vote</td>
+    <td>Given that I am a DRep and I have already voted on a given governance action<br><br>When I submit a different vote for the same transaction within the same snapshot<br><br>Then the most recent vote will be counted.
+</td>
+  </tr>
+  <tr>
+    <td>Given that I have already cast a vote on a governance action<br><br>When I examine this specific governance action’s page<br><br>Then I can  see that I have already voted and what my most recent vote was
+</td>
+  </tr>
+  <tr>
+    <td>Given that I have already cast a vote on a given governance action<br><br>When I examine this specific governance action’s page<br><br>Then instead of seeing a “vote” button I should see a “change vote” button
+</td>
+  </tr>
+       <tr>
+    <td rowspan="2">Only the votes of participants who are still DReps at the relevant epoch boundary will be accepted</td>
+    <td>Given that I am a DRep and I vote yes or abstain on a live governance action.<br><br>At the epoch boundary<br><br>My votes are counted.
+</td>
+  </tr>
+  <tr>
+    <td>Given that I was a DRep that voted yes or abstain on a live governance action but then retired.<br><br>At the next epoch boundary<br><br>My votes will not be counted towards the total tally of DRep votes.
+</td>
+  </tr>
+       <tr>
+    <td>DReps can attach a metadata anchor to their votes</td>
+    <td>Given that I have chosen how to vote on the UI of a governance action’s details<br><br>When I add a metadata anchor to the UI also and click the vote button<br><br>Then the resulting transaction will include my metadata anchor
+</td>
+  </tr>
+</table>
 ### Link:
 
 
@@ -447,7 +672,7 @@ so that it can be submitted to the chain and be voted on by the governance bodie
 | Requires the user to provide the deposit amount for submitting governance actions via the flag `--governance-action-deposit`. | The command prompts the user to provide the deposit amount for submitting governance actions via the flag `--governance-action-deposit`. |
 | The command requires the user to provide the stake credential that will receive the deposit return when the action is enacted/expired. <br><br>It must accept a return stake verification key file, a return stake verification key or the return stake key hash | It accepts: <br><br>`--stake-verification-key-file`<br>`--stake-verification-key`<br>`--stake-key-hash`<br><br>Using one of these is mandatory |
 | The command allows the user to provide the transaction id and index of the previously enacted action of this type.  | These flags are optional (but if one is used the other one must be used too)  to support the very first action of this type on the system which does not require information about previously enacted actions. <br>`--governance-action-tx-id` <br>`--governance-action-index` |
-| The command includes dedicated flags to reference the protocol parameter that the user is attempting to modify. The parameters that can be included in this type of proposal are: <br><br><br>The network group consists of:<br>- maximum block body size (maxBBSize)<br>- maximum transaction size (maxTxSize)<br>- maximum block header size (maxBHSize)<br>- maximum size of a serialized asset value (maxValSize)<br>- maximum script execution units in a single transaction (maxTxExUnits)<br>- maximum script execution units in a single block (maxBlockExUnits)<br>- maximum number of collateral inputs (maxCollateralInputs)<br><br>The economic group consists of:<br>- minimum fee coefficient (minFeeA)<br>- minimum fee constant (minFeeB)<br>- delegation key Lovelace deposit (keyDeposit)<br>- pool registration Lovelace deposit (poolDeposit)<br>- monetary expansion (rho)<br>- treasury expansion (tau)<br>- minimum fixed rewards cut for pools (minPoolCost)<br>- minimum Lovelace deposit per byte of serialized UTxO (coinsPerUTxOByte)<br>- prices of Plutus execution units (prices)<br><br>The technical group consists of:<br>- pool pledge influence (a0)<br>- pool retirement maximum epoch (eMax)<br>- desired number of pools (nOpt)<br><br>Plutus execution cost models (costModels)<br>- proportion of collateral needed for scripts (collateralPercentage)<br><br>The governance group consists of all the new protocol parameters that are introduced in this CIP:<br>- governance voting thresholds<br>- dRepVotingThresholds<br>- dvtCommitteeNoConfidence<br>- dvtCommitteeNormal<br>- dvtHardForkInitiation<br>- dvtMotionNoConfidence<br>- dvtPPEconomicGroup<br>- dvtPPGovGroup<br>- dvtPPNetworkGroup<br>- dvtPPTechnicalGroup<br>- dvtTreasuryWithdrawal<br>- dvtUpdateToConstitution<br>- poolVotingThresholds<br>- pvtCommitteeNoConfidence<br>- pvtCommitteeNormal<br>- pvtHardForkInitiation<br>- pvtMotionNoConfidence<br>- governance action maximum lifetime in epochs (govActionLifetime)<br>- governance action deposit (govActionDeposit)<br>- DRep deposit amount (drepDeposit)<br>- DRep activity period in epochs (drepActivity)<br>- minimal constitutional committee size (ccMinSize)<br>- maximum term length (in epochs) for the constitutional committee members (ccMaxTermLength) |  |
+| The command includes dedicated flags to reference the protocol parameter that the user is attempting to modify. The parameters that can be included in this type of proposal are:<br><br><br>The network group consists of:<br>- maximum block body size (maxBBSize)<br>- maximum transaction size (maxTxSize)<br>- maximum block header size (maxBHSize)<br>- maximum size of a serialized asset value (maxValSize)<br>- maximum script execution units in a single transaction (maxTxExUnits)<br>- maximum script execution units in a single block (maxBlockExUnits)<br>- maximum number of collateral inputs (maxCollateralInputs)<br><br>The economic group consists of:<br>- minimum fee coefficient (minFeeA)<br>- minimum fee constant (minFeeB)<br>- delegation key Lovelace deposit (keyDeposit)<br>- pool registration Lovelace deposit (poolDeposit)<br>- monetary expansion (rho)<br>- treasury expansion (tau)<br>- minimum fixed rewards cut for pools (minPoolCost)<br>- minimum Lovelace deposit per byte of serialized UTxO (coinsPerUTxOByte)<br>- prices of Plutus execution units (prices)<br><br>The technical group consists of:<br>- pool pledge influence (a0)<br>- pool retirement maximum epoch (eMax)<br>- desired number of pools (nOpt)<br><br>Plutus execution cost models (costModels)<br>- proportion of collateral needed for scripts (collateralPercentage)<br><br>The governance group consists of all the new protocol parameters that are introduced in this CIP:<br>- governance voting thresholds<br>- dRepVotingThresholds<br>- dvtCommitteeNoConfidence<br>- dvtCommitteeNormal<br>- dvtHardForkInitiation<br>- dvtMotionNoConfidence<br>- dvtPPEconomicGroup<br>- dvtPPGovGroup<br>- dvtPPNetworkGroup<br>- dvtPPTechnicalGroup<br>- dvtTreasuryWithdrawal<br>- dvtUpdateToConstitution<br>- poolVotingThresholds<br>- pvtCommitteeNoConfidence<br>- pvtCommitteeNormal<br>- pvtHardForkInitiation<br>- pvtMotionNoConfidence<br>- governance action maximum lifetime in epochs (govActionLifetime)<br>- governance action deposit (govActionDeposit)<br>- DRep deposit amount (drepDeposit)<br>- DRep activity period in epochs (drepActivity)<br>- minimal constitutional committee size (ccMinSize)<br>- maximum term length (in epochs) for the constitutional committee members (ccMaxTermLength) | The command must accept these flags and execute with the required outcome.<br><br>**The network group consists of:** <br>`--max-block-body-size` (NATURAL) <br>`--max-tx-size` (NATURAL) <br>`--max-block-header-size` (NATURAL) <br>`--max-value-size` (INT) <br>`--max-tx-execution-units` (INT, INT) <br>`--max-block-execution-units` (INT, INT) <br>`--max-collateral-inputs` (INT)<br><br>**The economic group consists of:** <br>`--min-fee-constant` (LOVELACE) <br>`--min-fee-linear` (LOVELACE) <br>`--key-reg-deposit-amt` (NATURAL) <br>`--pool-reg-deposit` (NATURAL) <br>`--monetary-expansion` (RATIONAL) <br>`--treasury-expansion` (RATIONAL) <br>`--min-pool-cost` (NATURAL) <br>`--utxo-cost-per-byte` (LOVELACE) <br>`--price-execution-steps` (RATIONAL)<br><br>**The technical group consists of:** <br>`--pool-influence` (RATIONAL) <br>`--pool-retirement-epoch-boundary` (EPOCH_BOUNDARY) <br>`--number-of-pools` (NATURAL)<br><br>**Plutus execution cost models (costModels)** <br>`--collateral-percent` (INT)<br><br>**The governance group:** <br>`--drep-voting-threshold-motion-no-confidence` (RATIONAL) <br>`--drep-voting-threshold-committee-normal` (RATIONAL) <br>`--drep-voting-threshold-committee-no-confidence` (RATIONAL) <br>`--drep-voting-threshold-committee-normal` (RATIONAL) <br>`--drep-voting-threshold-hard-fork-initiation` (RATIONAL) <br>`--drep-voting-threshold-pp-economic-group` (RATIONAL) <br>`--drep-voting-threshold-pp-governance-group` (RATIONAL) <br>`--drep-voting-threshold-pp-network-group` (RATIONAL) <br>`--drep-voting-threshold-pp-technical-group` (RATIONAL) <br>`--drep-voting-threshold-treasury-withdrawal` (RATIONAL) <br>`--drep-voting-threshold-update-to-constitution` (RATIONAL) <br>`--pool-voting-threshold-committee-no-confidence` (RATIONAL) <br>`--pool-voting-threshold-committee-normal` (RATIONAL) <br>`--pool-voting-threshold-hard-fork-initiation` (RATIONAL) <br>`--governance-action-lifetime` (NATURAL) <br>`--governance-action-deposit` (NATURAL) <br>`--drep-deposit` (LOVELACE) <br>`--drep-activity` (NATURAL) <br>`--min-committee-size` (INT) <br>`--committee-term-length` (INT) |
 | The command requires the user to provide an anchor (url / hash) of the proposal. A document where the proposer exposes the reasoning behind the proposed change. <br> | The user provides an anchor (URL/hash) of the proposal document using the following flags:<br>`--anchor-url`<br>`--anchor-data-hash` |
 | The command has a flag to specify the path where the output file will be saved. | The `--out-file` flag is available to specify the file where the generated governance action (proposal) will be saved. |
 | The generated governance action complies with the conway cddl  | The generated governance action complies with the Conway CDDL where:<br>`proposal_procedure =`<br> `[ deposit : coin`<br> `, reward_account`<br> `, gov_action`<br> `, anchor`<br> `]`<br>`parameter_change_action = (0, gov_action_id / null, protocol_param_update)` |
@@ -489,7 +714,7 @@ so that it can be submitted to the chain and be voted on by the governance bodie
 | The command requires the user to provide the stake credential that will receive the deposit return when the action is enacted/expired. <br><br>It must accept a return stake verification key file, a return stake verification key or the return stake key hash | It accepts: <br><br>`--stake-verification-key-file`<br>`--stake-verification-key`<br>`--stake-key-hash`<br><br>Using one of these is mandatory |
 | The command allows the user to provide the transaction id and index of the previously enacted action of this type.  | These flags are optional (but if one is used the other one must be used too)  to support the very first action of this type on the system which does not require information about previously enacted actions. <br>`--governance-action-tx-id` <br>`--governance-action-index` |
 | The command requires the user to provide an anchor (url / hash) of the proposal. A document where the proposer exposes the reasoning behind the proposed change. <br> | The user provides an anchor (URL/hash) of the proposal document using the following flags:<br>`--anchor-url`<br>`--anchor-data-hash` |
-| The command requires the user to input the new protocol version number |  |
+| The command requires the user to input the new protocol version number | The user provides an the protocol version number using the following flags: <br>`–protocol-version`<br>(e.g 10) |
 | The command has a flag to specify the path where the output file will be saved. | The `--out-file` flag is available to specify the file where the generated governance action (proposal) will be saved. |
 | The generated governance action complies with the conway cddl  | The generated governance action complies with the Conway CDDL where:<br>`proposal_procedure =`<br> `[ deposit : coin`<br> `, reward_account`<br> `, gov_action`<br> `, anchor`<br> `]`<br>`hard_fork_initiation_action = (1, gov_action_id / null, [protocol_version])` |
 | The command handles errors gracefully and provides helpful error messages when required options are missing or invalid inputs are provided. | If any required input parameter is missing or incorrect, the command raises an error indicating the missing or incorrect parameter. |
@@ -528,7 +753,7 @@ so that it can be submitted to the chain and be voted on by the governance bodie
 | Requires the user to provide DRep, SPO or CC credentials | Drep can pass credentials using ANY of: <br>`--drep-verification-key`<br>`--drep-verification-key-file `<br>`–drep-key-hash (drep-id)`<br><br>Stake pool operators can pass credentials using ANY of <br>`–stake-pool-verification-key`<br>`–cold-verification-key-file`<br>`–stake-pool-id`<br> <br>Committee members can pass credentials using ANY of: <br>`--cc-hot-verification-key`<br>`--cc-hot-verification-key-file` <br>`--cc-hot-key-hash` |
 | The command requires the user to provide an anchor (url / hash) of the proposal. A document where the proposer exposes the reasoning behind the proposed change. | The user provides an anchor (URL/hash) of the proposal document using the following flags:<br>`--anchor-url`<br>`--anchor-data-hash` |
 | The command has a flag to specify the path where the output file will be saved. | The `--out-file` flag is available to specify the file where the vote for a governance action will be saved. |
-| The generated vote complies with the conway cddl where | The generated governance action complies with the Conway CDDL where:<br><br>`voting_procedures = { + voter => { + gov_action_id => voting_procedure } }`<br>‘voting_procedure =`<br> ` [ vote`<br> ` , anchor / null`<br> ` ]`<br>`; no - 0`<br>`; yes - 1`<br>`; abstain - 2`<br>`vote = 0 .. 2` |
+| The output shows the information of the proposal based on the voting procedures in a human readable format (english):<br><br><br>`voting_procedures = { + voter => { + gov_action_id => voting_procedure } }`<br>`voting_procedure =`<br> ` [ vote`<br> ` , anchor / null`<br> ` ]`<br>`; no - 0`<br>`; yes - 1`<br>`; abstain - 2`<br>`vote = 0 .. 2` | The output shows the following information in human readable format (english):<br><br><br>credential (voter)<br>governance action ID#IX<br>Anchor if it exists<br>Decision: yes, no or abstain |
 | The command handles errors gracefully and provides helpful error messages when required options are missing or invalid inputs are provided. | If any required input parameter is missing or incorrect, the command raises an error indicating the missing or incorrect parameter. |
 | The feature implementation should be well-documented, providing clear usage instructions. | Running `cardano-cli conway governance action view --help` displays the command usage page. |
 
@@ -545,7 +770,7 @@ so that it can be submitted to the chain and be voted on by the governance bodie
 | The command takes a vote file as an input | The mandatory flag `--vote-file`is used to pass a vote file. |
 | Gives an option to select the output format (json or yaml) | The `--output-format` takes the arguments `yaml` or `json`. If yaml is given the output is in yaml format, if json is given returns a json. Any other argument returns an error. |
 | The command has a flag to specify the path where the output file will be saved. | The `--out-file` flag is available to specify the file where the vote for a governance action will be saved. |
-| The output shows the information of the proposal based on the voting procedures in a human readable format (english):<br><br>`voting_procedures = { + voter => { +` `gov_action_id => voting_procedure } }`<br>`voting_procedure =`<br>`  [ vote`<br>`  , anchor / null`<br>`  ]`<br>`; no - 0`<br>`; yes - 1`<br>`; abstain - 2`<br>`vote = 0 .. 2`<br> |  |
+| The output shows the information of the proposal based on the voting procedures in a human readable format (english):<br><br>`voting_procedures = { + voter => { + gov_action_id => voting_procedure } }`<br>`voting_procedure =`<br>` [ vote`<br>` , anchor / null`<br>` ]`<br>`; no - 0`<br>`; yes - 1`<br>`; abstain - 2`<br>`vote = 0 .. 2` | The output shows the following information in human readable format (english): <br><br>credential (voter)<br>governance action ID#IX<br>Anchor if it exists<br>Decision: yes, no or abstain |
 | The command handles errors gracefully and provides helpful error messages when required options are missing or invalid inputs are provided. | If any required input parameter is missing or incorrect, the command raises an error indicating the missing or incorrect parameter. |
 | The feature implementation should be well-documented, providing clear usage instructions. | Running `cardano-cli conway governance vote view --help` displays the command usage page. |
 
