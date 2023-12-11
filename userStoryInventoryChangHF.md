@@ -739,6 +739,23 @@ so that it can be submitted to the chain and be voted on by the governance bodie
 | The feature implementation should be well-documented, providing clear usage instructions. | Running `cardano-cli conway governance action view --help` displays the command usage page. |
 
 
+## User Story ID: CLI.021
+- [ ] Enabler
+### Title: create a governance action vote 
+### User Story
+ - As a Drep, SPO or CC member <br>I want to create a vote for a governance action <br>So that I can include it in a transaction and submit it to the chain <br>
+### Functional Requirements
+|Requirements|Acceptance Criteria|
+|:----|:----|
+| The command is implemented as `cardano-cli conway governance vote create` | Running `cardano-cli conway governance vote create` creates a vote file for it to be included in a transaction. |
+| The command provides a way to vote <br>yes, <br>no <br>abstain | The command supports the mutually exclusive and mandatory flags `–yes`, ` –no`and ` –abstain` to express the direction of the vote. |
+| Requires to specify the governance action ID and index that the vote is about. <br><br>The cli will not verify on real time the existence of the governance action. It is only at submission time when the node (ledger) validates the existence of the governance action. | The mandatory flag group: <br>`--governance-action-tx-id TXID`<br>`--governance-action-index WORD32`<br>Is used to indicate what governance action the vote corresponds to. <br><br>Failing to provide any of these flags returns an error message. |
+| Requires the user to provide DRep, SPO or CC credentials | Drep can pass credentials using ANY of: <br>`--drep-verification-key`<br>`--drep-verification-key-file `<br>`–drep-key-hash (drep-id)`<br><br>Stake pool operators can pass credentials using ANY of <br>`–stake-pool-verification-key`<br>`–cold-verification-key-file`<br>`–stake-pool-id`<br> <br>Committee members can pass credentials using ANY of: <br>`--cc-hot-verification-key`<br>`--cc-hot-verification-key-file` <br>`--cc-hot-key-hash` |
+| The command requires the user to provide an anchor (url / hash) of the proposal. A document where the proposer exposes the reasoning behind the proposed change. | The user provides an anchor (URL/hash) of the proposal document using the following flags:<br>`--anchor-url`<br>`--anchor-data-hash` |
+| The command has a flag to specify the path where the output file will be saved. | The `--out-file` flag is available to specify the file where the vote for a governance action will be saved. |
+| The generated vote complies with the conway cddl where | The generated governance action complies with the Conway CDDL where:<br><br>`voting_procedures = { + voter => { + gov_action_id => voting_procedure } }`<br>`voting_procedure =`<br> ` [ vote`<br> ` , anchor / null`<br> ` ]`<br>`; no - 0`<br>`; yes - 1`<br>`; abstain - 2`<br>`vote = 0 .. 2` |
+| The command handles errors gracefully and provides helpful error messages when required options are missing or invalid inputs are provided. | If any required input parameter is missing or incorrect, the command raises an error indicating the missing or incorrect parameter. |
+| The feature implementation should be well-documented, providing clear usage instructions. | Running `cardano-cli conway governance action view --help` displays the command usage page. |
 
 ## User Story ID:  CLI.0n
 - [ ] Enabler
