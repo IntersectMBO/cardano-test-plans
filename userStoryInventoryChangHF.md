@@ -38,9 +38,9 @@ This section shows the areas or sources thus far
 ### Functional Requirements
 |Requirements|Acceptance Criteria|
 |:----|:----|
-| Connect with multiple stake key wallet | Given I am on the homepage <br><br>And my wallet is not connected.<br><br>When I click the Connect Wallet button <br><br>And select (one of) my CIP-95 compatible wallet(s) with multiple stake keys containing more than zero ADA (or tADA for SanchoNet)<br><br>And select from a list which stake key I wish to connect with<br><br>Then the wallet will prompt me to connect and I can connect to GovTool with it on the selected stake key.<br> |
-|  | Given I am on the homepage <br><br>And my wallet is not connected<br><br>When I click the Connect Wallet button<br><br>Then I am not shown any non CIP-95 compatible wallets. |
-|  | Given I am on the homepage <br><br>And my wallet is not connected<br><br>When I click the Connect Wallet button and select a CIP-95 compliant, multiple stake key wallet, containing zero ADA (or tADA for SanchoNet) <br><br>And I select a wallet with multiple stake keys from this list<br><br>Ans select which stake key I wish to connect with<br><br>When I select a stake key <br><br>Then the wallet will prompt me to connect and I can connect to GovTool with it on the selected stake key.<br> |
+| Connect with multiple stake key wallet | Given I am on the homepage <br>And my wallet is not connected.<br>When I click the Connect Wallet button <br>And select (one of) my CIP-95 compatible wallet(s) with multiple stake keys containing more than zero ADA (or tADA for SanchoNet)<br>And select from a list which stake key I wish to connect with<br>Then the wallet will prompt me to connect and I can connect to GovTool with it on the selected stake key. |
+|  | Given I am on the homepage <br>And my wallet is not connected<br>When I click the Connect Wallet button<br>Then I am not shown any non CIP-95 compatible wallets. |
+|  | Given I am on the homepage <br>And my wallet is not connected<br>When I click the Connect Wallet button and select a CIP-95 compliant, multiple stake key wallet, containing zero ADA (or tADA for SanchoNet) <br>And I select a wallet with multiple stake keys from this list<br>Ans select which stake key I wish to connect with<br>When I select a stake key <br>Then the wallet will prompt me to connect and I can connect to GovTool with it on the selected stake key.<br> |
 | Connect with single stake key wallet | Given I am on the homepage with no wallet connected<br><br>When I click the Connect Wallet button and select a CIP-95 compliant single stake key wallet <br><br>Then my wallet appears and I can connect with it<br> |
 |  | Given I am on the homepage without my wallet connected<br><br>When I click the Connect Wallet button<br><br>Then I am not shown any non CIP-95 compatible wallets.<br> |
 |  | Given I am on the homepage without my wallet connected<br><br>When I click the Connect Wallet button and select a CIP-95 compliant, single stake key wallet, containing zero ADA (or tADA for SanchoNet)<br><br>Then my wallet appears and I can connect with it<br> |
@@ -78,13 +78,15 @@ This section shows the areas or sources thus far
 | Change my DRep delegation
 <br>
 <br>
- | Given that I am I am already delegated to a DRep<br>When I look at the dashboard <br>GovTool will know that I am delegated and it will invite me to "change my delegation" rather than to delegate. |
-|  | Given that I am already delegated <br>When I go to change my delegation<br>I can delegate to any registered DRep, If I am delegated to myself then the option to "delegate to myself" will not be shown, If I am delegated to a specific predefined DRep then this predefined option will not be shown. |
-| Check the validity of a DRep ID | Given that I have selected the "delegate to a DRep ID" option in the delegation user journey.<br>When I enter anything in the DRep ID input box that is not a registered DRep ID. <br>Then I will not be able to delegate to this DRep ID and will get a warning message. |
-| Delegate to Abstain | Given that I am a DRep <br>When I delegate using the "delegate to abstain" feature <br>Then it will only delegate my own lovelace's voting power to Abstain and NOT the voting power (if any) that has been delegated to me by others.  I will be notified that my delegation transaction was sent. |
-|  | Given that I am not a DRep<br>When I delegate using the "delegate to abstain" feature <br>Then it will delegate any voting power I have to Abstain. I will be notified that my delegation transaction was sent |
-| Delegate to No-Confidence | Given that I am a DRep <br>When I delegate using the "delegate to no-confidence" feature <br>Then it will only delegate my own lovelace's voting power to No-Confidence and NOT the voting power (if any) that has been delegated to me by others.  I will be notified that my delegation transaction was sent. |
-|  | Given that I am not a DRep<br>When I delegate using the "delegate to no-confidence" feature <br>Then it will delegate any voting power I have to No-Confi. I will be notified that my delegation transaction was sent |
+ | Given that I am I am already delegated to a DRep<br>When I look at the dashboard <br>GovTool will know that I am delegated and it will invite me to “change my delegation” rather than to delegate. |
+|  | Given that I am already delegated <br>When I go to change my delegation<br>I can delegate to any registered DRep, If I am delegated to myself then the option to “delegate to myself” will not be shown, If I am delegated to a specific predefined DRep then this predefined option will not be shown. |
+| Check the validity of a DRep ID | Given that I have selected the “delegate to a DRep ID” option in the delegation user journey.<br>When I enter anything in the DRep ID input box that is not a registered DRep ID. <br>Then I will not be able to delegate to this DRep ID and will get a warning message. |
+| Delegate to Abstain | Given that I am a DRep <br>When I delegate using the “delegate to abstain” feature <br>Then it will only delegate my own lovelace’s voting power to Abstain and NOT the voting power (if any) that has been delegated to me by others.  I will be notified that my delegation transaction was sent. |
+|  | Given that I am not a DRep<br>When I delegate using the “delegate to abstain” feature <br>Then it will delegate any voting power I have to Abstain. I will be notified that my delegation transaction was sent |
+| Delegate to No-Confidence | Given that I am a DRep <br>When I delegate using the “delegate to no-confidence” feature <br>Then it will only delegate my own lovelace’s voting power to No-Confidence and NOT the voting power (if any) that has been delegated to me by others.  I will be notified that my delegation transaction was sent. |
+|  | Given that I am not a DRep<br>When I delegate using the “delegate to no-confidence” feature <br>Then it will delegate any voting power I have to No-Confi. I will be notified that my delegation transaction was sent |
+
+
 
 # CIP-1694
 
