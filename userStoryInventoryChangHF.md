@@ -905,7 +905,7 @@ so that it can be submitted to the chain and be voted on by the governance bodie
 
 ## User Story ID:  CLI.032
 - [ ] Enabler
-### Title:
+### Title: Query committee state
 ### User Story
 - As a CC member<br>I want to query the committee state<br>so that I can find my expiration term,<br> and whether my hot key authorization certificate has been recorded on chain correctly.
 ### Functional requirements
