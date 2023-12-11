@@ -920,19 +920,60 @@ so that it can be submitted to the chain and be voted on by the governance bodie
 | The command has a flag to specify the path where the output file will be saved. | The `--out-file` flag is available to specify the file where the committee state dump will be saved. |
 | The command handles errors gracefully and provides helpful error messages when required options are missing or invalid inputs are provided. | If any required input parameter is missing or incorrect, the command raises an error indicating the missing or incorrect parameter. |
 
-## User Story ID:  CLI.0n
+## User Story ID:  CLI.033
 - [ ] Enabler
-### Title:
+### Title: Query DRep state
 ### User Story
-### Functional requirements
-### Acceptance Criteria
+ - As an ada holder<br>I want to query the DRep state <br>So that I can find detailed information about registered Dreps   <br>
+### Functional Requirements
+|Requirements|Acceptance Criteria|
+|:----|:----|
+| The command is implemented as cardano-cli conway query drep-state | Running `cardano-cli conway query drep-state` returns the map of drep key hashes and the current state.  |
+| Requires the user to provide the network id | The flags –mainnet –-testnet-magic are used to specify the network id. |
+| Supports a query for an specific DRep credential<br><br>DRep verification key<br>DRep verification key file <br>DRep verification key hash (DRep ID) | Running `cardano-cli conway query drep-stake-distribution` <br>With any of the flags: <br><br>--drep-verification-key STRING<br>--drep-verification-key-file FILE<br>--drep-key-hash HASH<br> <br>Returns the stake delegated to that Drep. <br><br><br>The commands allows zero to many credentials |
+| If no Drep credential is specified it returns all DReps | When no drep credential is supplied, the command returns the state of all DReps. |
+| The command has a flag to specify the path where the output file will be saved. | The `--out-file` flag is available to specify the file where the vote for a governance action will be saved. |
+| The output is a JSON showing, the following information:<br><br><br>Drep Key hash<br>Anchor (Drep metadata)<br>Deposit<br>Expiry (from Drep activity) | The output is in a json format so that it can be further processed programmatically.<br><br> {  "keyHash": ""  },<br> {  "anchor": {  "dataHash": "",  "url": ""  },<br> "deposit":,<br> "expiry": <br> } |
+| The command handles errors gracefully and provides helpful error messages when required options are missing or invalid inputs are provided. | If any required input parameter is missing or incorrect, the command raises an error indicating the missing or incorrect parameter.<br><br>The command requires a connection to the node, an exception is raised if there is non. |
 
-## User Story ID:  CLI.0n
+## User Story ID: CLI.034
 - [ ] Enabler
-### Title:
+### Title: Query Drep stake distribution
 ### User Story
+ - As an ada holder and DRep<br>I want to query the DRep stake distribution<br>So that I can find the weight (of the votes) of each DRep<br>
+### Functional Requirements
+|Requirements|Acceptance Criteria|
+|:----|:----|
+| The command is implemented as cardano-cli conway query drep-stake-distribution | Running `cardano-cli conway query drep-stake-distribution` returns the map of drep key hashes and the current voting stake delegated to each, including default dreps. |
+| Requires the user to provide the network id | The flags –mainnet –-testnet-magic are used to specify the network id. |
+| Supports a query for an specific DRep credential<br><br>DRep verification key<br>DRep verification key file <br>DRep verification key hash (DRep ID) | Running `cardano-cli conway query drep-stake-distribution` <br>With any of the flags: <br><br>--drep-verification-key STRING<br>--drep-verification-key-file FILE<br>--drep-key-hash HASH<br> <br>Returns the stake delegated to that Drep. <br><br><br>The commands allows zero to many credentials |
+| The command has the flag –out-file to specify the file where the output will be saved. | The `--out-file` flag is available to specify the file where the stake distribution output will be saved. |
+| The output is a JSON showing, the following information:<br><br><br>Drep Key hash<br>Stake delegated to this DRep | The output is in a json format so that it can be further processed programmatically. |
+| The command handles errors gracefully and provides helpful error messages when required options are missing or invalid inputs are provided. | If any required input parameter is missing or incorrect, the command raises an error indicating the missing or incorrect parameter.<br><br>The command requires a connection to the node, an exception is raised if there is non. |
+
+## User Story ID: CLI.035
+- [ ] Enabler
+### Title: Expand query stake-address-info to show deposits and vote delegation.
+### User Story
+ - As an ada holder,<br>I want to query my stake address information so that I can learn to which pool and drep Im delegating to and the value in lovelace of my deposits for delegating and for submitting governance actions.
+### Functional Requirements
+|Requirements|Acceptance Criteria|
+|:----|:----|
+| Expand the command query stake-address-info to return the drep id of the DRep that the stake credential is delegated to and the value of the existing deposits. | The command returns:<br><br>Stake-address<br>Rewards account balance<br>Stake pool it is delegated to (stakeDelegation), null if it isn’t<br>Drep it is delegated to (voteDelegation), null if it isn’t<br>Stake key deposit<br>Cumulative governance action deposits |
+
+## User Story ID:  CLI.036
+- [ ] Enabler
+### Title: (WIP) Scripts as DRep
+### User Story
+As an ada holder I want to register a native or a plutus script as a DRep.
 ### Functional requirements
-### Acceptance Criteria
+|Requirements|Acceptance Criteria|
+|:----|:----|
+|  |  |
+|  |  |
+|  |  |
+|  |  |
+|  |  |
 
 
 # SMART CONTRACTS
