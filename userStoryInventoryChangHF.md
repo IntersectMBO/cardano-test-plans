@@ -78,57 +78,13 @@ This section shows the areas or sources thus far
 | Change my DRep delegation
 <br>
 <br>
- | Given that I am I am already delegated to a DRep<br>When I look at the dashboard <br>GovTool will know that I am delegated and it will invite me to “change my delegation” rather than to delegate. |
-|  | Given that I am already delegated <br>When I go to change my delegation<br>I can delegate to any registered DRep, If I am delegated to myself then the option to “delegate to myself” will not be shown, If I am delegated to a specific predefined DRep then this predefined option will not be shown. |
-| Check the validity of a DRep ID | Given that I have selected the “delegate to a DRep ID” option in the delegation user journey.<br>When I enter anything in the DRep ID input box that is not a registered DRep ID. <br>Then I will not be able to delegate to this DRep ID and will get a warning message. |
-| Delegate to Abstain | Given that I am a DRep <br>When I delegate using the “delegate to abstain” feature <br>Then it will only delegate my own lovelace’s voting power to Abstain and NOT the voting power (if any) that has been delegated to me by others.  I will be notified that my delegation transaction was sent. |
-|  | Given that I am not a DRep<br>When I delegate using the “delegate to abstain” feature <br>Then it will delegate any voting power I have to Abstain. I will be notified that my delegation transaction was sent |
-| Delegate to No-Confidence | Given that I am a DRep <br>When I delegate using the “delegate to no-confidence” feature <br>Then it will only delegate my own lovelace’s voting power to No-Confidence and NOT the voting power (if any) that has been delegated to me by others.  I will be notified that my delegation transaction was sent. |
-|  | Given that I am not a DRep<br>When I delegate using the “delegate to no-confidence” feature <br>Then it will delegate any voting power I have to No-Confi. I will be notified that my delegation transaction was sent |
-
-
-
-
-## User Story ID: VO2
-- [ ] Enabler
-### Title: As an Ada Holder I want to delegate my voting power to a DRep so that I can claim my staking rewards
-### User Story
- - As an Ada Holder I want to delegate my voting power to a DRep so that I can claim my staking rewards
-### Functional Requirements
-|Requirements|Acceptance Criteria|
-|:----|:----|
-| Delegate to DRep ID | Given that I have my wallet connected, and I am on the Delegate to DRep page
-<br>When I select the delegate to DRep ID option and I enter a DRep ID which has not been registered and I press delegate
-<br>Then I will be presented with an error message explaining that the DRep ID was not found |
-|  | Given that I have my wallet connected, and I am on the delegate to DRep page,<br>When I choose the Delegate to DRep ID option and I enter a registered DRep ID and I press the Delegate button <br>Then I am able to delegate to that DRep ID via my connected wallet |
-|  | Given that I have connected to GovTool with zero* ADA (or tADA in the case of SanchoNet)<br>When I choose the Delegate to DRep ID option and I enter a registered DRep ID and I press the Delegate button <br>Then I am presented with a warning message and cannot proceed with delegation. <br>*or at least a number below transaction costs |
-| Access Delegate to DRep page | Given that I do not have a compatible wallet connected to GovTool
-<br>When I attempt to visit the URL of the Delegate to DRep page
-<br>Then I am redirected to the homepage |
-|  | Given that I  have a compatible wallet connected to GovTool and I am looking at the dashboard
-<br>When I click on the the Delegate button (or Change Delegation button if you are already registered) 
-<br>Then I am shown the Delegate to DRep page |
-| Verify DRep behaviour in connected state 
-<br>
-<br> | Given that I'm not connected to the wallet
-<br>When I visit the DRep delegation page, and I click the delegate-connect-wallet-button
-<br>Then the connect your wallet-modal is visible |
-| Verify DRep behaviour in disconnected state
-<br>
-<br> | Given that I have a preset DdRep wallet loaded<br>Then Delegate button is clicked<br>Then it is expected that delegation options card is visible<br>delegate to myself is expected to be visible<br>Then Other options is clicked<br>Expect that signal no confidence card and vote abstain cards are visible <br>Next, delegate to dRep card is clicked, followed by next step button<br>Then expected that dRep ID input is visible along with delegate button |
-| Delegate to myself | Given that I am a registered DRep who is connected to GovTool with my wallet, and I am on the Delegate to DRep page <br>When I choose the Delegate to DRep ID option and I enter my own DRep ID and I press the Delegate button <br>Then I am able to delegate to myself via my connected wallet |
-|  | Given that I am a registered DRep who is connected to GovTool with my wallet, and I am on the Delegate to DRep page <br>When I select the Delegate to Myself option and press the Delegate button <br>Then I will be able to send a transaction to delegate to myself via my wallet |
-|  | Given that I am not a registered DRep, and I am connected to GovTool with my wallet,<br>When I am on the Delegate to DRep page<br>I cannot see a Delegate to Myself option |
-| Change my DRep delegation
-<br>
-<br>
- | Given that I am I am already delegated to a DRep<br>When I look at the dashboard <br>GovTool will know that I am delegated and it will invite me to “change my delegation” rather than to delegate. |
-|  | Given that I am already delegated <br>When I go to change my delegation<br>I can delegate to any registered DRep, If I am delegated to myself then the option to “delegate to myself” will not be shown, If I am delegated to a specific predefined DRep then this predefined option will not be shown. |
-| Check the validity of a DRep ID | Given that I have selected the “delegate to a DRep ID” option in the delegation user journey.<br>When I enter anything in the DRep ID input box that is not a registered DRep ID. <br>Then I will not be able to delegate to this DRep ID and will get a warning message. |
-| Delegate to Abstain | Given that I am a DRep <br>When I delegate using the “delegate to abstain” feature <br>Then it will only delegate my own lovelace’s voting power to Abstain and NOT the voting power (if any) that has been delegated to me by others.  I will be notified that my delegation transaction was sent. |
-|  | Given that I am not a DRep<br>When I delegate using the “delegate to abstain” feature <br>Then it will delegate any voting power I have to Abstain. I will be notified that my delegation transaction was sent |
-| Delegate to No-Confidence | Given that I am a DRep <br>When I delegate using the “delegate to no-confidence” feature <br>Then it will only delegate my own lovelace’s voting power to No-Confidence and NOT the voting power (if any) that has been delegated to me by others.  I will be notified that my delegation transaction was sent. |
-|  | Given that I am not a DRep<br>When I delegate using the “delegate to no-confidence” feature <br>Then it will delegate any voting power I have to No-Confi. I will be notified that my delegation transaction was sent |
+ | Given that I am I am already delegated to a DRep<br>When I look at the dashboard <br>GovTool will know that I am delegated and it will invite me to "change my delegation" rather than to delegate. |
+|  | Given that I am already delegated <br>When I go to change my delegation<br>I can delegate to any registered DRep, If I am delegated to myself then the option to "delegate to myself" will not be shown, If I am delegated to a specific predefined DRep then this predefined option will not be shown. |
+| Check the validity of a DRep ID | Given that I have selected the "delegate to a DRep ID" option in the delegation user journey.<br>When I enter anything in the DRep ID input box that is not a registered DRep ID. <br>Then I will not be able to delegate to this DRep ID and will get a warning message. |
+| Delegate to Abstain | Given that I am a DRep <br>When I delegate using the "delegate to abstain" feature <br>Then it will only delegate my own lovelace's voting power to Abstain and NOT the voting power (if any) that has been delegated to me by others.  I will be notified that my delegation transaction was sent. |
+|  | Given that I am not a DRep<br>When I delegate using the "delegate to abstain" feature <br>Then it will delegate any voting power I have to Abstain. I will be notified that my delegation transaction was sent |
+| Delegate to No-Confidence | Given that I am a DRep <br>When I delegate using the "delegate to no-confidence" feature <br>Then it will only delegate my own lovelace's voting power to No-Confidence and NOT the voting power (if any) that has been delegated to me by others.  I will be notified that my delegation transaction was sent. |
+|  | Given that I am not a DRep<br>When I delegate using the "delegate to no-confidence" feature <br>Then it will delegate any voting power I have to No-Confi. I will be notified that my delegation transaction was sent |
 
 # CIP-1694
 
