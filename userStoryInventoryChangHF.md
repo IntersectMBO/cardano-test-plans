@@ -362,11 +362,11 @@ so that I can be proposed for the Committee in a Governance action
 | The feature implementation includes a new command: `cardano-cli conway governance committee key-gen-cold`    | Running `cardano-cli conway governance committee key-gen-cold` with accepted input parameters generates a COLD key pair. If a parameter or the command format is incorrect an error is raised    |
 | Includes a corresponding CLI usage  describing the feature, how to use it and the types of the inputs and outputs.   | Running `cardano-cli conway governance committee key-gen-cold —-help` displays command usage page.    |
 | The command must accept two flags to be consistent with similar commands:  <br>`--cold-verification-key-file`<br>`--cold-signing-key-file`  |  Running `cardano-cli conway governance committee key-gen-cold` with accepted input parameters generates a COLD key pair. If a parameter or the command format is incorrect an error is raised    |
-| The generated key pair must be stored in the specified files:<ul><li>the verification key is saved in the file specified by `--cold-verification-key-file`</li><li>the signing key saved in the file specified by `--cold-signing-key-file`</li></ul>|Both flags are mandatory and each produces the corresponding verification or signing key file.|
+| The generated key pair must be stored in the specified files:<br>- the verification key is saved in the file specified by `--cold-verification-key-file`<br> - the signing key saved in the file specified by `--cold-signing-key-file`|Both flags are mandatory and each produces the corresponding verification or signing key file.|
 | Given that the user specifies a valid path and file name, then the keys are saved on that file and location.|
 | The generated keys adhere to text envelope format used for other artifacts, and contains the fields Type, Description and cborHex.|Given that the cli has created the verification and signing keys, then these conform to the text envelope format used  consisting of a json object with `type`, `description` and `cborHex` fields.|
-| The signing key text envelope contains the correct type and description <ul><li>Type: "ConstitutionalCommitteeColdSigningKey_ed25519"</li><li>Description: "Constitutional Committee Cold Signing Key"</li></ul>|Given that the signing key is saved on a text envelope format, the type and description fields are: <ul><li>Type: "ConstitutionalCommitteeColdSigningKey_ed25519"</li><li>Description: "Constitutional Committee Cold Signing Key"</li></ul>|
-| The verification key text envelope has: <ul><li>Type: "CConstitutionalCommitteeColdVerificationKey_ed25519"<br>Description: "Constitutional Committee Cold Verification Key"</li></ul>|Given the user has *not* inputted either `--cold-verification-key-file` OR `--cold-signing-key-file`, then the command fails and returns an error to the users informing them to fill those parameters in. The error message should prompt the user to consult the command usage (--help)|
+| The signing key text envelope contains the correct type and description <br>- Type: "ConstitutionalCommitteeColdSigningKey_ed25519"<br>- Description: "Constitutional Committee Cold Signing Key"|Given that the signing key is saved on a text envelope format, the type and description fields are: <br>- Type: "ConstitutionalCommitteeColdSigningKey_ed25519"<br>- Description: "Constitutional Committee Cold Signing Key"
+| The verification key text envelope has: <br>- Type: "CConstitutionalCommitteeColdVerificationKey_ed25519"<br>- Description: "Constitutional Committee Cold Verification Key"|Given the user has *not* inputted either `--cold-verification-key-file` OR `--cold-signing-key-file`, then the command fails and returns an error to the users informing them to fill those parameters in. The error message should prompt the user to consult the command usage (--help)|
 | Failing to provide a file name for any of `--cold-verification-key-file` `--cold-signing-key-file` returns an appropriate error message.|Given the user has inputted *wrong* `--cold-verification-key-file` OR `--cold-signing-key-file`, then the command fails and returns an error to the users informing them that the supplied files do not match the expected type.|
 
 
@@ -385,11 +385,11 @@ So that I can authorize the Hot key to sign votes on behalf of the Cold key.
 |:----|:----|
 | The feature implementation includes a new command `cardano-cli conway governance committee key-gen-hot`|Running `cardano-cli conway governance committee key-gen-hot` command with all the required and correct parameters then the command is executed successfully and a HOT key pair is generated.  If an argument or the command format is incorrect an error is raised.|
 | Running `cardano-cli conway governance committee key-gen-hot —-help` displays command usage page.
-| The command must accept two flags <ul><li>`--verification-key-file`</li><li>`--signing-key-file`</li></ul>|Running `cardano-cli conway governance committee key-gen-hot` displays command usage.|
-| The generated key pair must be saved in the specified files:<ul><li>The verification key saved in the file specified by `--verification-key-file`</li><li>The signing key saved in the file specified by  `--signing-key-file`</li></ul>|Both `--verification-key-file` and `--signing-key-file` are mandatory and each produces the corresponding verification or signing key file.|
+| The command must accept two flags <br> `--verification-key-file`<br> `--signing-key-file`|Running `cardano-cli conway governance committee key-gen-hot` displays command usage.|
+| The generated key pair must be saved in the specified files: <br>- The verification key saved in the file specified by `--verification-key-file`<br>- The signing key saved in the file specified by  `--signing-key-file`|Both `--verification-key-file` and `--signing-key-file` are mandatory and each produces the corresponding verification or signing key file.|
 | The generated keys must adhere to text envelope format used for other artifacts and contains the fields Type, Description and cborHex.|Given that the user specifies a valid path and file name, then the keys are saved on that file and location.|
-| The signing key text envelope contains the correct type, description, and cborHex values.<ul><li>Type: "ConstitutionalCommitteeColdSigningKey_ed25519"</li><li>Description: "Constitutional Committee Cold Signing Key"</li></ul>|Given that the cli has created the verification and signing keys, then these conform to the text envelope format consisting of a json object with `type`, `description` and `cborHex` fields.|
-| The verification key text envelope has: <ul><li> Type:  "CConstitutionalCommitteeColdVerificationKey_ed25519" </li><li>Description: "Constitutional Committee Cold Verification Key" </li></ul>|Given that the verification key is saved on a text envelope format, the type and description fields are: <ul><li> Type: "CConstitutionalCommitteeColdVerificationKey_ed25519" </li><li> Description: "Constitutional Committee Cold Verification Key" </li></ul>|
+| The signing key text envelope contains the correct type, description, and cborHex values.<br>- Type: "ConstitutionalCommitteeColdSigningKey_ed25519"<br>- Description: "Constitutional Committee Cold Signing Key"|Given that the cli has created the verification and signing keys, then these conform to the text envelope format consisting of a json object with `type`, `description` and `cborHex` fields.|
+| The verification key text envelope has: <br>-  Type:  "CConstitutionalCommitteeColdVerificationKey_ed25519" <br>- Description: "Constitutional Committee Cold Verification Key" |Given that the verification key is saved on a text envelope format, the type and description fields are: <br>- Type: "CConstitutionalCommitteeColdVerificationKey_ed25519" <br>- Description: "Constitutional Committee Cold Verification Key" |
 | Failing to provide a file name for any of the flags `--verification-key-file` `--signing-key-file` returns an appropriate error message.|Given the user has not inputted either `--verification-key-file` OR `--signing-key-file`, then the command fails and returns an error.|
 
 
@@ -405,7 +405,7 @@ so that I can sign votes using the hot key and keep the cold key in cold storage
 | Requirements  | Acceptance Criteria  |
 |:----|:----|
 | The feature implementation should include a new command `cardano-cli conway governance committee create-hot-key-authorization-certificate`| Running `cardano-cli conway governance committee create-hot-key-authorization-certificate` with accepted input parameters generates a hot key authorization certificate. If a parameter or the command format is incorrect an error is raised |
-| Includes the necessary flags to obtain cold and hot credentials.| The command allows passing credentials as follows <ul><li> Cold verification key <- string </li><li> Cold verification key file <- file </li><li> Cold verification key hash <- string </li><li> Hot verification key <- string </li><li> Hot verification key file <- file </li><li> Hot verification key hash <- string </li></ul> |
+| Includes the necessary flags to obtain cold and hot credentials.| The command allows passing credentials as follows <br>-  Cold verification key <- string <br>-  Cold verification key file <- file <br>-  Cold verification key hash <- string <br>-  Hot verification key <- string <br>-  Hot verification key file <- file <br>-  Hot verification key hash <- string  |
 | Running the command with the appropriate flags should generate a hot key authorization certificate and be saved in the specified output file.| Given that the user specifies a valid path and file name, then the command produces a Cold to Hot authorization certificate on the right location and name.  |
 | The hot key authorization certificate follows the text envelope format of other existing certificates, including the type, description, and CBOR hex fields| Given that the authorization certificate is saved, then it is in a text envelope format consisting of a json object with type, description and cbor hex field ```json { "type": "CertificateConway", "description": "Constitutional Committee Hot Key Authorization Certificate", "cborHex": ""}```
 | The certificate must comply with the cddl: `auth_committee_hot_cert = (14, committee_cold_credential, committee_hot_credential)`| Generates a authorization certificate compliant with the conway cddl.   `auth_committee_hot_cert = (14, committee_cold_credential, committee_hot_credential)`  |
@@ -527,73 +527,43 @@ and retrieve my DRep deposit.
 | The feature implementation should be well-documented, providing clear usage instructions. | Running `cardano-cli conway governance drep retirement-certificate --help` displays the command usage page.|
 | Handles errors gracefully and provides helpful error messages when required options are missing or invalid inputs are provided. | If any required input parameter is missing or incorrect, the command raise an error indicating the missing or incorrect parameter.|
 
-## User Story ID:  CLI.012
+## User Story ID: CLI.012
 - [ ] Enabler
 ### Title: DRep Metadata Hash Generation
 ### User Story
-As a DRep,<br>
-I want to generate the hash of my DRep metadata, <br>
-so that I can supply it when registering as a DRep.
+ - As a DRep,<br>I want to generate the hash of my DRep metadata,<br>so that I can supply it when registering as a DRep.
+### Functional Requirements
+|Requirements|Acceptance Criteria|
+|:----|:----|
+| The command is implemented as `cardano-cli conway governance drep metadata-hash`. | Running `cardano-cli conway governance drep metadata-hash` successfully generates the blake2b 256 hash of the specified DRep metadata file. |
+| Calculates the blake2b 256 hash of the file supplied by the user.<br> |  The command requires the user to provide the DRep metadata file using the `--drep-metadata-file FILE` option. |
+| Requires the `--drep-metadata-file FILE` option to specify the file containing the DRep metadata. | The command allows users to use the optional `--out-file FILE` option to save the calculated metadata hash to the specified file. If not used, the hash is printed to stdout. |
+| Supports the `--out-file FILE` option (optional) to enable users to save the calculated metadata hash to the specified file. If the flag is not used, the hash is printed to stdout. | Running `cardano-cli conway governance drep metadata-hash --help` displays the command usage page. |
+| The command handles errors gracefully and provides helpful error messages when required options are missing or invalid inputs are provided. | If any required input parameter is missing or incorrect, the command raises an error indicating the missing or incorrect parameter. |
+| The feature implementation should be well-documented, providing clear usage instructions. | Running `cardano-cli conway governance drep metadata-hash --help` displays the command usage page. |
 
-### Functional requirements
-- The command is implemented as `cardano-cli conway governance drep metadata-hash`.
-- Calculates the blake2b 256 hash of the file supplied by the user.
-- Requires the `--drep-metadata-file FILE` option to specify the file containing the DRep metadata.
-- Supports the `--out-file FILE` option (optional) to enable users to save the calculated metadata hash to the specified file. If the flag is not used, the hash is printed to stdout.
-- The command handles errors gracefully and provides helpful error messages when required options are missing or invalid inputs are provided.
 
-### Acceptance Criteria
-- Running `cardano-cli conway governance drep metadata-hash` successfully generates the blake2b 256 hash of the specified DRep metadata file.
-- The command requires the user to provide the DRep metadata file using the `--drep-metadata-file FILE` option.
-- The command allows users to use the optional `--out-file FILE` option to save the calculated metadata hash to the specified file. If not used, the hash is printed to stdout.
-- Running `cardano-cli conway governance drep metadata-hash --help` displays the command usage page.
-- If any required input parameter is missing or incorrect, the command raises an error indicating the missing or incorrect parameter.
-
-## User Story ID:  CLI.013
+## User Story ID: CLI.013
 - [ ] Enabler
 ### Title: Create Update Constitution Governance Action
 ### User Story
-As an ADA holder,<br>
-I want to create a governance action that updates the constitution,<br>
-so that it can be submitted to the chain and be voted on by the governance bodies.
+ - As an ADA holder,<br>I want to create a governance action that updates the constitution,<br>so that it can be submitted to the chain and be voted on by the governance bodies.
+### Functional Requirements
+|Requirements|Acceptance Criteria|
+|:----|:----|
+| The command is implemented as `cardano-cli conway governance action create-constitution`. | Running `cardano-cli conway governance action create-constitution` successfully creates a governance action for updating the constitution. |
+| Requires the user to specify the target network for which the governance action is created. | The command requires the user to specify the target network using either `--mainnet` or `--testnet-magic NATURAL`. |
+| Requires the user to provide the deposit amount for submitting governance actions via the flag `--governance-action-deposit`. | The command prompts the user to provide the deposit amount for submitting governance actions via the flag `--governance-action-deposit`.<br>    - The deposit amount must match the original deposit when registering the governance action but is only checked when submitting the transaction. |
+| Requires the user to provide the stake credential that will receive the deposit return when the action is enacted/expired. It accepts: | The user provides the deposit return stake credential using one of the following options:<br>    - `--deposit-return-stake-verification-key STRING`<br>    - `--deposit-return-stake-verification-key-file FILE` to specify the file containing the deposit return stake verification key. |
+|  | `--deposit-return-stake-key-hash HASH` to directly specify the deposit return stake key hash as a string. |
+| Allows the user to provide the transaction ID and index of the previously enacted action of this type. These flags are optional, but if one is used, the other one must be used too, to support the very first action of this type on the system that does not require information about previously enacted actions. The flags are:<br>  - `--prev-governance-action-tx-id`<br>  - `--prev-governance-action-index` | The optional flags `--prev-governance-action-tx-id` and `--prev-governance-action-index`are available to support the very first action of this type on the system, which does not require information about previously enacted actions. |
+| Asks the user to provide a mandatory anchor (URL/hash) of the proposal, a document where the proposer exposes the reasoning behind the proposed change. | The user provides an anchor (URL/hash) of the proposal document the following options:<br>    - `--anchor-url`<br>    - `--anchor-data-hash` |
+| Requires the user to provide an anchor of the new constitution |  The user provides an anchor (URL/hash) of the new constitution the following options:<br>    - `--constitution-url`<br>    - `--constitution-hash` |
+| The command has a flag to specify the path where the output file will be saved. | The `--out-file` flag is available to specify the file where the generated governance action (proposal) will be saved. |
+| The generated governance action complies with the Conway CDDL, where:<br>    - proposal_procedure = [ deposit : coin, reward_account, gov_action, anchor ]<br>    -  new_constitution = (5, gov_action_id / null, constitution)<br>    -  constitution = [ anchor, scripthash / null ] | The generated governance action complies with the Conway CDDL:<br>    - proposal_procedure = [ deposit : coin, reward_account, gov_action, anchor ]<br>    - new_constitution = (5, gov_action_id / null, constitution)<br>    - constitution = [ anchor, scripthash / null ] |
+| The command handles errors gracefully and provides helpful error messages when required options are missing or invalid inputs are provided. | If any required input parameter is missing or incorrect, the command raises an error indicating the missing or incorrect parameter. |
+| The feature implementation should be well-documented, providing clear usage instructions. | Running `cardano-cli conway governance drep metadata-hash --help` displays the command usage page. |
 
-### Functional requirements
-- The command is implemented as `cardano-cli conway governance action create-constitution`.
-- Requires the user to specify the target network for which the governance action is created.
-- Requires the user to provide the deposit amount for submitting governance actions via the flag `--governance-action-deposit`.
-- Requires the user to provide the stake credential that will receive the deposit return when the action is enacted/expired. It accepts:
-- Allows the user to provide the transaction ID and index of the previously enacted action of this type. These flags are optional, but if one is used, the other one must be used too, to support the very first action of this type on the system that does not require information about previously enacted actions. The flags are:
-  - `--prev-governance-action-tx-id`
-  - `--prev-governance-action-index`
-- Asks the user to provide a mandatory anchor (URL/hash) of the proposal, a document where the proposer exposes the reasoning behind the proposed change.
-- Requires the user to provide an anchor (URL/
-- The command has a flag to specify the path where the output file will be saved.
-- The generated governance action complies with the Conway CDDL, where:
-    - proposal_procedure = [ deposit : coin, reward_account, gov_action, anchor ]
-    -  new_constitution = (5, gov_action_id / null, constitution)
-    -  constitution = [ anchor, scripthash / null ]
-
-### Acceptance Criteria
-- Running `cardano-cli conway governance action create-constitution` successfully creates a governance action for updating the constitution.
-- The command requires the user to specify the target network using either `--mainnet` or `--testnet-magic NATURAL`.
-- The command prompts the user to provide the deposit amount for submitting governance actions via the flag `--governance-action-deposit`.
-    - The deposit amount must match the original deposit when registering the governance action but is only checked when submitting the transaction.
-- The user provides the deposit return stake credential using one of the following options:
-    - `--deposit-return-stake-verification-key STRING`
-    - `--deposit-return-stake-verification-key-file FILE` to specify the file containing the deposit return stake verification key.
-    - `--deposit-return-stake-key-hash HASH` to directly specify the deposit return stake key hash as a string.
-- The optional flags `--prev-governance-action-tx-id` and `--prev-governance-action-index`are available to support the very first action of this type on the system, which does not require information about previously enacted actions.
-- The user provides an anchor (URL/hash) of the proposal document the following options:
-    - `--anchor-url`
-    - `--anchor-data-hash`
-- The user provides an anchor (URL/hash) of the new constitution the following options:
-    - `--constitution-url`
-    - `--constitution-hash`
-- The `--out-file` flag is available to specify the file where the generated governance action (proposal) will be saved.
-- The generated governance action complies with the Conway CDDL:
-    - proposal_procedure = [ deposit : coin, reward_account, gov_action, anchor ]
-    - new_constitution = (5, gov_action_id / null, constitution)
-    - constitution = [ anchor, scripthash / null ]
 
 ## User Story ID:  CLI.014
 - [ ] Enabler
@@ -609,14 +579,13 @@ so that it can be submitted to the chain and be voted on by the governance bodie
 | The command is implemented as `cardano-cli conway governance action create-constitutional-committee`. | Running `cardano-cli conway governance action create-constitutional-committee` successfully creates a governance action for updating the constitutional committee.
 | Requires the user to specify the target network for which the governance action is created. | The command requires the user to specify the target network using either `--mainnet` or `--testnet-magic NATURAL`.
 | Requires the user to provide the deposit amount for submitting governance actions via the flag `--governance-action-deposit`. | The command prompts the user to provide the deposit amount for submitting governance actions via the flag `--governance-action-deposit`.
-| Requires the user to provide the stake credential that will receive the deposit return when the action is enacted/expired. It accepts: | The user provides the deposit return stake credential using one of the following options:<ul><li> `--deposit-return-stake-verification-key STRING`</li><li> `--deposit-return-stake-verification-key-file FILE` to specify the file containing the deposit return stake verification key.</li><li> `--deposit-return-stake-key-hash HASH` to directly specify the deposit return stake key hash as a string.</li></ul>
-| Allows the user to provide the transaction ID and index of the previously enacted action of this type. These flags are optional, but if one is used, the other one must be used too, to support the very first action of this type on the system that does not require information about previously enacted actions. The flags are:<ul><li>`--prev-governance-action-tx-id`</li><li>  `--prev-governance-action-index`</li></ul>  |  |
-| Asks the user to provide a mandatory anchor (URL/hash) of the proposal, a document where the proposer exposes the reasoning behind the proposed change.  | The user provides an anchor (URL/hash) of the proposal document using the following flags:<ul><li> `--anchor-url`</li><li> `--anchor-data-hash`</li></ul>
-| The command offers the option to remove many constitutional committee members, it accepts:<ul><li>Cold verification key <- string</li><li>  Cold verification key file <- file</li> <li>  Cold verification key hash <- string</li></ul>  | The command offers the option to remove many constitutional committee members, it accepts any of: <ul><li> `--remove-cc-cold-verification-key-hash`</li><li> `--remove-cc-cold-verification-key`</li><li> `--remove-cc-cold-verification-key-file`</li></ul>
-| The command offers the option to add many constitutional committee members, it accepts<ul><li> Cold verification key <- string</li><li>  Cold verification key file <- file</li><li>  Cold verification key hash <- string</li></ul><li>  When adding a new member, the command requires the user to also provide a term in epochs for each new member  |  The command offers the option to add many constitutional committee members, it acceptw any of:<ul><li> `--add-cc-cold-verification-key`</li><li> `--add-cc-cold-verification-key-file`</li><li>  `--add-cc-cold-verification-key-hash`</li></ul><br>- When adding a new member, the command requires the user to also provide a term for each new member using the flag `--epoch`.
-| The command allows proposing a new quorum threshold:<ul><li> When adding members</li><li>  When removing members</li><li>  As a standalone action (no adds or removals)</li></ul>  | The command allows proposing a new quorum threshold:<ul><li> When adding members</li><li>  When removing members</li><li>  As a standalone action (no adds or removals)</li></ul>
+| Requires the user to provide the stake credential that will receive the deposit return when the action is enacted/expired. It accepts: | The user provides the deposit return stake credential using one of the following options:<br>  `--deposit-return-stake-verification-key STRING`<br>  `--deposit-return-stake-verification-key-file FILE` to specify the file containing the deposit return stake verification key.<br> `--deposit-return-stake-key-hash HASH` to directly specify the deposit return stake key hash as a string.
+| Allows the user to provide the transaction ID and index of the previously enacted action of this type. These flags are optional, but if one is used, the other one must be used too, to support the very first action of this type on the system that does not require information about previously enacted actions. The flags are:<br> `--prev-governance-action-tx-id`<br>  `--prev-governance-action-index`  |  |
+| Asks the user to provide a mandatory anchor (URL/hash) of the proposal, a document where the proposer exposes the reasoning behind the proposed change.  | The user provides an anchor (URL/hash) of the proposal document using the following flags:<br> `--anchor-url`<br> `--anchor-data-hash`| The command offers the option to remove many constitutional committee members, it accepts:<br>- Cold verification key <- string<br>-   Cold verification key file <- file<br>- Cold verification key hash <- string  | The command offers the option to remove many constitutional committee members, it accepts any of: <br> `--remove-cc-cold-verification-key-hash`<br> `--remove-cc-cold-verification-key`<br> `--remove-cc-cold-verification-key-file`
+| The command offers the option to add many constitutional committee members, it accepts<br>-  Cold verification key <- string<br>-   Cold verification key file <- file<br>- Cold verification key hash <- string<br>- When adding a new member, the command requires the user to also provide a term in epochs for each new member  |  The command offers the option to add many constitutional committee members, it acceptw any of:<br> `--add-cc-cold-verification-key`<br> `--add-cc-cold-verification-key-file`<br> `--add-cc-cold-verification-key-hash`<br>- When adding a new member, the command requires the user to also provide a term for each new member using the flag `--epoch`.
+| The command allows proposing a new quorum threshold:<br>-  When adding members<br>-   When removing members<br>-  As a standalone action (no adds or removals)  | The command allows proposing a new quorum threshold:<br>-  When adding members<br>-  When removing members<br>- As a standalone action (no adds or removals)
 | Flag to specify where the generated governance action (proposal) will be saved.  | The `--out-file` flag is available to specify the file where the generated governance action (proposal) will be saved.
-| The generated governance action complies with the Conway CDDL:<ul><li> proposal_procedure = [ deposit : coin, reward_account, gov_action, anchor ]</li><li>  update_committee = (4, gov_action_id / null, set<committee_cold_credential>, { committee_cold_credential => epoch }, unit_interval) </li></ul>  |  The generated governance action complies with the Conway CDDL:<ul><li> proposal_procedure = [ deposit : coin, reward_account, gov_action, anchor ]</li><li> update_committee = (4, gov_action_id / null, set<committee_cold_credential>, { committee_cold_credential => epoch }, unit_interval)</li></ul>
+| The generated governance action complies with the Conway CDDL:<br>  `proposal_procedure = [ deposit : coin, reward_account, gov_action, anchor ]`<br>  `update_committee = (4, gov_action_id / null, set<committee_cold_credential>, { committee_cold_credential => epoch }, unit_interval)` |  The generated governance action complies with the Conway CDDL:<br> ` proposal_procedure = [ deposit : coin, reward_account, gov_action, anchor ]`<br>`update_committee = (4, gov_action_id / null, set<committee_cold_credential>, { committee_cold_credential => epoch }, unit_interval)`
 | Documentation should be provided, including a corresponding CLI usage, describing the feature, its purpose, and how to use it, along with the expected types of inputs and outputs.  | Running `cardano-cli conway governance action create-constitutional-committee --help` displays the command usage page.<br>- If any required input parameter is missing or incorrect, the command raise an error indicating the missing or incorrect parameter.
 
 
@@ -635,12 +604,12 @@ so that it can be submitted to the chain and be voted on by the governance bodie
 | The command is implemented as `cardano-cli conway governance action create-treasury-withdrawal`. | Running `cardano-cli conway governance action create-treasury-withdrawal` successfully creates a governance action for withdrawing funds from the treasury.
 | Requires the user to specify the target network for which the governance action is created using either `--mainnet` or `--testnet-magic NATURAL`. | The command requires the user to specify the target network using either `--mainnet` or `--testnet-magic NATURAL`.
 | Requires the user to provide the deposit amount for submitting governance actions via the flag `--governance-action-deposit`. | The command prompts the user to provide the deposit amount for submitting governance actions via the flag `--governance-action-deposit`.
-| Requires the user to provide the stake credential that will receive the deposit return when the action is enacted/expired. | The user provides the deposit return stake credential using one of the following options:<ul><li> `--deposit-return-stake-verification-key STRING`</li><li> `--deposit-return-stake-verification-key-file FILE`</li><li> `--deposit-return-stake-key-hash HASH`</li></ul><br>Using one of these is mandatory
-| Requires the user to provide an anchor (URL/hash) | The user provides an anchor (URL/hash) of the proposal document using the following flags:<ul><li>`--anchor-url`</li><li> `--anchor-data-hash`</li></ul>
-| Requires the user to provide the stake credential that will receive the funds if the governance action is ratified. | The user provides the stake credential that will receive the funds if the governance action is ratified using one of the following options:<ul><li> `--funds-receiving-stake-verification-key-file FILE`</li><li>`--funds-receiving-stake-verification-key STRING`</li><li>`--funds-receiving-stake-key-hash HASH`</li></ul> Using one of these is mandatory
+| Requires the user to provide the stake credential that will receive the deposit return when the action is enacted/expired. | The user provides the deposit return stake credential using one of the following options:<br> `--deposit-return-stake-verification-key STRING`<br> `--deposit-return-stake-verification-key-file FILE`<br> `--deposit-return-stake-key-hash HASH`<br>Using one of these is mandatory
+| Requires the user to provide an anchor (URL/hash) | The user provides an anchor (URL/hash) of the proposal document using the following flags:<br>`--anchor-url`<br> `--anchor-data-hash`
+| Requires the user to provide the stake credential that will receive the funds if the governance action is ratified. | The user provides the stake credential that will receive the funds if the governance action is ratified using one of the following options:<br> `--funds-receiving-stake-verification-key-file FILE`<br>`--funds-receiving-stake-verification-key STRING`<br>`--funds-receiving-stake-key-hash HASH` <br> Using one of these is mandatory
 | Requires the user to provide the amount in lovelace that will be transferred from the treasury to the stake credential if the action is ratified. | The user can use the flag `--transfer`to specify the amount in lovelace that will be transferred from the treasury to the stake credential if the action is ratifieduse the flag
 | The command has the `--out-file` flag available to specify the file where the generated governance action (proposal) will be saved. | Given that the user specifies a valid flag, path and file name, Then the governace action is saved on that file and location. **The flag is mandatory.**
-| The generated governance action complies with the Conway CDDL | <ul><li>`proposal_procedure = [ deposit : coin, reward_account, gov_action, anchor ]`</li><li>`treasury_withdrawals_action = (2, { reward_account => coin })`</li></ul>
+| The generated governance action complies with the Conway CDDL | <br>`proposal_procedure = [ deposit : coin, reward_account, gov_action, anchor ]`<br>`treasury_withdrawals_action = (2, { reward_account => coin })`
 | Documentation should be provided, including a corresponding CLI usage, describing the feature, its purpose, and how to use it, along with the expected types of inputs and outputs. | Running cardano-cli conway governance action create-treasury-withdrawal --help displays the command usage page.<br>mIf any required input parameter is missing or incorrect, the command raise an error indicating the missing or incorrect parameter.
 
 
