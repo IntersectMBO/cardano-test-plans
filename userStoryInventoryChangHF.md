@@ -28,6 +28,33 @@ This section shows the areas or sources thus far
 
 # User Story (Voltaire, API, CIP-1694, Community et al)
 
+# VOLTAIRE 
+
+## User Story ID: VO1
+- [ ] Enabler
+### Title: As a DRep or Ada Holder I want to connect my wallet to GovTool so that I can post transactions on-chain
+### User Story
+ - As a DRep or Ada Holder I want to connect my wallet to GovTool so that I can post transactions on-chain
+### Functional Requirements
+|Requirements|Acceptance Criteria|
+|:----|:----|
+| Connect with multiple stake key wallet | Given I am on the homepage <br>And my wallet is not connected.<br>When I click the Connect Wallet button <br>And select (one of) my CIP-95 compatible wallet(s) with multiple stake keys containing more than zero ADA (or tADA for SanchoNet)<br>And select from a list which stake key I wish to connect with<br>Then the wallet will prompt me to connect and I can connect to GovTool with it on the selected stake key. |
+|  | Given I am on the homepage 
+<br>And my wallet is not connected
+<br>When I click the Connect Wallet button
+<br>Then I am not shown any non CIP-95 compatible wallets. |
+|  | Given I am on the homepage <br>And my wallet is not connected<br>When I click the Connect Wallet button and select a CIP-95 compliant, multiple stake key wallet, containing zero ADA (or tADA for SanchoNet) <br>And I select a wallet with multiple stake keys from this list<br>Ans select which stake key I wish to connect with<br>When I select a stake key <br>Then the wallet will prompt me to connect and I can connect to GovTool with it on the selected stake key. |
+| Connect with single stake key wallet | Given I am on the homepage with no wallet connected
+<br>When I click the Connect Wallet button and select a CIP-95 compliant single stake key wallet 
+<br>Then my wallet appears and I can connect with it |
+|  | Given I am on the homepage without my wallet connected<br>When I click the Connect Wallet button<br>Then I am not shown any non CIP-95 compatible wallets. |
+|  | Given I am on the homepage without my wallet connected<br>When I click the Connect Wallet button and select a CIP-95 compliant, single stake key wallet, containing zero ADA (or tADA for SanchoNet)<br>Then my wallet appears and I can connect with it |
+|  | Given I am on the homepage without my wallet connected<br>When I click the Connect Wallet button and select a CIP-95 compliant, single stake key wallet, containing more than zero ADA (or tADA for SanchoNet)<br>Then my wallet appears and I can connect with it |
+| Disconnect wallet | Given that I am on the dashboard with my wallet connected<br>If I click the Disconnect button<br>Then my wallet is disconnected from GovTool and I am redirected to the homepage |
+|  | Check the wallet is on the correct network<br>Given I am on the homepage<br>When I compare the networkId with the environment value set on the deployment for the network.<br>Then if there are exceptions raised, fail the test.<br>If no exceptions, connect the wallet to the network (pass)<br> |
+
+
+
 # CIP-1694
 
 ## User Story ID:  CIP1694.001
