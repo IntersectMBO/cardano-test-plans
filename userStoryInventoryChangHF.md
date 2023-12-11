@@ -903,7 +903,7 @@ so that it can be submitted to the chain and be voted on by the governance bodie
 | The output is a JSON showing, at least,  the following information:<br>Proposals<br>EnactState<br>DrepPulsingState | The output is in a json format so that it can be further processed programmatically. |
 | The command handles errors gracefully and provides helpful error messages when required options are missing or invalid inputs are provided. | If any required input parameter is missing or incorrect, the command raises an error indicating the missing or incorrect parameter.<br> The command requires a connection to the node, an exception is raised if there is non. |
 
-## User Story ID:  CLI.033
+## User Story ID:  CLI.032
 - [ ] Enabler
 ### Title:
 ### User Story
