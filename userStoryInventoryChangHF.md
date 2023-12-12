@@ -26,7 +26,42 @@ This section shows the areas or sources thus far
 ---
 <br>
 
+
+# PERSONAS
+| ID | NAME | DESCRIPTION |
+|:----|:----|
+|HOLDER | ADA Holder | |
+|DRep | DRep | |
+|CCM | Constitutional Community Member | |
+|SPO | Stake Pool Operator | |
+
 # User Story (Voltaire, API, CIP-1694, Community et al)
+
+# VOLTAIRE
+
+## User Story ID: VO1
+- [ ] Enabler
+### Title: As a DRep or Ada Holder I want to connect my wallet to GovTool so that I can post transactions on-chain
+### User Story
+ - As a DRep or Ada Holder I want to connect my wallet to GovTool so that I can post transactions on-chain
+### Functional Requirements
+|Requirements|Acceptance Criteria|
+|:----|:----|
+| Connect with multiple stake key wallet | Given I am on the homepage <br>And my wallet is not connected.<br>When I click the Connect Wallet button <br>And select (one of) my CIP-95 compatible wallet(s) with multiple stake keys containing more than zero ADA (or tADA for SanchoNet)<br>And select from a list which stake key I wish to connect with<br>Then the wallet will prompt me to connect and I can connect to GovTool with it on the selected stake key. |
+|  | Given I am on the homepage
+<br>And my wallet is not connected
+<br>When I click the Connect Wallet button
+<br>Then I am not shown any non CIP-95 compatible wallets. |
+|  | Given I am on the homepage <br>And my wallet is not connected<br>When I click the Connect Wallet button and select a CIP-95 compliant, multiple stake key wallet, containing zero ADA (or tADA for SanchoNet) <br>And I select a wallet with multiple stake keys from this list<br>Ans select which stake key I wish to connect with<br>When I select a stake key <br>Then the wallet will prompt me to connect and I can connect to GovTool with it on the selected stake key. |
+| Connect with single stake key wallet | Given I am on the homepage with no wallet connected
+<br>When I click the Connect Wallet button and select a CIP-95 compliant single stake key wallet
+<br>Then my wallet appears and I can connect with it |
+|  | Given I am on the homepage without my wallet connected<br>When I click the Connect Wallet button<br>Then I am not shown any non CIP-95 compatible wallets. |
+|  | Given I am on the homepage without my wallet connected<br>When I click the Connect Wallet button and select a CIP-95 compliant, single stake key wallet, containing zero ADA (or tADA for SanchoNet)<br>Then my wallet appears and I can connect with it |
+|  | Given I am on the homepage without my wallet connected<br>When I click the Connect Wallet button and select a CIP-95 compliant, single stake key wallet, containing more than zero ADA (or tADA for SanchoNet)<br>Then my wallet appears and I can connect with it |
+| Disconnect wallet | Given that I am on the dashboard with my wallet connected<br>If I click the Disconnect button<br>Then my wallet is disconnected from GovTool and I am redirected to the homepage |
+|  | Check the wallet is on the correct network<br>Given I am on the homepage<br>When I compare the networkId with the environment value set on the deployment for the network.<br>Then if there are exceptions raised, fail the test.<br>If no exceptions, connect the wallet to the network (pass)<br> |
+
 
 
 # CIP-1694
@@ -101,7 +136,7 @@ Use as many lines as needed.
 ### Link:
 
 
-## User Story ID: CH.VO.003
+## User Story ID: VO3
 - [ ] Enabler
 ### Title: As a DRep I want to register so that I can vote on governance actions
 ### User Story
@@ -146,136 +181,12 @@ Use as many lines as needed.
 
 ### Link:
 
-## User Story ID: CH.VO.005
-- [ ] Enabler
-### Title: As a DRep I want to retire so that I can reclaim my DRep Deposit
-### User Story
- - As a DRep<br>I want to retire<br>So that I can reclaim my DRep Deposit
-### Functional Requirements
-|Requirements|Acceptance Criteria|
-|:----|:----|
-| Only a user who is registered as a DRep can retire  | Given that I am not registered as a DRep, when I look for a retirement option in GovTool, then there is none.<br> |
-|  | Given that I am registered as a DRep, when I look for a retirement option in GovTool there is one. And when I choose this option, then my wallet opens and I can sign a retirement action which is registered on-chain. |
-| When I retire I get my deposit back | Given that I am a DRep, when I register a valid retirement transaction on chain, then my DRep registration deposit will be returned to me. <br> |
-| Only a user who has the wallet that they registered as a DRep with can retire. | Given that I am not connected to GovTool, when I look at the homepage, then I will not see an option to retire<br> |
-|  | Given that I am connected to GovTool with an account that is not associated with a registered DRep certificate, when I look at the homepage, then I see an option to register as a DRep<br> |
-|  | Given that I am a registered DRep with my wallet account connected, when I click the retire as a DRep option on the homepage and then send the retirement transaction with my wallet, then the blockchain will register my retirement certificate, and I will be retired. <br> |
-
-### Link:
-
-## User Story ID: CH.VO.006
-- [ ] Enabler
-### Title: As a DRep I want to update my details so that I can better advertise myself to Ada Holders 
-### User Story
- - As a DRep <br>I want to update my details <br>so that I can better advertise myself to Ada Holders 
-### Functional Requirements
-|Requirements|Acceptance Criteria|
-|:----|:----|
-| A DRep can update their registration after registering | Given that I am a DRep and am connected to GovTool and am on the dashboard, when I click the “change metadata” button on the DRep tab, then I am directed to update my metadata and can submit a DRep update certificate to register this on-chain.<br> |
-
-### Link:
-
-## User Story ID: CH.VO.007
-- [ ] Enabler
-### Title: As any user I want to view governance actions so I can see what is being proposed 
-### User Story
- - As any user <br>I want to view governance actions <br>so I can see what is being proposed
-### Functional Requirements
-|Requirements|Acceptance Criteria|
-|:----|:----|
-| Anyone should be able to access the governance actions page without a wallet connected | Given that I am on the GovTool homepage, when I click the “Governance actions” in the topbar, then I am sent to the governance actions page.|
-| I can see all live governance actions | Given that I am on the Governance Actions page, when I review the governance actions available to view on the page, then all of the non expired/ ratified/enacted governance actions.|
-| Anyone with a CIP-95 compatible wallet connected should be able to access the governance actions page | Given that I am on the GovTool dashboard, when I click the View Governance Actions tab, or “Governance actions” in the sidebar, then I am sent to the governance actions page.|
-| Should be able to see if a governance action has been accepted or rejected by the Constitutional Committee | Given that I am looking at an individual governance action, when I look at how many votes it has, then it shows the number of CC votes and whether this is acceptance/veto or neither.|
-| Should be able to view relevant information about governance actions | Given that I am on the governance action page, when I click on the “view proposal details” button of a treasury withdrawal governance action, and it opens, then I can see the amount of ADA that the proposal submitter wants to withdraw, and the address that they want to withdraw it to.|
-|  | Given that I am on the governance action page, when I click on the “view proposal details” button of a proposal parameter change governance action, then on the page that opens I can see the parameter(s) that the Proposal Submitter is proposing to change along with what the current values are, and what he wants to change them to.  |
-|  | Given that I am on the governance action page, when I click on the “view proposal details” button of a Constitutional Committee update governance action, then on the page that opens I can see the following (where applicable): <br>* Old Committee Member Cold Key Hash to be removed<br>* Float, (a rational number in the range from 0 to 1 inclusive. Of course if all you have in a tool is Floats, than that is what it will have to be)<br>* Map of committee cold key credentials that will be added to the committee with absolute epoch number number when they will expire |
-|  | Given that I am on the governance action page, when I click on the “view proposal details” button of an update to the Constitution governance action, then on the page that opens I should be able to see:<br>* The Constitution URL<br>* The Constitution hash<br>* The proposal policy script (if provided when the governance action was submitted) |
-|  | Given that I am on the governance action page, when I click on the “view proposal details” button of a hard fork initiation governance action, then on the page that opens I should be able to see:<br>* The new major protocol version |
-| The governance action as displayed should include a link to its metadata  | Given that I am reviewing the details of a specific governance action, when I click on the “view other details” link on the governance action details page, then I will be shown a warning asking if I want to continue to an external url (which will be displayed). If I continue then the external url will open in a new tab.<br> |
-| Verify the integrity of a governance action’s metadata | Given that I am looking at a governance action <br><br>Then I can see whether a hash of that governance action’s metadata matches the metadata hash included in the anchor. |
-
-### Link:
-
-## User Story ID: CH.VO.008
-- [ ] Enabler
-### Title: As a potential Constitutional Committee Member I want to become a Constitutional Committee Member so that I can vote on the corresponding governance actions
-### User Story
- - As a potential Constitutional Committee Member <br>I want to become a Constitutional Committee Member <br>so that I can vote on the corresponding governance actions
-### Functional Requirements
-|Requirements|Acceptance Criteria|
-|:----|:----|
-| Create a set of keys  | Given that I have the CLI open in front of me, when I run the corresponding command, then I can verify that I have created a new key pair |
-| Include these keys in a New Committee Cold Key Hash or Script Hash | Given that I am using CLI and I have created my set of cold keys, when I submit an action to be voted on adding the cold key hash, then I can verify that my CC credentials are recorded in the ledger |
-| Create an authorization certificate | Given that I am using CLI and I have created my set of cold/hot key pairs, when I run the corresponding command, then I can verify that the certificate is stored on-chain and it delegates rights from the cold key to the hot key |
-| Only votes from active Committee members are considered | Given that my set of keys does not correspond to an active CC member, when I try to vote as a CC member using CLI, then I can see that my vote has zero voting power because my credentials are not valid |
-
-### Link:
-
-## User Story ID: CH.VO.009
-- [ ] Enabler
-### Title: As a CC Member I want to review a governance action so that I can scrutinise whether or not it is aligned with the Constitution
-### User Story
- - As a CC Member <br>I want to review a governance action <br>so that I can scrutinise whether or not it is aligned with the Constitution
-### Functional Requirements
-|Requirements|Acceptance Criteria|
-|:----|:----|
-| Access GovTool | Given that I am on the GovTool homepage, when I click the “Governance actions” in the topbar then I am sent to the governance actions page.  |
-| See list of current governance actions | Given that I am on the Governance Actions page When I review the governance actions available to view on the page, then all of the non expired/ ratified/enacted governance actions. |
-| See details of a specific governance action | Given that I am on the Governance Actions page, When I click on an individual governance action, Then I can see the relevant information |
-| See metadata | Given that I am looking at an individual governance action page, when I click on “view other details” and I click on continue in the warning message, Then an external url will open in a new tab. |
-| Verify metadata integrity | Given that I am looking at a governance action then I can see whether a hash of that governance action’s metadata matches the metadata hash included in the anchor. |
-
-### Link:
-
-## User Story ID: CH.VO.010
-- [ ] Enabler
-### Title: As a CC Member I want to vote on a governance action so that I can approve governance actions that align with the constitution
-### User Story
- - As a CC Member <br>I want to vote on a governance action <br>so that I can approve governance actions that align with the constitution
-### Functional Requirements
-|Requirements|Acceptance Criteria|
-|:----|:----|
-| Find a specific governance action using CLI | Given that I am using CLI and I know the governance action ID, When I run the command to review a specific governance action, Then I can see the details of that individual governance action. |
-| Vote as a Constitutional Committee member using CLI | Given that I am using CLI and I know the governance action ID, When I build the transaction to vote on a governance action, Then I can specify my role (ccm), the action ID, and the intent to vote (YES/NO/ABSTAIN) |
-|  | Given that I am using CLI and I have built the transaction to vote on a specific governance action, When I run the command to sign the transaction, Then I can submit the transaction and pay the transaction costs |
-| Provide rationale for vote with a metadata anchor | Given that I am using CLI, When I am building a transaction to vote on a specific governance action, Then I can use the metadata anchor to provide a rationale for my vote |
-| Change vote | Given that I have submitted a vote on a specific governance action, When I vote again on the same governance action before the snapshot, Then I can change the intent to vote (YES/NO/ABSTAIN) |
-
-### Link:
-
-## User Story ID: CH.VO.011
-- [ ] Enabler
-### Title: As a CC Member I want to change my voting credentials so I can manage my organisation’s voting
-### User Story
- - As a CC Member <br>I want to change my voting credentials <br>so I can manage my organisation’s voting
-### Functional Requirements
-|Requirements|Acceptance Criteria|
-|:----|:----|
-| Create a new authorization certificate | Given that I am a CC member and I have enough funds to pay the transaction fees, When I create a new authorisation certificate using the same cold key, Then a new hot key is authorised to vote as a valid CC member |
-
-## User Story ID: CH.VO.012
-- [ ] Enabler
-### Title: As a CC Member I want to retire so my credentials are no longer valid
-### User Story
- - As a CC Member <br>I want to retire <br>so my credentials are no longer valid
-### Functional Requirements
-|Requirements|Acceptance Criteria|
-|:----|:----|
-| Create a resignation certificate | Given that I am a CC member and I have enough funds to pay the transaction fees, When I create a resignation certificate, Then my cold key and the derived hote keys are no longer valid to vote as a CC member |
-
-### Link:
-
-
-
-
-
 
 # CARDANO-CLI
 
 ## User Story ID:  CLI.001
 - [ ] Enabler
-### Title: Obtain constitution hash for verification
+### Title: Obtain constitution hash for verification (HOLDER)
 ### User Story
 - As an Ada holder,<br>
 I want to obtain the hash of the off-chain text of a Constitution, <br>
@@ -288,7 +199,7 @@ So that I can compare it against the hash registered on-chain to verify its auth
 
 ## User Story ID:  CLI.002
 - [ ] Enabler
-### Title: Generate hash of the off-chain constitution
+### Title: Generate hash of the off-chain constitution (HOLDER)
 ### User Story
 - As an Ada holder,<br>
 I want to generate the hash of the off-chain text for a proposed Constitution<br>
@@ -302,7 +213,7 @@ So that the hash can be utilized in a governance action.
 
 ## User Story ID:  CLI.003
 - [ ] Enabler
-### Title: Generate Committee member cold key pair
+### Title: Generate Committee member cold key pair (CCM)
 ### User Story
 - As a potential Constitutional Committee member,<br>
 I want to generate COLD key pair, <br>
@@ -326,7 +237,7 @@ so that I can be proposed for the Committee in a Governance action
 
 ## User Story ID:  CLI.004
 - [ ] Enabler
-### Title: Generate committee member hot key pair
+### Title: Generate committee member hot key pair (CCM)
 ### User Story
 - As Constitutional Committee member,<br>
 I want to generate HOT key pair,<br>
@@ -347,7 +258,7 @@ So that I can authorize the Hot key to sign votes on behalf of the Cold key.
 
 ## User Story ID:  CLI.005
 - [ ] Enabler
-### Title: Authorization certificate
+### Title: Authorization certificate (CCM)
 ### User Story
 - As a committee member,<br>
 I want to issue an authorization certificate from my cold key to a hot key,<br>
@@ -367,7 +278,7 @@ so that I can sign votes using the hot key and keep the cold key in cold storage
 
 ## User Story ID:  CLI.006
 - [ ] Enabler
-### Title: Generate committee member key hash
+### Title: Generate committee member key hash (CCM)
 ### User Story
 - As a potential constitutional committee member,<br>
 I want to generate the key hashes for my cold verification key,<br>
@@ -384,7 +295,7 @@ and for identification purposes once Ive been elected as committee member.
 
 ## User Story ID:  CLI.007
 - [ ] Enabler
-### Title: Committee member resignation certificate
+### Title: Committee member resignation certificate (CCM)
 ### User Story
 - As a constitutional committee member,<br>
 I want to be able to generate a resignation certificate,<br>
@@ -404,7 +315,7 @@ so that i can submit it to the chain on a transaction to signal to the ada holde
 
 ## User Story ID:  CLI.008
 - [ ] Enabler
-### Title: Generate Drep keys
+### Title: Generate Drep keys (HOLDER)
 ### User Story
 - As an ada holder,<br>
 I want to generate Ed25519 keys,<br>
@@ -420,7 +331,7 @@ so that I can register as a DRep.
 
 ## User Story ID:  CLI.009
 - [ ] Enabler
-### Title: Generate Drep ID
+### Title: Generate Drep ID (DRep)
 ### User Story
 - As a DRep,<br>
 I want to generate a Drep Id,<br>
@@ -439,7 +350,7 @@ and ada holders can use the DrepId to delegate their votes to me.
 
 ## User Story ID:  CLI.010
 - [ ] Enabler
-### Title: DRep Registration Certificate Generation
+### Title: DRep Registration Certificate Generation (DRep)
 ### User Story
 As a DRep,<br>
 I want to generate a DRep registration certificate,<br>
@@ -460,7 +371,7 @@ so that I can submit it in a transaction and be eligible for receiving delegatio
 
 ## User Story ID:  CLI.011
 - [ ] Enabler
-### Title: DRep Retirement Certificate Generation
+### Title: DRep Retirement Certificate Generation (DRep)
 ### User Story
 As a DRep,<br>
 I want to generate a DRep retirement (unregistration) certificate,<br>
@@ -481,7 +392,7 @@ and retrieve my DRep deposit.
 
 ## User Story ID: CLI.012
 - [ ] Enabler
-### Title: DRep Metadata Hash Generation
+### Title: DRep Metadata Hash Generation (DRep)
 ### User Story
  - As a DRep,<br>I want to generate the hash of my DRep metadata,<br>so that I can supply it when registering as a DRep.
 ### Functional Requirements
@@ -497,7 +408,7 @@ and retrieve my DRep deposit.
 
 ## User Story ID: CLI.013
 - [ ] Enabler
-### Title: Create Update Constitution Governance Action
+### Title: Create Update Constitution Governance Action (HOLDER)
 ### User Story
  - As an ADA holder,<br>I want to create a governance action that updates the constitution,<br>so that it can be submitted to the chain and be voted on by the governance bodies.
 ### Functional Requirements
@@ -519,7 +430,7 @@ and retrieve my DRep deposit.
 
 ## User Story ID:  CLI.014
 - [ ] Enabler
-### Title: Create Update Constitutional Committee Governance Action
+### Title: Create Update Constitutional Committee Governance Action (HOLDER)
 ### User Story
 As an ADA holder,<br>
 I want to create a governance action that updates the constitutional committee,<br>
@@ -543,7 +454,7 @@ so that it can be submitted to the chain and be voted on by the governance bodie
 
 ## User Story ID:  CLI.015
 - [ ] Enabler
-### Title: Create Treasury Withdrawal Governance Action
+### Title: Create Treasury Withdrawal Governance Action (HOLDER)
 ### User Story
 As an ADA holder,<br>
 I want to create a governance action to withdraw funds from the treasury,<br>
@@ -567,7 +478,7 @@ so that it can be submitted to the chain and be voted on by the governance bodie
 
 ## User Story ID: CLI.016
 - [ ] Enabler
-### Title: Create info governance action
+### Title: Create info governance action (HOLDER)
 ### User Story
  - As an ada holder<br>I want to create an info governance action<br>So that it can be submitted to the chain and be voted by the governance bodies<br>cardano-cli conway governance action create-info
 ### Functional Requirements
@@ -586,7 +497,7 @@ so that it can be submitted to the chain and be voted on by the governance bodie
 
 ## User Story ID: CLI.017
 - [ ] Enabler
-### Title: Create update protocol parameters governance action
+### Title: Create update protocol parameters governance action (HOLDER)
 ### User Story
  - As an ada holder<br>I want to create a governance action to update protocol parameters<br>So that it can be submitted to the chain and be voted by the governance bodies
 ### Functional Requirements
@@ -607,7 +518,7 @@ so that it can be submitted to the chain and be voted on by the governance bodie
 
 ## User Story ID: CLI.018
 - [ ] Enabler
-### Title: Create no-confidence governance action
+### Title: Create no-confidence governance action (HOLDER)
 ### User Story
  - As an ada holder<br>I want to create a no-confidence governance action<br>So that it can be submitted to the chain and be voted by the governance bodies
 ### Functional Requirements
@@ -627,7 +538,7 @@ so that it can be submitted to the chain and be voted on by the governance bodie
 
 ## User Story ID: CLI.019
 - [ ] Enabler
-### Title: Create Hard-fork initiation governance action
+### Title: Create Hard-fork initiation governance action (HOLDER)
 ### User Story
  - As an ada holder<br>I want to create a governance action to initiate a hardfork<br>So that it can be submitted to the chain and be voted by the governance bodies
 ### Functional Requirements
@@ -648,7 +559,7 @@ so that it can be submitted to the chain and be voted on by the governance bodie
 
 ## User Story ID: CLI.020
 - [ ] Enabler
-### Title: View governance action file
+### Title: View governance action file (HOLDER)
 ### User Story
  - As an ada holder<br>I want to inspect the contents of a governance action file <br>So that I can verify it is correct before submitting it in a transaction
 ### Functional Requirements
@@ -816,7 +727,7 @@ so that it can be submitted to the chain and be voted on by the governance bodie
 
 ## User Story ID:  CLI.031
 - [ ] Enabler
-### Title: Query governance state
+### Title: Query governance state (ANY)
 ### User Story
 - As any persona<br>I want to query the nodes for the current Governance state<br>so that I can inform my decisions.
 ### Functional requirements
@@ -830,7 +741,7 @@ so that it can be submitted to the chain and be voted on by the governance bodie
 
 ## User Story ID:  CLI.032
 - [ ] Enabler
-### Title: Query committee state
+### Title: Query committee state (CCM)
 ### User Story
 - As a CC member<br>I want to query the committee state<br>so that I can find my expiration term,<br> and whether my hot key authorization certificate has been recorded on chain correctly.
 ### Functional requirements
@@ -847,7 +758,7 @@ so that it can be submitted to the chain and be voted on by the governance bodie
 
 ## User Story ID:  CLI.033
 - [ ] Enabler
-### Title: Query DRep state
+### Title: Query DRep state (HOLDER)
 ### User Story
  - As an ada holder<br>I want to query the DRep state <br>So that I can find detailed information about registered Dreps   <br>
 ### Functional Requirements
@@ -863,7 +774,7 @@ so that it can be submitted to the chain and be voted on by the governance bodie
 
 ## User Story ID: CLI.034
 - [ ] Enabler
-### Title: Query Drep stake distribution
+### Title: Query Drep stake distribution (HOLDER)
 ### User Story
  - As an ada holder and DRep<br>I want to query the DRep stake distribution<br>So that I can find the weight (of the votes) of each DRep<br>
 ### Functional Requirements
@@ -878,7 +789,7 @@ so that it can be submitted to the chain and be voted on by the governance bodie
 
 ## User Story ID: CLI.035
 - [ ] Enabler
-### Title: Expand query stake-address-info to show deposits and vote delegation.
+### Title: Expand query stake-address-info to show deposits and vote delegation (HOLDER)
 ### User Story
  - As an ada holder,<br>I want to query my stake address information so that I can learn to which pool and drep Im delegating to and the value in lovelace of my deposits for delegating and for submitting governance actions.
 ### Functional Requirements
@@ -888,7 +799,7 @@ so that it can be submitted to the chain and be voted on by the governance bodie
 
 ## User Story ID:  CLI.036
 - [ ] Enabler
-### Title: (WIP) Scripts as DRep
+### Title: (WIP) Scripts as DRep (HOLDER)
 ### User Story
 As an ada holder I want to register a native or a plutus script as a DRep.
 ### Functional requirements
