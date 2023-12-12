@@ -28,8 +28,8 @@ This section shows the areas or sources thus far
 
 
 # PERSONAS
-| ID | NAME | DESCRIPTION |
-|:----|:----|
+|ID|NAME|DESCRIPTION|
+|----|:----|:----|
 |HOLDER | ADA Holder | |
 |DRep | DRep | |
 |CCM | Constitutional Community Member | |
