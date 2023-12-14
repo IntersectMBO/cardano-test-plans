@@ -27,7 +27,16 @@ module.exports = {
                 href: '/',
             },
             items: [
-                { to: 'docs', label: 'Cardano CIP-1694 USer Story Inventory', position: 'left' },
+                { 
+                  to: 'docs', 
+                  label: 'Cardano CIP-1694 USer Story Inventory', 
+                  position: 'left' 
+                },
+                {
+                  href: "https://github.com/input-output-hk/cardano-test-plans",
+                  label: "GitHub",
+                  position: "right"
+                }
             ],
         },
         footer: {

@@ -6,7 +6,7 @@ sidebar_position: 3
 
 We encourage contributions from the community to improve and expand the coverage of user stories and test scenarios. If you'd like to contribute, please follow these guidelines:
 
-1. Fork the repository.
+1. Fork the [repository](https://github.com/input-output-hk/cardano-test-plans)
 2. Create a new branch for your changes:
    ```bash
    git checkout -b user/user-story
