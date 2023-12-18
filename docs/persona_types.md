@@ -1,4 +1,4 @@
-# PERSONA TYPES
+# Persona Types
 |ID|NAME|DESCRIPTION|
 |----|:----|:----|
 |HOLDER | ADA Holder | Someone who owns ADA and is not another persona type, these are usually individuals who delegate their voting power to DReps|
