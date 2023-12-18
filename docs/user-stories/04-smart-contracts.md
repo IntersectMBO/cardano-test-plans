@@ -32,7 +32,7 @@ slug: /smart-contracts
 
 
 ### Link:
-User Story ID: 
+https://github.com/cardano-foundation/CIPs/tree/12c5cc59816b2fcc9daf9a77318a3ae018263367/CIP-0085
 
 ## User Story ID: CIP-101
 - [ ] Enabler
@@ -50,7 +50,7 @@ User Story ID:
 
 
 ### Link:
-User Story ID: 
+https://github.com/cardano-foundation/CIPs/tree/master/CIP-0101
 
 ## User Story ID: CIP-101
 - [ ] Enabler
@@ -85,13 +85,8 @@ User Story ID:
 |  | The end-to-end tests for the BLS12-381 builtins use a version of byteStringToInteger implemented using existing bytestring primitives. We should replace this with the new built-in version. We can also measure the costs of the old and new versions, and any improvement will provide justification for implementing byteStringToInteger as a built-in function. |
 | The new primitives must execute in a reasonable time and should provide a clear advantage over alternatives implemented using existing Plutus Core features. |  |
 
-
-
- 
-
-
 ### Link:
-User Story ID: 
+https://github.com/cardano-foundation/CIPs/blob/12c5cc59816b2fcc9daf9a77318a3ae018263367/CIP-XXXX/README.md
 
 ## User Story ID: CIP-XXXX
 - [ ] Enabler
@@ -110,7 +105,7 @@ User Story ID:
 
 
 ### Link:
-User Story ID: 
+https://github.com/cardano-foundation/CIPs/pull/641
 
 ## User Story ID: CIP-XXXX
 - [ ] Enabler
