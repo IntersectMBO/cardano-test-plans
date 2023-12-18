@@ -15,7 +15,7 @@ slug: /smart-contracts
 
 ## User Story ID: CIP-85
 - [ ] Enabler
-### Title: Sums-of-oroducts in Plutus v3
+### Title: Sums-of-products in Plutus v3
 ### User Story
  - As a DApp developer I want to use sums-of-products instead of Scott-encoding in my Plutus scripts to get better performance
 ### Functional Requirements
