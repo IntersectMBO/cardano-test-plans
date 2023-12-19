@@ -38,21 +38,23 @@ https://github.com/cardano-foundation/CIPs/tree/12c5cc59816b2fcc9daf9a77318a3ae0
 - [ ] Enabler
 ### Title: Keccak256 in Plutus v3
 ### User Story
- - As a DApp developer I want to use the Keccak hashing function to validate ECDSA signatures validated in the EVM
+ - As a DApp developer I want to use the Keccak hashing function to validate ECDSA signatures formatted via the EVM standard<br/>
 ### Functional Requirements
 |Requirements|Acceptance Criteria|
 |:----|:----|
-| The Keccak-256 primitive in CIP-87 must be available to use in Plutus V3 scripts as follows:<br/>`keccak_256 :: ByteString -> ByteString`<br/><br/>Input is a `ByteString` of any size<br/>Output is 32 bytes `ByteString` | A Plutus binding is created for the keccak256 function and included in a new version of Plutus.<br/> |
-|  | Integration tests, similar to those of the existing Plutus hash functions, are added to the testing infrastructure.<br/> |
-|  | The function is benchmarked to assess its cost. As for other hash functions available in Plutus (blake2b and sha256), we expect the cost of keccak to be linear with respect to the size of the message. The Plutus team determines the exact costing functions empirically. |
-|  | The ledger is updated to include new protocol parameters to control costing of the new builtins. |
-|  | Given I am using accepts |
+| The Keccak-256 primitive in CIP-87 must be available to use in Plutus V3 scripts as follows:<br/>`keccak_256 :: ByteString -> ByteString`<br/><br/>Input is a `ByteString` of any size<br/>Output is 32 bytes `ByteString` | The primitive should be implemented in Plutus V3  |
+|  | The Haskell implementations of the keccak builtin will be used to implement a new built-in function in Plutus Core. This should include a comprehensive set of local tests checking that the new builtin behave as expected. (including conformance and property-based testing).<br/>We should add a comprehensive set of conformance tests for the new builtin, and all of the tests should pass. |
+|  | There should be e2e tests |
+|  | We should provide budgeting benchmarks for the keccak256 builtin, run them, check that the results are sensible, then use them to create new entries in the cost model. |
+|  | A precise description of the semantics of the new function should be added to the Plutus Core specification. |
+|  | The new builtin should be added to the Agda development in plutus-metatheory and all of the conformance tests should pass. |
+|  | Add the initial keccak256 builtin to PlutusTx. |
 
 
 ### Link:
 https://github.com/cardano-foundation/CIPs/tree/master/CIP-0101
 
-## User Story ID: CIP-101
+## User Story ID: PLT.001
 - [ ] Enabler
 ### Title: Blake2b-224 in Plutus v3
 ### User Story
@@ -60,7 +62,13 @@ https://github.com/cardano-foundation/CIPs/tree/master/CIP-0101
 ### Functional Requirements
 |Requirements|Acceptance Criteria|
 |:----|:----|
-| The Blake2b-224 primitive is available to use in Plutus V3 after the HF |  |
+| The Blake2b-224 primitive is available to use in Plutus V3 after the HF | The primitive should be implemented in Plutus V3  |
+|  | The Haskell implementations of the blake2b-224 builtin will be used to implement a new built-in function in Plutus Core. This should include a comprehensive set of local tests checking that the new builtin behave as expected. (including conformance and property-based testing).<br/>We should add a comprehensive set of conformance tests for the new builtin, and all of the tests should pass. |
+|  | There should be e2e tests |
+|  | We should provide budgeting benchmarks for the blake2b-224 builtin, run them, check that the results are sensible, then use them to create new entries in the cost model. |
+|  | A precise description of the semantics of the new function should be added to the Plutus Core specification. |
+|  | The new builtin should be added to the Agda development in plutus-metatheory and all of the conformance tests should pass. |
+|  | Add the initial blake2b-224 builtin to PlutusTx. |
 
 
 ### Link:
@@ -74,15 +82,13 @@ https://github.com/cardano-foundation/CIPs/tree/master/CIP-0101
 ### Functional Requirements
 |Requirements|Acceptance Criteria|
 |:----|:----|
-| The following operations MUST be available to use in Plutus V3 after the HF:<br/>`integerToByteString` <br/>`byteStringToInteger` <br/>`andByteString` <br/>`iorByteString` <br/>`xorByteString` <br/>`complementByteString`<br/>`shiftByteString` <br/>`rotateByteString` <br/>`popCountByteString` <br/>`testBitByteString` <br/>`writeBitByteString` <br/>`findFirstSetByteString` | Haskell functions should be implemented which provide the underlying functionality for the initial set of bitwise builtins (MLabs) |
-|  | The Haskell implementations of the initial set of bitwise builtins (PLT-8183) will be used to implement new built-in functions in Plutus Core. This should include a comprehensive set of tests checking that the new builtins behave as expected. |
+| The following operations MUST be available to use in Plutus V3 after the HF:<br/>`integerToByteString` <br/>`byteStringToInteger` <br/><br/>The following operations WILL be available in future versions<br/>`andByteString` <br/>`iorByteString` <br/>`xorByteString` <br/>`complementByteString`<br/>`shiftByteString` <br/>`rotateByteString` <br/>`popCountByteString` <br/>`testBitByteString` <br/>`writeBitByteString` <br/>`findFirstSetByteString` | The primitives should be implemented in Plutus V3 for the initial set of bitwise builtins |
+|  | The Haskell implementations of the initial set of bitwise builtins will be used to implement new built-in functions in Plutus Core. This should include a comprehensive set of local tests checking that the new builtins behave as expected. (including conformance and property-based testing).<br/>We should add a comprehensive set of conformance tests for the new builtins, and all of the tests should pass. |
+|  | There should be e2e tests for each primitive |
 |  | We should provide budgeting benchmarks for the initial set of bitwise builtins, run them, check that the results are sensible, then use them to create new entries in the cost model. |
-|  | Add the initial bitwise builtins to PlutusTx. |
-|  | We should add a comprehensive set of conformance tests for the new builtins, and all of the tests should pass. |
-|  | The new builtins should be added to the Agda development in plutus-metatheory and all of the conformance tests added in  PLT-8187: Conformance tests for initial set of bitwise builtinsBACKLOG should pass. |
 |  | A precise description of the semantics of the new functions should be added to the Plutus Core specification. |
-|  | We will add an initial set of bitwise builtins including at least integerToByteString and byteStringToInteger to PlutusV3. We should add end-to-end tests for these and they should all succeed. |
-|  | The end-to-end tests for the BLS12-381 builtins use a version of byteStringToInteger implemented using existing bytestring primitives. We should replace this with the new built-in version. We can also measure the costs of the old and new versions, and any improvement will provide justification for implementing byteStringToInteger as a built-in function. |
+|  | The new builtins should be added to the Agda development in plutus-metatheory and all of the conformance tests should pass. |
+|  | Add the initial bitwise builtins to PlutusTx. |
 | The new primitives must execute in a reasonable time and should provide a clear advantage over alternatives implemented using existing Plutus Core features. |  |
 
 
@@ -119,4 +125,6 @@ https://github.com/cardano-foundation/CIPs/pull/641
 
 
 ### Link:
+
+
 
