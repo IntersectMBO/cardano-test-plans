@@ -57,4 +57,5 @@ slug: /cli
 | CLI.036 | Query constitution | As any persona I want to query the on-chain constitution so that I can know the url where it is stored and the document hash so that I can verify authenticity. | 
 | CLI.037 | Register script based DReps | | 
 | CLI.038 | Unregister script based DReps | |
-| CLI.039 | Script based CC GA. --add --remove | | 
+| CLI.039 | Script based DRep voting | | 
+| CLI.040 | Script based CC GA. --add --remove | | 
