@@ -1,48 +1,19 @@
 ---
 sidebar_label: Governance Guardrails
 title: Governance Guardrails
-sidebar_position: 6
+sidebar_position: 7
 slug: /governance-guardrails
 ---
 
-## User Story ID: GR.0001
+## User Story ID: GR.001
 - [ ] Enabler
-### Title: Use BLS primitives to record settlements on Cardano
+### Title: Template
 ### User Story
- - As a Partner Chain, I wish to use BLS primitives to record settlement operations on Cardano
 ### Functional Requirements
 |Requirements|Acceptance Criteria|
 |:----|:----|
 | Details Pending | Details Pending |
 
-
-### Link:
-
-
-## User Story ID: GR.0001
-- [ ] Enabler
-### Title: tbc
-### User Story
- - As a 
-### Functional Requirements
-|Requirements|Acceptance Criteria|
-|:----|:----|
-| Details Pending | Details Pending |
-
-
-### Link:
-
-
-## User Story ID: GR.0002
-- [ ] Enabler
-### Title: GR002 Title
-### User Story
- - As a ... 
-### Functional Requirements
-|Requirements|Acceptance Criteria|
-|:----|:----|
-| .... ..... |
-|  | .... |
 
 
 
