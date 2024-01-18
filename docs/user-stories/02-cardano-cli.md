@@ -15,9 +15,11 @@ slug: /cli
 
 ----
 
+Latest test report: https://github.com/IntersectMBO/cardano-node-tests/issues/2157
+
 ## User stories
 
-| User Story Id | Title | User Story | Functional Requirements and Acceptance Criteria |
+| User Story Id | Title | User Story | Acceptance Criteria | 
 |---------------|-------|------------|----------------------------------------------|
 | CLI.001 | Obtain constitution hash for verification (HOLDER) | As an Ada holder, I want to obtain the hash of the off-chain text of a Constitution so that I can compare it against the hash registered on-chain to verify its authenticity. | [Github - CLI.001](https://github.com/input-output-hk/cardano-cli/blob/d115ab87a623bf9a0f974723825026fb366dc7a3/CONWAY_USER_STORIES.md#user-story-id--cli001) |
 | CLI.002 | Generate hash of the off-chain constitution (HOLDER) | As an Ada holder, I want to generate the hash of the off-chain text for a proposed Constitution so that the hash can be utilized in a governance action. | [Github - CLI.002](https://github.com/input-output-hk/cardano-cli/blob/d115ab87a623bf9a0f974723825026fb366dc7a3/CONWAY_USER_STORIES.md#user-story-id--cli002) |
@@ -59,4 +61,5 @@ slug: /cli
 | CLI.038 | Unregister script based DReps | |
 | CLI.039 | Script based DRep voting | | 
 | CLI.040 | Script based CC GA. --add --remove | | 
+
 
