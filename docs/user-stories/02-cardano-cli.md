@@ -43,8 +43,8 @@ Latest test report: https://github.com/IntersectMBO/cardano-node-tests/issues/21
 | CLI.020 | View governance action file (HOLDER) | As an Ada holder, I want to inspect the contents of a governance action file so that I can verify it is correct before submitting it in a transaction. | |
 | CLI.021 | Create a governance action vote (DRep/SPO/CCM) | As a DRep, SPO or CC member, I want to create a vote for a governance action so that I can include it in a transaction and submit it to the chain. | |
 | CLI.022 | View vote file (DRep/SPO/CCM) | As a DRep, SPO or CC member, I want to inspect the contents of a vote file so that I can verify it is correct before submitting it in a transaction. | |
-| CLI.023 | Build a transaction with to submit proposal (HOLDER) | As an Ada holder, I want to build a transaction that includes a proposal (containing a governance action) so that I can later sign and submit to the chain. | |
-| CLI.024 | Build transaction for proposal vote (DRep, SPO, CCM) | As a DRep, SPO or CC member, I want to build a transaction that includes my vote on a particular governance action so that I can later sign and submit to the chain. | |
+| CLI.023 | Build a transaction to submit proposal (HOLDER) | As an Ada holder, I want to build a transaction that includes a proposal (containing a governance action) so that I can later sign and submit to the chain. | |
+| CLI.024 | Build transaction for to submit votes (DRep, SPO, CCM) | As a DRep, SPO or CC member, I want to build a transaction that includes my vote on a particular governance action so that I can later sign and submit to the chain. | |
 | CLI.025 | Build RAW transaction for proposal vote (HOLDER) | As an Ada holder, I want to build a transaction that includes a proposal (containing a governance action) so that I can later sign and submit to the chain. | |
 | CLI.026 | Build RAW transaction for proposal vote (DRep/SPO/CCM) | As a DRep, SPO or CC member, I want to build a transaction that includes my vote on a particular governance action so that I can later sign and submit to the chain. | |
 | CLI.027 | Create stake registration certificate (HOLDER) | As an Ada holder, I want to create a Conway cddl-compliant stake registration certificate stake-address. | |
@@ -56,6 +56,10 @@ Latest test report: https://github.com/IntersectMBO/cardano-node-tests/issues/21
 | CLI.033 | Query DRep state (HOLDER) | As an Ada holder, I want to query the DRep state so that I can find detailed information about registered DReps. | |
 | CLI.034 | Query DRep stake distribution (HOLDER) | As an Ada holder and DRep, I want to query the DRep stake distribution so that I can find the weight (of the votes) of each DRep. | |
 | CLI.035 | Expand query stake-address-info to show deposits and vote delegation (HOLDER) | As an Ada holder, I want to query my stake address information so that I can learn to which pool and DRep I'm delegating to and the value in lovelace of my deposits for delegating and for submitting governance actions. | |
-| CLI.036 | Register script based DReps | | 
-| CLI.037 | Unregister script based DReps | |
-| CLI.038 | Script based CC GA. --add --remove | | 
+| CLI.036 | Query constitution | As any persona I want to query the on-chain constitution so that I can know the url where it is stored and the document hash so that I can verify authenticity. | 
+| CLI.037 | Register script based DReps | | 
+| CLI.038 | Unregister script based DReps | |
+| CLI.039 | Script based DRep voting | | 
+| CLI.040 | Script based CC GA. --add --remove | | 
+
+
