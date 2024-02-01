@@ -61,5 +61,3 @@ Latest test report: https://github.com/IntersectMBO/cardano-node-tests/issues/21
 | CLI.038 | Unregister script based DReps | |
 | CLI.039 | Script based DRep voting | | 
 | CLI.040 | Script based CC GA. --add --remove | | 
-
-
