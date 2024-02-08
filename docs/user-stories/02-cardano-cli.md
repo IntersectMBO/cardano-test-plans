@@ -17,7 +17,7 @@ slug: /cli
 
 Latest test report: https://github.com/IntersectMBO/cardano-node-tests/issues/2157
 
-## User stories
+## User stories Conway features 
 
 | User Story Id | Title | User Story | Acceptance Criteria | 
 |---------------|-------|------------|----------------------------------------------|
@@ -57,7 +57,16 @@ Latest test report: https://github.com/IntersectMBO/cardano-node-tests/issues/21
 | CLI.034 | Query DRep stake distribution (HOLDER) | As an Ada holder and DRep, I want to query the DRep stake distribution so that I can find the weight (of the votes) of each DRep. | |
 | CLI.035 | Expand query stake-address-info to show deposits and vote delegation (HOLDER) | As an Ada holder, I want to query my stake address information so that I can learn to which pool and DRep I'm delegating to and the value in Lovelace of my deposits for delegating and for submitting governance actions. | |
 | CLI.036 | Query constitution | As any persona I want to query the on-chain constitution so that I can know the url where it is stored and the document hash so that I can verify authenticity. | 
-| CLI.037 | Register script based DReps | | 
-| CLI.038 | Unregister script based DReps | |
-| CLI.039 | Script based DRep voting | | 
-| CLI.040 | Script based CC GA. --add --remove | | 
+| CLI.037 | Register script based DReps | | |
+| CLI.038 | Unregister script based DReps | | |
+| CLI.039 | Script based DRep voting | | |
+| CLI.040 | Script based CC GA. --add --remove | | |
+| CLI.041 | Support for extended keys | | |
+
+## Babbage features sanity check for Conway-compatible CLI
+
+| ID   | Title | Description | Links |
+| :--- |  :--- | :---        | :---  |
+| CLI.BAB.01 | Babbage stake address registration certificate | Stake address registration certificate in Babbage remains as stake_registration = (0, stake_credential) ; to be deprecated in era after Conway |
+| CLI.BAB.02 | Babbage governance | Governance options for Babbage era still are: mir certificate, genesis key delegation certificate, polling. Conway and Babbage features do not mix | |
+| CLI.BAB.03 | 
