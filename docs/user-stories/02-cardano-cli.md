@@ -55,7 +55,7 @@ Latest test report: https://github.com/IntersectMBO/cardano-node-tests/issues/21
 | CLI.032 | Query committee state (CCM) | As a CC member, I want to query the committee state so that I can find my expiration term and whether my hot key authorization certificate has been recorded on chain. | |
 | CLI.033 | Query DRep state (HOLDER) | As an Ada holder, I want to query the DRep state so that I can find detailed information about registered DReps. | |
 | CLI.034 | Query DRep stake distribution (HOLDER) | As an Ada holder and DRep, I want to query the DRep stake distribution so that I can find the weight (of the votes) of each DRep. | |
-| CLI.035 | Expand query stake-address-info to show deposits and vote delegation (HOLDER) | As an Ada holder, I want to query my stake address information so that I can learn to which pool and DRep I'm delegating to and the value in lovelace of my deposits for delegating and for submitting governance actions. | |
+| CLI.035 | Expand query stake-address-info to show deposits and vote delegation (HOLDER) | As an Ada holder, I want to query my stake address information so that I can learn to which pool and DRep I'm delegating to and the value in Lovelace of my deposits for delegating and for submitting governance actions. | |
 | CLI.036 | Query constitution | As any persona I want to query the on-chain constitution so that I can know the url where it is stored and the document hash so that I can verify authenticity. | 
 | CLI.037 | Register script based DReps | | 
 | CLI.038 | Unregister script based DReps | |
