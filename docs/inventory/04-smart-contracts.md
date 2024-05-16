@@ -1,5 +1,5 @@
 ---
-sidebar_label: SmartContracts user stories
+sidebar_label: Smart Contracts user stories
 title: Smart Contract user stories
 sidebar_position: 4
 slug: /smart-contracts

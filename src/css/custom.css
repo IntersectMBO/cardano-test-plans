@@ -29,3 +29,12 @@
   --ifm-color-primary-lightest: #5fb099; /* Lightest teal */
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
+
+.table-container {
+  width: 100%; /* Adjust this value to set the overall width of the table */
+}
+
+.table-container th,
+.table-container td {
+  width: 50%; /* Adjust this value to set the width of individual columns */
+}

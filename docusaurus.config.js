@@ -29,7 +29,7 @@ module.exports = {
             items: [
                 { 
                   to: 'docs', 
-                  label: 'Cardano CIP-1694 USer Story Inventory', 
+                  label: 'User Story Inventory CIP-1694', 
                   position: 'left' 
                 },
                 {
