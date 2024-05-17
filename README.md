@@ -1,5 +1,7 @@
 # CIP-1694 User Stories and Test Scenarios Repository
 
+Visit the rendered website here: https://intersectmbo.github.io/cardano-test-plans/
+
 ## Introduction
 
 The CIP-1694 User Stories and Test Scenarios repository serve as a resource for Product owners, Developers and Test Engineers to define the features derived from CIP-1694 for each of the components under their responsability, togethr with most relevant requirements and acceptance criteria for such features. The user stories provide a narrative 
