@@ -1,8 +1,11 @@
 ---
+sidebar_label: About
+title: About
 sidebar_position: 1
+slug: /about
 ---
 
-#  User Story Inventory
+# About
 
 ## Summary
 

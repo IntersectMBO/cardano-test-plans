@@ -1,111 +1,126 @@
-module.exports = {
-    title: 'Cardano Test Plans',
-    tagline: '',
-    url: 'https://example.com',
-    baseUrl: '/',
-    favicon: 'img/favicon.png',
-    organizationName: 'input-output-hk', // Usually your GitHub org/user name.
-    projectName: 'cardano-test-plans', // Usually your repo name.
-    stylesheets: [
-        'https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,700;1,400;1,700&display=swap',
+// @ts-check
+// `@type` JSDoc annotations allow editor autocompletion and type checking
+// (when paired with `@ts-check`).
+// There are various equivalent ways to declare your Docusaurus config.
+// See: https://docusaurus.io/docs/api/docusaurus-config
+
+import {themes as prismThemes} from 'prism-react-renderer';
+
+/** @type {import('@docusaurus/types').Config} */
+const config = {
+  title: 'CIP-1694 Test Plans',
+  tagline: '',
+  favicon: 'img/cardano.ico',
+
+  // Set the production url of your site here
+  url: 'https://intersectMBO.github.io',
+  // Set the /<baseUrl>/ pathname under which your site is served
+  // For GitHub pages deployment, it is often '/<projectName>/'
+  baseUrl: '/cardano-test-plans/',
+
+  // GitHub pages deployment config.
+  // If you aren't using GitHub pages, you don't need these.
+  organizationName: 'intersectMBO', // Usually your GitHub org/user name.
+  projectName: 'cardano-test-plans', // Usually your repo name.
+  trailingSlash: false,
+
+  onBrokenLinks: 'warn',
+  onBrokenMarkdownLinks: 'warn',
+
+  // Even if you don't use internationalization, you can use this field to set
+  // useful metadata like html lang. For example, if your site is Chinese, you
+  // may want to replace "en" with "zh-Hans".
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en'],
+  },
+
+  presets: [
+    [
+      'classic',
+      /** @type {import('@docusaurus/preset-classic').Options} */
+      ({
+        docs: {
+          sidebarPath: './sidebars.ts',
+          // Please change this to your repo.
+          // Remove this to remove the "edit this page" links.
+          routeBasePath: '/',
+        },
+        blog: false
+      }),
     ],
-    themeConfig: {
-        colorMode: {
-            defaultMode: 'light',
-            disableSwitch: false,
-            respectPrefersColorScheme: false,
+  ],
+
+  themeConfig:
+    /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
+    ({
+      // Replace with your project's social card
+      image: 'img/cardano-logo.png',
+      navbar: {
+        title: 'CIP-1694 User stories and Test Plan ',
+        logo: {
+          alt: 'CIP-1694 Test Plan',
+          src: 'img/cardano-logo.png',
+          srcDark:'img/cardano-logo-darkmode.png'
         },
-        tableOfContents: {
-            minHeadingLevel: 2,
-            maxHeadingLevel: 2,
+        items: [
+          {
+            href: 'https://github.com/IntersectMBO',
+            label: 'GitHub',
+            position: 'right',
           },
-        navbar: {
-            title: '',
-            logo: {
-                alt: 'Voltaire',
-                src: 'img/done.png',
-                href: '/',
-            },
-            items: [
-                { 
-                  to: 'docs', 
-                  label: 'Cardano CIP-1694 USer Story Inventory', 
-                  position: 'left' 
-                },
-                {
-                  href: "https://github.com/input-output-hk/cardano-test-plans",
-                  label: "GitHub",
-                  position: "right"
-                }
-            ],
-        },
-        footer: {
-            style: "dark",
-            links: [
-              {
-                title: "Docs",
-                items: [
-                  {
-                    label: "User story inventory",
-                    to: "docs"
-                  },
-                  {
-                    label: "CIP-1694",
-                    href: "https://cips.cardano.org/cip/CIP-1694"
-                  }                  
-                ]
-              },
-              {
-                title: "Community",
-                items: [               
-                  {
-                    label: "Stack Exchange",
-                    href: "https://cardano.stackexchange.com"
-                  },
-                  {
-                    label: "Discord",
-                    href: "https://discord.gg/inputoutput"
-                  },
-                  {
-                    label: "X",
-                    href: "https://x.com/InputOutputHK"
-                  }
-                ]
-              },
-              {
-                title: "Legal",
-                items: [
-                  {
-                    label: "Privacy Policy",
-                    href: "https://static.iohk.io/terms/iog-privacy-policy.pdf"
-                  }
-                ]
-              },
-              {
-                title: "More",
-                items: [
-                  {
-                    label: "GitHub",
-                    href: "https://github.com/input-output-hk/cardano-test-plans"
-                  }
-                ]
-              }
-            ],
-            copyright: `© ${new Date().getFullYear()} Input Output Global, Inc. All Rights Reserved.`
-          },
-    },
-    plugins: [require.resolve("@cmfcmf/docusaurus-search-local")],
-    presets: [
-        [
-            '@docusaurus/preset-classic',
-            {
-                docs: {
-                    sidebarPath: require.resolve('./sidebars.js'),
-                },
-                theme: {
-                    customCss: require.resolve('./src/css/custom.css'),
-                },
-            },
         ],
-    ],
+      },
+      footer: {
+        style: 'light',
+        links: [
+          {
+            title: 'Community',
+            items: [
+              {
+                label: 'Discord',
+                href: 'https://discord.gg/z5pURn74N5',
+              },
+              {
+                label: 'Twitter Cardano Foundation',
+                href: 'https://twitter.com/Cardano_CF',
+              },
+              {
+                label: 'Twitter IntersectMBO',
+                href: 'https://twitter.com/InputOutputHK',
+              },
+              {
+                label: 'Twitter IOG',
+                href: 'https://twitter.com/InputOutputHK',
+              },
+            ],
+          },
+          {
+            title: 'More',
+            items: [
+              {
+                label: 'GitHub',
+                href: 'https://github.com/IntersectMBO',
+              },
+            ],
+          },
+          {
+            title: 'Legal',
+            items: [
+              {
+                label: 'Disclaimer',
+                href: 'https://github.com/IntersectMBO',
+              },
+            ],
+          },
+        ],
+        copyright: `Copyright © IntersectMBO ${new Date().getFullYear()}`,
+      },
+      prism: {
+        theme: prismThemes.github,
+        darkTheme: prismThemes.tomorrow,
+      },
+    }),
 };
+
+export default config;
