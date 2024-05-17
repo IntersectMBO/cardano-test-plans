@@ -57,7 +57,7 @@ const config = {
       // Replace with your project's social card
       image: 'img/cardano-logo.png',
       navbar: {
-        title: 'CIP-1694 User stories and Test Plan ',
+        title: 'CIP-1694 Testing Plan',
         logo: {
           alt: 'CIP-1694 Test Plan',
           src: 'img/cardano-logo.png',
@@ -69,6 +69,7 @@ const config = {
             label: 'GitHub',
             position: 'right',
           },
+          {to: '/about', label: 'User Story Inventory', position: 'left'},
         ],
       },
       footer: {

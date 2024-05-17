@@ -1,13 +1,9 @@
 ---
 sidebar_label: About
-title: About
+title: About the user story inventory
 sidebar_position: 1
 slug: /about
 ---
-
-# About
-
-## Summary
 
 Upon socializing of this Inventory, and eventual agreement, we will progress to detailing how the Acceptance will be accomplished and sign-off achieved, the ‘Accepted’ column will be marked Yes once consensus is reached.
 
