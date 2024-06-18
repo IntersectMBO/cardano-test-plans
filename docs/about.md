@@ -22,7 +22,7 @@ This section shows the areas or sources thus far
 | Smart Contracts | Plutus v3 and BLS                                                        | Initial Capture Complete | Outreach in progress |
 | CLI-API         | Interface outline and definition                                         | Initial Capture Complete | Outreach in progress |
 | Partner chains  | Interaction with BLS primitives                                          | Outreach in progress     | Outreach in progress |
-| DApps           | To be defined and elaborated                                             | To be defined            | Outreach in progress |
+| DApps           | User scenarios on a single and multi script DApp DApps                   | Initial Capture Complete | Outreach in progress |
 | Exchanges       | To be defined and elaborated                                             | To be defined            | Outreach in progress |
 | Other           | To be defined and elaborated                                             | To be defined            | Outreach in progress |
 
