@@ -301,23 +301,41 @@ This section shows the areas or sources thus far
 
 ## 2U: Delegate to Abstain Feature
 
-**User Story:** As a Ada older, I want to be able to delegate using the "delegate to abstain" feature. ensuring my lovelace's voting power is delegated to Abstain.
+**User Story:** As an Ada Holder, I want to be able to delegate using the "delegate to abstain" feature. ensuring my lovelace's voting power is delegated to Abstain.
 
 ### Acceptance Criteria
 
-- Given that I am a Ada Holder.
+- Given that I am an Ada Holder.
 - When I delegate using the "delegate to abstain" feature.
 - Then my lovelace's voting power will be delegated to Abstain and I will be notified that my delegation transaction was sent.
 
 ## 2V: Delegate to No-Confidence Feature
 
-**User Story:** As a Ada Holder, I want to be able to delegate using the "delegate to no-confidence" feature ensuring my lovelace's voting power is delegated to No-Confidence.
+**User Story:** As an Ada Holder, I want to be able to delegate using the "delegate to no-confidence" feature ensuring my lovelace's voting power is delegated to No-Confidence.
 
 ### Acceptance Criteria
 
-- Given that I am a DRep.
+- Given that I am an Ada Holder.
 - When I delegate using the "delegate to no-confidence" feature.
 - Then my own lovelace's voting power will be delegated to No-Confidence, And I will be notified that my delegation transaction was sent.
+
+## 2W: Show DRep Delegated Ada
+
+**User Story:** As an Ada Holder, I want to be able to see my delegated Ada to the DRep on DRep directory.
+
+### Acceptance Criteria
+
+- Given that I am an Ada Holder.
+- When I delegate my vote to any DRep listed on DRep directory.
+- Then I should see my delegated Ada to that DRep.
+
+## 2X: Visibility of Abstain and Signal-No-Confidence Card
+
+**User Story:** As an Ada Holder, I want to be able to see the voting power and info button in abstain and signal-no-confidence card.
+
+- Given that I am an Ada holder.
+- When I navigate to DRep directory and expand the automated voting options.
+- Then I should see the info button to view the info and voting power in abstain and signal-no-confidence card.
 
 ## 3A: Confirmation of dRep Registration
 
@@ -449,6 +467,72 @@ This section shows the areas or sources thus far
 - When I am on the governance action page.
 - Then I no longer have the option to vote. Furthermore, on all pages, there is no widget informing me of my dRepID or about how much voting power has been delegated to me.
 
+## 3L: Validation of Metadata Anchor on DRep Registration
+
+**User Story:** As a dRep (someone who wants to be a dRep) who has connected their wallet to the app, I want the metadata anchor should be valid so that i will be able to submit the registration form
+
+### Acceptance Criteria
+
+- Given that I am on the metadata validation page of dRep registration.
+- If/When I have entered some information into the input box for metadata URL, then it will be checked against the following criteria:
+  - It must be ≤ 128 words
+  - It must not be empty
+  - It must be a valid URL
+
+## 3M: Validation of Edit DRep Form
+
+**User Story:** As a dRep, I want my edit form to be valid so that i will be able to submit the updated dRep information.
+
+### Acceptance Criteria
+
+- Given that I am on the edit dRep page.
+- If/When I have entered some information into the input box for name, then it will be checked against the following criteria:
+  - It must be ≤ 80 words
+  - It must not be empty
+  - It must not contain white space
+- If/When I have entered some information into the input box for email, then it will be checked against the following criteria:
+  - It must be a valid email
+  - It must be empty
+- If/When I have entered some information into the If/When I have entered some information into the input box for name, then it will be checked against the following criteria:input box for bio, then it will be checked against the following criteria:
+  - It must be ≤ 500 words
+  - It must be empty
+- If/When I have entered some information into the input box for link, then it will be checked against the following criteria:
+  - It must be a valid link
+  - It must be empty
+- Then if these criteria are met then I will be navigate to the next step. If these criteria are not met then I will not be able to navigate for further registration process will instead be told which criteria the information I have entered does not meet so that I can rectify it.
+
+## 3N: Validation of Metadata Anchor on Edit DRep
+
+**User Story:** As a dRep, I want the metadata anchor should be valid so that i will be able to submit the updated dRep information.
+
+### Acceptance Criteria
+
+- Given that I am on the metadata validation page of edit dRep.
+- If/When I have entered some information into the metadata URL input, then it will be checked against the following criteria:
+  - It must be ≤ 128 words
+  - It must not be empty
+  - It must be a valid URL
+
+## 3O: Validation of metadata on DRep registration
+
+**User Story:** As a dRep (someone who wants to be a dRep) who has connected their wallet to the app, I want the metadata URL should be valid so that i will be able to submit the registration form.
+
+### Acceptance Criteria
+
+- Given that I am on the metadata validation page of dRep registration.
+- When I have entered some information into the metadata URl input.
+- Then The data from that URL should be match with the fillup data on registration form, otherwise it should show the modal popup having text `Your External Data Does Not Match the Original File`.
+
+## 3P: Validation of metadata on Edit DRep
+
+**User Story:** As a dRep, I want the metadata URL should be valid so that i will be able to submit the updated dRep information.
+
+### Acceptance Criteria
+
+- Given that I am on the metadata validation page of edit dRep.
+- When I have entered some information into the metadata URL input.
+- Then The data from that URL should be match with the fillup data on registration form,otherwise it should show the modal popup having text `Your External Data Does Not Match the Original File`.
+
 ## 4A: Dedicated Governance Actions Page
 
 **User Story:** As any visitor to the app, when I visit the app I need a dedicated page for viewing governance actions (‘governance actions page’) so I can see what is being proposed.
@@ -552,6 +636,30 @@ This section shows the areas or sources thus far
 - When I provide context to the UI and click the vote button.
 - Then the resulting transaction will include my context.
 
+## 4K: Display Correct Vote Count on Governance Action Detail Page for Disconnect State
+
+**User Story:** As a user without a compatible wallet connected to GovTool, I want a correct voting power to be displayed when I look at the governance actions detail page.
+
+- Given that, I am a user without a compatible wallect connected to Govtool.
+- When I look into the governance action detail page.
+- Then the displayed vote count of the governance action should be match with the vote count from api request.
+
+## 4L: Search governance Actions
+
+**User Story:** As a user (either connected or not connected to compatible wallet), I want to be able to search the specific governance action.
+
+- Given that I am a user.
+- When I look into the governance action page.
+- Then I should be able to search any governance action by its title.
+
+## 4M: View all categorized governance action
+
+**User Story** As a user (either connected or not connected to compatible wallet), I want to view all specific categorized governance actions if there are more than 6 actions in that category, so that I can focus on the actions relevant to that category.
+
+- Given that I am a user.
+- When I look into the governance action page which has more than 6 governance action on any categorized type.
+- Then I should be navigated to a new page dedicated to that specific category type. The specific category type page should display all governance actions belonging to that category.
+
 ## 5A: Required Information Displayed for Governance Action
 
 **User Story:** As any user, when I look at a governance action it will have the following information displayed:
@@ -592,22 +700,17 @@ This section shows the areas or sources thus far
   - Button for cast vote
 - Then I can provide voting context and select the voting option I believe is right in order to submit casting my vote to the wallet. I can then sign the vote transaction with my wallet to submit it to the blockchain.
 
-## 5D: Reason URL and Reason Hash are Valid
+## 5D: Validation of Provide Context
 
-**User Story:** As a dRep, I want the data I have input into the reason URL box and reason hash input box to be valid so that my data is readable once it has been stored on the chain.
+**User Story:** As a dRep, I want the data I have entered into the provide context input to be valid.
 
 ### Acceptance Criteria
 
-- Given that I am in the process of casting my vote on a governance action.
-- If/when I have entered some information into the reason URL input box then it will be checked against the following criteria:
-  - It must be ≤ 64 bytes in length.
-  - It must be UTF-8 compatible OR.
-  - It must be empty.
-- And if/when I have entered some information into the reason hash input box then it should be checked against the following criteria:
-  - It must be 32 bytes in length.
-  - It must be UTF-8 compatible OR.
-  - It must be empty.
-- Then if these criteria are met then I can submit my vote to the wallet. If these criteria are not met then I will not be able to submit data from the form to the wallet and will instead be told which criteria the information I have entered does not meet so that I can rectify it.
+- Given that I am in the process of casting my vote with context on a governance action.
+- If/when I have entered some information into the provide context input then it will be checked against the following criteria:
+  - It must be ≤ 500 words in length.
+  - It must not be empty.
+- If these criteria are met, I will proceed to the next step. If the criteria are not met, I will not proceed further. Instead, I will receive feedback on what is wrong with the data I have entered, so that I can rectify it.
 
 ## 5E: dRep Can Recast Their Vote
 
@@ -732,6 +835,26 @@ This section shows the areas or sources thus far
 - And
 - When I visit the web address of the mainnet MVP.
 - Then I can use the mainnet MVP.
+
+## 6G: Restrict Edit DRep page for Non DRep
+
+**User Story:** As an Ada holder, I want the edit dRep page to be restricted.
+
+### Acceptance Criteris
+
+- Given that I am an Ada Holder who is not a dRep.
+- When I try to access the edit dRep page.
+- Then I should be restricted and prevented from accessing the page.
+
+## 6H: Restrict DRep registration for DRep
+
+**User Story:** As a dRep, I want the dRep registration page to be restricted.
+
+### Acceptance Criteris
+
+- Given that I am a dRep.
+- When I try to access the dRep registration page.
+- Then I should be restricted and prevented from accessing the page.
 
 # CIP-1694
 
