@@ -654,11 +654,11 @@ This section shows the areas or sources thus far
 
 ## 4M: View all categorized governance action
 
-**User Story** As a user (either connected or not connected to compatible wallet), I want to view all specific categorized governance actions if there are more than 6 actions in that category, so that I can focus on the actions relevant to that category.
+**User Story** As a user (either connected or not connected to compatible wallet), I want to view all governance actions of the specific category, so that I can only focus on the actions relevant to that category.
 
 - Given that I am a user.
-- When I look into the governance action page which has more than 6 governance action on any categorized type.
-- Then I should be navigated to a new page dedicated to that specific category type. The specific category type page should display all governance actions belonging to that category.
+- When I look into the governance action page which has more proposals than the screen width in any category.
+- Then I should be able to navigated to a new page dedicated to that specific category type. The specific category type page should display all governance actions belonging to that category.
 
 ## 5A: Required Information Displayed for Governance Action
 
