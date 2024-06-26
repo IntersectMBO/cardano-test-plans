@@ -301,23 +301,41 @@ This section shows the areas or sources thus far
 
 ## 2U: Delegate to Abstain Feature
 
-**User Story:** As a Ada older, I want to be able to delegate using the "delegate to abstain" feature. ensuring my lovelace's voting power is delegated to Abstain.
+**User Story:** As an Ada Holder, I want to be able to delegate using the "delegate to abstain" feature. ensuring my lovelace's voting power is delegated to Abstain.
 
 ### Acceptance Criteria
 
-- Given that I am a Ada Holder.
+- Given that I am an Ada Holder.
 - When I delegate using the "delegate to abstain" feature.
 - Then my lovelace's voting power will be delegated to Abstain and I will be notified that my delegation transaction was sent.
 
 ## 2V: Delegate to No-Confidence Feature
 
-**User Story:** As a Ada Holder, I want to be able to delegate using the "delegate to no-confidence" feature ensuring my lovelace's voting power is delegated to No-Confidence.
+**User Story:** As an Ada Holder, I want to be able to delegate using the "delegate to no-confidence" feature ensuring my lovelace's voting power is delegated to No-Confidence.
 
 ### Acceptance Criteria
 
-- Given that I am a DRep.
+- Given that I am an Ada Holder.
 - When I delegate using the "delegate to no-confidence" feature.
 - Then my own lovelace's voting power will be delegated to No-Confidence, And I will be notified that my delegation transaction was sent.
+
+## 2W: Show DRep Delegated Ada
+
+**User Story:** As an Ada Holder, I want to be able to see my delegated Ada to the DRep on DRep directory.
+
+### Acceptance Criteria
+
+- Given that I am an Ada Holder.
+- When I delegate my vote to any DRep listed on DRep directory.
+- Then I should see my delegated Ada to that DRep.
+
+## 2X: Visibility of Abstain and Signal-No-Confidence Card
+
+**User Story:** As an Ada Holder, I want to be able to see the voting power and info button in abstain and signal-no-confidence card.
+
+- Given that I am an Ada holder.
+- When I navigate to DRep directory and expand the automated voting options.
+- Then I should see the info button to view the info and voting power in abstain and signal-no-confidence card.
 
 ## 3A: Confirmation of dRep Registration
 
@@ -449,6 +467,72 @@ This section shows the areas or sources thus far
 - When I am on the governance action page.
 - Then I no longer have the option to vote. Furthermore, on all pages, there is no widget informing me of my dRepID or about how much voting power has been delegated to me.
 
+## 3L: Validation of Metadata Anchor on DRep Registration
+
+**User Story:** As a dRep (someone who wants to be a dRep) who has connected their wallet to the app, I want the metadata anchor should be valid so that i will be able to submit the registration form
+
+### Acceptance Criteria
+
+- Given that I am on the metadata validation page of dRep registration.
+- If/When I have entered some information into the input box for metadata URL, then it will be checked against the following criteria:
+  - It must be ≤ 128 words
+  - It must not be empty
+  - It must be a valid URL
+
+## 3M: Validation of Edit DRep Form
+
+**User Story:** As a dRep, I want my edit form to be valid so that i will be able to submit the updated dRep information.
+
+### Acceptance Criteria
+
+- Given that I am on the edit dRep page.
+- If/When I have entered some information into the input box for name, then it will be checked against the following criteria:
+  - It must be ≤ 80 words
+  - It must not be empty
+  - It must not contain white space
+- If/When I have entered some information into the input box for email, then it will be checked against the following criteria:
+  - It must be a valid email
+  - It must be empty
+- If/When I have entered some information into the If/When I have entered some information into the input box for name, then it will be checked against the following criteria:input box for bio, then it will be checked against the following criteria:
+  - It must be ≤ 500 words
+  - It must be empty
+- If/When I have entered some information into the input box for link, then it will be checked against the following criteria:
+  - It must be a valid link
+  - It must be empty
+- Then if these criteria are met then I will be navigate to the next step. If these criteria are not met then I will not be able to navigate for further registration process will instead be told which criteria the information I have entered does not meet so that I can rectify it.
+
+## 3N: Validation of Metadata Anchor on Edit DRep
+
+**User Story:** As a dRep, I want the metadata anchor should be valid so that i will be able to submit the updated dRep information.
+
+### Acceptance Criteria
+
+- Given that I am on the metadata validation page of edit dRep.
+- If/When I have entered some information into the metadata URL input, then it will be checked against the following criteria:
+  - It must be ≤ 128 words
+  - It must not be empty
+  - It must be a valid URL
+
+## 3O: Validation of metadata on DRep registration
+
+**User Story:** As a dRep (someone who wants to be a dRep) who has connected their wallet to the app, I want the metadata URL should be valid so that i will be able to submit the registration form.
+
+### Acceptance Criteria
+
+- Given that I am on the metadata validation page of dRep registration.
+- When I have entered some information into the metadata URl input.
+- Then The data from that URL should be match with the fillup data on registration form, otherwise it should show the modal popup having text `Your External Data Does Not Match the Original File`.
+
+## 3P: Validation of metadata on Edit DRep
+
+**User Story:** As a dRep, I want the metadata URL should be valid so that i will be able to submit the updated dRep information.
+
+### Acceptance Criteria
+
+- Given that I am on the metadata validation page of edit dRep.
+- When I have entered some information into the metadata URL input.
+- Then The data from that URL should be match with the fillup data on registration form,otherwise it should show the modal popup having text `Your External Data Does Not Match the Original File`.
+
 ## 4A: Dedicated Governance Actions Page
 
 **User Story:** As any visitor to the app, when I visit the app I need a dedicated page for viewing governance actions (‘governance actions page’) so I can see what is being proposed.
@@ -552,6 +636,30 @@ This section shows the areas or sources thus far
 - When I provide context to the UI and click the vote button.
 - Then the resulting transaction will include my context.
 
+## 4K: Display Correct Vote Count on Governance Action Detail Page for Disconnect State
+
+**User Story:** As a user without a compatible wallet connected to GovTool, I want a correct voting power to be displayed when I look at the governance actions detail page.
+
+- Given that, I am a user without a compatible wallect connected to Govtool.
+- When I look into the governance action detail page.
+- Then the displayed vote count of the governance action should be match with the vote count from api request.
+
+## 4L: Search governance Actions
+
+**User Story:** As a user (either connected or not connected to compatible wallet), I want to be able to search the specific governance action.
+
+- Given that I am a user.
+- When I look into the governance action page.
+- Then I should be able to search any governance action by its title.
+
+## 4M: View all categorized governance action
+
+**User Story** As a user (either connected or not connected to compatible wallet), I want to view all governance actions of the specific category, so that I can only focus on the actions relevant to that category.
+
+- Given that I am a user.
+- When I look into the governance action page which has more proposals than the screen width in any category.
+- Then I should be able to navigated to a new page dedicated to that specific category type. The specific category type page should display all governance actions belonging to that category.
+
 ## 5A: Required Information Displayed for Governance Action
 
 **User Story:** As any user, when I look at a governance action it will have the following information displayed:
@@ -592,22 +700,17 @@ This section shows the areas or sources thus far
   - Button for cast vote
 - Then I can provide voting context and select the voting option I believe is right in order to submit casting my vote to the wallet. I can then sign the vote transaction with my wallet to submit it to the blockchain.
 
-## 5D: Reason URL and Reason Hash are Valid
+## 5D: Validation of Provide Context
 
-**User Story:** As a dRep, I want the data I have input into the reason URL box and reason hash input box to be valid so that my data is readable once it has been stored on the chain.
+**User Story:** As a dRep, I want the data I have entered into the provide context input to be valid.
 
 ### Acceptance Criteria
 
-- Given that I am in the process of casting my vote on a governance action.
-- If/when I have entered some information into the reason URL input box then it will be checked against the following criteria:
-  - It must be ≤ 64 bytes in length.
-  - It must be UTF-8 compatible OR.
-  - It must be empty.
-- And if/when I have entered some information into the reason hash input box then it should be checked against the following criteria:
-  - It must be 32 bytes in length.
-  - It must be UTF-8 compatible OR.
-  - It must be empty.
-- Then if these criteria are met then I can submit my vote to the wallet. If these criteria are not met then I will not be able to submit data from the form to the wallet and will instead be told which criteria the information I have entered does not meet so that I can rectify it.
+- Given that I am in the process of casting my vote with context on a governance action.
+- If/when I have entered some information into the provide context input then it will be checked against the following criteria:
+  - It must be ≤ 500 words in length.
+  - It must not be empty.
+- If these criteria are met, I will proceed to the next step. If the criteria are not met, I will not proceed further. Instead, I will receive feedback on what is wrong with the data I have entered, so that I can rectify it.
 
 ## 5E: dRep Can Recast Their Vote
 
@@ -732,6 +835,229 @@ This section shows the areas or sources thus far
 - And
 - When I visit the web address of the mainnet MVP.
 - Then I can use the mainnet MVP.
+
+## 6G: Restrict Edit DRep page for Non DRep
+
+**User Story:** As an Ada holder, I want the edit dRep page to be restricted.
+
+### Acceptance Criteris
+
+- Given that I am an Ada Holder who is not a dRep.
+- When I try to access the edit dRep page.
+- Then I should be restricted and prevented from accessing the page.
+
+## 6H: Restrict DRep registration for DRep
+
+**User Story:** As a dRep, I want the dRep registration page to be restricted.
+
+### Acceptance Criteris
+
+- Given that I am a dRep.
+- When I try to access the dRep registration page.
+- Then I should be restricted and prevented from accessing the page.
+
+## 8A: Dedicated Proposed Governance Actions Page
+
+**User Story:** As a user (whether or not I have my wallet connected), when I visit the app I need a dedicated page for viewing proposed governance actions so I can see what is being proposed.
+
+### Acceptance Criteria
+
+- Given that I am using the app (whether or not I have my wallet connected to the app).
+- When I want to view a list of current proposed governance actions.
+- Then there is a page that will display this to me.
+
+## 8B: Filter and Sort Proposed Governance Actions
+
+**User Story:** As a user (whether or not I have my wallet connected), When I visit the proposed governance actions page then I want the ability to filter them based on:
+
+- Proposals Types and Proposal Status.
+- And sort them based on proposed date.
+
+### Acceptance Criteria
+
+- Given that I am viewing the proposed governance actions page.
+- When I want to deduce what proposed governance actions will be important to me.
+- Then I can sort and filter proposed governance actions.
+
+## 8C: Search Proposed Governance Actions
+
+**User Story:** As a user (whether or not I have my wallet connected), I want to be able to search the specific proposed governance action.
+
+### Acceptance Criteria
+
+- Given that I am using the app (whether or not I have my wallet connected).
+- When I look into the governance action page.
+- Then I should be able to search any proposed governance action by its title.
+
+## 8D: View All Categorized Proposed Governance Actions
+
+**User Story:** As a user (either connected or not connected to compatible wallet), I want to view all proposed governance actions of specific category, so that I can focus on the actions relevant to that category.
+
+### Acceptance Criteria
+
+- Given that I am using the app (whether or not I have my wallet connected).
+- When I look into the proposed governance action page which has more proposals than the screen width in any category.
+- Then I should be able to navigated to a new page dedicated to that specific category. The specific category type page should display all proposals belonging to that category.
+
+## 8E: Share Proposed Governance Action
+
+**User Story:** As a user (whether or not I have my wallet connected),I want to share the specific proposed governance action.
+
+### Acceptance Criteria
+
+- Given that I am using the app (whether or not I have my wallet connected).
+- When I look into individual proposed governance action.
+- Then I should be able to share that specific proposed governance action.
+
+## 8F: Show Correct Comments and Their Counts on Any Proposed Governance Action
+
+**User Story:** As a user (whether or not I have my wallet connected), I want a list of comments and their counts on the individual proposed governance action page.
+
+### Acceptance Criteria
+
+- Given that I am using the app (whether or not I have my wallet connected).
+- When I look at the detail page of any individual proposed governance action.
+- Then I can see the correct comments and their counts.
+
+## 8G: Show Correct Like and Dislike Counts on Any Proposed Governance Action
+
+**User Story:** As a user (whether or not I have my wallet connected), I want like and dislike counts on the proposed governance action details.
+
+### Acceptance Criteria
+
+- Given that I am using the app (whether or not I have my wallet connected).
+- When I look at the details page of any individual proposed governance action.
+- Then I can see the correct like and dislike count.
+
+## 8H: Disable Like and dislike Proposed Governance Action on Disconnect State
+
+**User Story:** As a user without a compatible wallet connection, I want to be unable to like, dislike or comment on any proposed governance action.
+
+### Acceptance Criteria
+
+- Given that I am a user without a compatible wallet connection.
+- When I look at the details page of any individual proposed governance action.
+- Then I should not be permitted to like,comment or dislike.
+
+## 8I: Disable Poll Vote on Proposed Governance Action on Disconnect state
+
+**User Story:** As a user without a compatible wallet connection I want to be unable to vote on the poll of proposed governance action.
+
+### Acceptance Criteria
+
+- Given that I am a user without a compatible wallet connection
+- When I look at the details page of any individual proposed governance action which has a poll.
+- Then I should not be permitted to vote.
+
+## 8J: Sort Proposed Governance Action Existing Comments
+
+**User Story:** As a user (whether or not I have my wallet connected), I want to sort the existing comments according to the date on any proposed governance action.
+
+### Acceptance Criteria
+
+- Given that I am using the app (whether or not I have my wallet connected).
+- When I look at the details page of any individual proposed governance action which has comments.
+- Then I should be able to sort the comments according to the date.
+
+## 8K: Prompt Username Modal
+
+**User Story:** As an Ada Holder without a username, I want a modal popup for entering the username to appear when clicking the proposal discussion link.
+
+### Acceptance Criteria
+
+- Given that I am an Ada Holder without a username.
+- When I click on the proposal discussion link.
+- Then there should be a popup modal where I can add my username.
+
+## 8L: Add Username
+
+**User Story:** As an Ada Holder without a username, I want to set up my username to participate in the discussion with a recognized identity.
+
+### Acceptance Criteria
+
+- Given that I am an Ada Holder without a username.
+- When I click on the proposal discussion link.
+- Then I should be able to set my username.
+
+## 8M: Comment on Any Proposed Governance Action Anonymously
+
+**User Story:** As an Ada Holder without a username, I want to comment on any proposed governance action.
+
+### Acceptance Criteria
+
+- Given that I am an Ada Holder and have not set a username.
+- When I view any proposed governance action.
+- Then I should be able to comment on it anonymously.
+
+## 8N: Reply to Comments of Proposed Governance Action
+
+**User Story:** As an Ada Holder, I want to directly reply to existing comments on any proposed governance action.
+
+### Acceptance Criteria
+
+- Given that I am an Ada Holder.
+- When I view any proposed governance action having some comments.
+- Then I should be able to reply to the existing comment.
+
+## 8O: Update the Display Name on Setting Username
+
+**User Story:** As an Ada Holder without a username, I want to automatically update my display name wherever it appears when I change my username.
+
+### Acceptance Criteria
+
+- Given that I am an Ada Holder and have not set a username.
+- When I change the username.
+- Then it should automatically update my display name wherever it appears.
+
+## 8P: Vote on Proposed Governance Action Poll
+
+**User Story:** As an Ada Holder, I want to vote directly on the poll of proposed governance action.
+
+### Acceptance Criteria
+
+- Given that I am an Ada Holder.
+- When I navigate to the individual proposed governance action having a poll.
+- Then I should be able to vote on that poll.
+
+## 8Q: Cancel Poll on Proposed Governance Action
+
+**User Story:** As an owner of the proposed governance action, I want to cancel the added poll.
+
+### Acceptance Criteria
+
+- Given that I am an owner of the proposed governance action with an added poll.
+- When I view that proposed governance action.
+- Then I should be able to cancel the poll.
+
+## 8R: Disable Vote on Canceling Poll of Proposed Governance Action
+
+**User Story:** As an owner of the proposed governance action, I want the voting to be disabled and display the current poll result on canceling the poll.
+
+### Acceptance Criteria
+
+- Given that, I am an owner of the proposed governance action with an poll added.
+- When I cancel the added poll.
+- Then the voting must be disabled for other ssers and the latest updated poll result must be displayed
+
+## 8S: Disable Create Proposal on Disconnected State
+
+**User Story:** As a user without a compatible wallet connection, I should not be able to create a proposal.
+
+### Acceptance Criteria
+
+- Given that I am a user without a compatible wallet connection.
+- When I look into the proposed governance actions page.
+- Then I should be restricted from creating a proposal.
+
+## 8T: Change Poll Vote on Proposed Governance Action
+
+**User Story:** As an Ada Holder, I want to change my poll vote on the proposed governance Action.
+
+### Acceptance Criteria
+
+- Given that, I am an Ada Holder with a vote on the poll of specific proposed governance action.
+- When I view that proposed governance action.
+- Then I should be able to change my vote.
 
 # CIP-1694
 
