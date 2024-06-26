@@ -856,6 +856,209 @@ This section shows the areas or sources thus far
 - When I try to access the dRep registration page.
 - Then I should be restricted and prevented from accessing the page.
 
+## 8A: Dedicated Proposed Governance Actions Page
+
+**User Story:** As a user (whether or not I have my wallet connected), when I visit the app I need a dedicated page for viewing proposed governance actions so I can see what is being proposed.
+
+### Acceptance Criteria
+
+- Given that I am using the app (whether or not I have my wallet connected to the app).
+- When I want to view a list of current proposed governance actions.
+- Then there is a page that will display this to me.
+
+## 8B: Filter and Sort Proposed Governance Actions
+
+**User Story:** As a user (whether or not I have my wallet connected), When I visit the proposed governance actions page then I want the ability to filter them based on:
+
+- Proposals Types and Proposal Status.
+- And sort them based on proposed date.
+
+### Acceptance Criteria
+
+- Given that I am viewing the proposed governance actions page.
+- When I want to deduce what proposed governance actions will be important to me.
+- Then I can sort and filter proposed governance actions.
+
+## 8C: Search Proposed Governance Actions
+
+**User Story:** As a user (whether or not I have my wallet connected), I want to be able to search the specific proposed governance action.
+
+### Acceptance Criteria
+
+- Given that I am using the app (whether or not I have my wallet connected).
+- When I look into the governance action page.
+- Then I should be able to search any proposed governance action by its title.
+
+## 8D: View All Categorized Proposed Governance Actions
+
+**User Story:** As a user (either connected or not connected to compatible wallet), I want to view all proposed governance actions of specific category, so that I can focus on the actions relevant to that category.
+
+### Acceptance Criteria
+
+- Given that I am using the app (whether or not I have my wallet connected).
+- When I look into the proposed governance action page which has more proposals than the screen width in any category.
+- Then I should be able to navigated to a new page dedicated to that specific category. The specific category type page should display all proposals belonging to that category.
+
+## 8E: Share Proposed Governance Action
+
+**User Story:** As a user (whether or not I have my wallet connected),I want to share the specific proposed governance action.
+
+### Acceptance Criteria
+
+- Given that I am using the app (whether or not I have my wallet connected).
+- When I look into individual proposed governance action.
+- Then I should be able to share that specific proposed governance action.
+
+## 8F: Show Correct Comments and Their Counts on Any Proposed Governance Action
+
+**User Story:** As a user (whether or not I have my wallet connected), I want a list of comments and their counts on the individual proposed governance action page.
+
+### Acceptance Criteria
+
+- Given that I am using the app (whether or not I have my wallet connected).
+- When I look at the detail page of any individual proposed governance action.
+- Then I can see the correct comments and their counts.
+
+## 8G: Show Correct Like and Dislike Counts on Any Proposed Governance Action
+
+**User Story:** As a user (whether or not I have my wallet connected), I want like and dislike counts on the proposed governance action details.
+
+### Acceptance Criteria
+
+- Given that I am using the app (whether or not I have my wallet connected).
+- When I look at the details page of any individual proposed governance action.
+- Then I can see the correct like and dislike count.
+
+## 8H: Disable Like and dislike Proposed Governance Action on Disconnect State
+
+**User Story:** As a user without a compatible wallet connection, I want to be unable to like, dislike or comment on any proposed governance action.
+
+### Acceptance Criteria
+
+- Given that I am a user without a compatible wallet connection.
+- When I look at the details page of any individual proposed governance action.
+- Then I should not be permitted to like,comment or dislike.
+
+## 8I: Disable Poll Vote on Proposed Governance Action on Disconnect state
+
+**User Story:** As a user without a compatible wallet connection I want to be unable to vote on the poll of proposed governance action.
+
+### Acceptance Criteria
+
+- Given that I am a user without a compatible wallet connection
+- When I look at the details page of any individual proposed governance action which has a poll.
+- Then I should not be permitted to vote.
+
+## 8J: Sort Proposed Governance Action Existing Comments
+
+**User Story:** As a user (whether or not I have my wallet connected), I want to sort the existing comments according to the date on any proposed governance action.
+
+### Acceptance Criteria
+
+- Given that I am using the app (whether or not I have my wallet connected).
+- When I look at the details page of any individual proposed governance action which has comments.
+- Then I should be able to sort the comments according to the date.
+
+## 8K: Prompt Username Modal
+
+**User Story:** As an Ada Holder without a username, I want a modal popup for entering the username to appear when clicking the proposal discussion link.
+
+### Acceptance Criteria
+
+- Given that I am an Ada Holder without a username.
+- When I click on the proposal discussion link.
+- Then there should be a popup modal where I can add my username.
+
+## 8L: Add Username
+
+**User Story:** As an Ada Holder without a username, I want to set up my username to participate in the discussion with a recognized identity.
+
+### Acceptance Criteria
+
+- Given that I am an Ada Holder without a username.
+- When I click on the proposal discussion link.
+- Then I should be able to set my username.
+
+## 8M: Comment on Any Proposed Governance Action Anonymously
+
+**User Story:** As an Ada Holder without a username, I want to comment on any proposed governance action.
+
+### Acceptance Criteria
+
+- Given that I am an Ada Holder and have not set a username.
+- When I view any proposed governance action.
+- Then I should be able to comment on it anonymously.
+
+## 8N: Reply to Comments of Proposed Governance Action
+
+**User Story:** As an Ada Holder, I want to directly reply to existing comments on any proposed governance action.
+
+### Acceptance Criteria
+
+- Given that I am an Ada Holder.
+- When I view any proposed governance action having some comments.
+- Then I should be able to reply to the existing comment.
+
+## 8O: Update the Display Name on Setting Username
+
+**User Story:** As an Ada Holder without a username, I want to automatically update my display name wherever it appears when I change my username.
+
+### Acceptance Criteria
+
+- Given that I am an Ada Holder and have not set a username.
+- When I change the username.
+- Then it should automatically update my display name wherever it appears.
+
+## 8P: Vote on Proposed Governance Action Poll
+
+**User Story:** As an Ada Holder, I want to vote directly on the poll of proposed governance action.
+
+### Acceptance Criteria
+
+- Given that I am an Ada Holder.
+- When I navigate to the individual proposed governance action having a poll.
+- Then I should be able to vote on that poll.
+
+## 8Q: Cancel Poll on Proposed Governance Action
+
+**User Story:** As an owner of the proposed governance action, I want to cancel the added poll.
+
+### Acceptance Criteria
+
+- Given that I am an owner of the proposed governance action with an added poll.
+- When I view that proposed governance action.
+- Then I should be able to cancel the poll.
+
+## 8R: Disable Vote on Canceling Poll of Proposed Governance Action
+
+**User Story:** As an owner of the proposed governance action, I want the voting to be disabled and display the current poll result on canceling the poll.
+
+### Acceptance Criteria
+
+- Given that, I am an owner of the proposed governance action with an poll added.
+- When I cancel the added poll.
+- Then the voting must be disabled for other ssers and the latest updated poll result must be displayed
+
+## 8S: Disable Create Proposal on Disconnected State
+
+**User Story:** As a user without a compatible wallet connection, I should not be able to create a proposal.
+
+### Acceptance Criteria
+
+- Given that I am a user without a compatible wallet connection.
+- When I look into the proposed governance actions page.
+- Then I should be restricted from creating a proposal.
+
+## 8T: Change Poll Vote on Proposed Governance Action
+
+**User Story:** As an Ada Holder, I want to change my poll vote on the proposed governance Action.
+
+### Acceptance Criteria
+
+- Given that, I am an Ada Holder with a vote on the poll of specific proposed governance action.
+- When I view that proposed governance action.
+- Then I should be able to change my vote.
+
 # CIP-1694
 
 # VOLTAIRE
