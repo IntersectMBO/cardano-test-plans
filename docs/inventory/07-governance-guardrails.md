@@ -16,12 +16,8 @@ slug: /governance-guardrails
 | Details Pending | Details Pending |
 
 
-### Link:
-
-
-## User Story ID: GR.0001
-- [ ] Enabler
-### Title: tbc
+## User Story ID: GR.0002
+### Title: A new constitution with guardrails script can be enacted.
 ### User Story
  - As a 
 ### Functional Requirements
@@ -43,6 +39,4 @@ slug: /governance-guardrails
 |:----|:----|
 | .... ..... |
 |  | .... |
-
-
 
