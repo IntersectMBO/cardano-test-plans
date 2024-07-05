@@ -840,7 +840,7 @@ This section shows the areas or sources thus far
 
 **User Story:** As an Ada holder, I want the edit dRep page to be restricted.
 
-### Acceptance Criteris
+### Acceptance Criteria
 
 - Given that I am an Ada Holder who is not a dRep.
 - When I try to access the edit dRep page.
@@ -850,11 +850,180 @@ This section shows the areas or sources thus far
 
 **User Story:** As a dRep, I want the dRep registration page to be restricted.
 
-### Acceptance Criteris
+### Acceptance Criteria
 
 - Given that I am a dRep.
 - When I try to access the dRep registration page.
 - Then I should be restricted and prevented from accessing the page.
+
+## 7A: Propose A Governance Action on Disconnected Wallet State
+
+**User Story:** As a user who has not connected their wallet to the app, I want to be prompted to connect my wallet to the app If I try to propose a governance action.
+
+### Acceptance Criteria
+
+- Given that I am using the app without a wallet connection.
+- When I try to propose governance actions.
+- Then I should be prompted to connect my wallet to the app before proposing any governance action
+
+## 7B: Dedicated Page for Proposal Creation
+
+**User Story:** As an Ada Holder, I want a page dedicated to the proposal creation so that I can create a proposal.
+
+### Acceptance Criteria
+
+- Given that I am an Ada Holder.
+- When I am seeking to create a proposal.
+- Then I should be able to access a page dedicated to proposal creation.
+
+## 7C: View Unfinished Draft Proposals
+
+**User Story:** As an Ada Holder, I want the ability to view the list of unfinished draft proposals.
+
+### Acceptance Criteria
+
+- Given that I am an Ada Holder,
+- When I look into the proposal creation page with drafts created,
+- Then a page should display the list of unfinished drafts.
+
+## 7D: Verify Proposal Creation Form
+
+**User Story:** As an Ada Holder, I want a dedicated page to fill in the proposal data.
+
+### Acceptance Criteria
+
+- Given that I am an Ada Holder,
+- When I visit a proposal creation page,
+- Then I should be presented with a proposal form consisting of.
+  - A button to select the governance action type
+  - An input box for a title.
+  - An input box for abstract.
+  - An input box for motivation.
+  - An input box for rationale.
+  - An input box for receiving address to treasury type.
+  - An input box for the amount to treasury type
+
+## 7E: Validation of proposal Creation
+
+**User Story:** As an Ada Holder, I want a proposal form to be valid so that i will be able to create a proposal.
+
+### Acceptance Criteria
+
+- Given that I am an Ada Holder,
+- If/When I clicked on governance action type then I should be able to select the different governance action type
+
+- If/When I have entered some information into the input box for title, then it will be checked against the following criteria:
+
+  - It must not be empty
+
+- If/When I have entered some information into the input box for abstract, then it will be checked against the following criteria:
+  - It must be ≤ 256 words
+  - It must not be empty
+- If/When I have entered some information into the input box for motivation, then it will be checked against the following criteria:
+
+  - It must be ≤ 256 words
+  - It must not be empty
+
+- If/When I have entered some information into the input box for rationale, then it will be checked against the following criteria:
+
+  - It must be ≤ 256 words
+  - It must not be empty
+
+- If/When I have entered some information into the input box for receiving address, then it will be checked against the following criteria:
+
+  - It must be a valid bech32 receiving address
+  - It must not be empty
+
+- If/When I have entered some information into the input box for amount, then it will be checked against the following criteria:
+
+  - It must be a valid number
+  - It must not be empty
+
+- If/When I have entered some information into the input box for link URL, then it will be checked against the following criteria:
+  - It must be a valid link
+  - It must be empty
+
+Then if these criteria are met then I will be able to create a proposal. If these criteria are not met then I will not be able to create a proposal will instead be told which criteria the information I have entered does not meet so that I can rectify it.
+
+## 7F: Create Proposal with Valid Data
+
+**User Story:** As an Ada Holder, I want to create a proposal with valid data.
+
+### Acceptance Criteria
+
+- Given that I am an Ada Holder.
+- When I enter the valid data and try to submit a proposal creation.
+- Then I should be able to create a proposal.
+
+## 7G: Submit Proposal as Governance Action
+
+**User Story:** As the owner of the proposal, I want to submit the proposal as a governance action with valid metadata.
+
+### Acceptance Criteria
+
+- Given that I am the owner of the proposal.
+- When I navigate to the proposal and submit it as a governance action with valid metadata.
+- Then it should be submitted without any error.
+
+## 7H: Validate Review Fillup Form
+
+**User Story:** As an Ada Holder, I want to view the proposal details that I filled in the proposal form.
+
+### Acceptance Criteria
+
+- Given that I am an Ada Holder.
+- When I fill in the valid proposal details and proceed to the next step.
+- Then a page should display the proposal details that I entered.
+
+## 7I: Proposal Submission Metadata Anchor validation
+
+**User Story:** As an Ada Holder, I want the proposal submission metadata anchor maximum length to be 128 bytes.
+
+### Acceptance Criteria
+
+- Given that I am an Ada Holder,
+- When I enter the metadata anchor during the proposal submission process,
+- Then it should only accept a maximum length of 128 bytes.
+
+## 7J: Reject Invalid Proposal Metadata
+
+**User Story:** As an Ada Holder, I want only valid proposal metadata to be supported.
+
+**Acceptance Criteria:**
+
+- Given that I am an Ada Holder.
+- When I enter invalid metadata during the proposal submission process.
+- Then it should reject the process and display a modal with the text `Your External Data Does Not Match the Original File.`.
+
+## 7K: Save Proposal as Draft
+
+**User Story:** As an Ada Holder, I want to save a proposal as a draft.
+
+### Acceptance Criteria
+
+- Given that I am an Ada Holder.
+- When I fill valid data on the proposal creation form.
+- Then I should be able to save the proposal as a draft.
+
+## 7L: Edit Unfinished Draft
+
+**User Story:** As an Ada Holder with an unfinished proposal draft, I want to edit the unfinished draft.
+
+**Acceptance Criteria:**
+
+- Given that I am an Ada Holder with a proposal draft.
+- When I navigate to any unfinished draft.
+- Then there should be a dedicated page to edit the filled proposal details.
+
+## 7M: Submit Unfinished Draft as Proposal
+
+**User Story:** As an Ada Holder with an unfinished proposal draft, I want to submit the draft as a proposal.
+
+### Acceptance Criteria
+
+- Given that I am an Ada Holder with a saved proposal draft.
+- When I navigate to any unfinished draft.
+- Then I should be able to submit the unfinished draft as a proposal.
 
 ## 8A: Dedicated Proposed Governance Actions Page
 
