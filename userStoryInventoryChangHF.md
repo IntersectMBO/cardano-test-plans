@@ -878,13 +878,13 @@ This section shows the areas or sources thus far
 
 ## 7C: View Unfinished Draft Proposals
 
-**User Story:** As an Ada Holder, I want the ability to view the list of unfinished draft proposals.
+**User Story:** As a writer of some proposal drafts, I want the ability to view the list of unfinished draft proposals.
 
 ### Acceptance Criteria
 
-- Given that I am an Ada Holder,
-- When I look into the proposal creation page with drafts created,
-- Then a page should display the list of unfinished drafts.
+- Given that I am a writer of some proposals,
+- When I look into the proposal creation page,
+- Then the page should display the list of unfinished drafts.
 
 ## 7D: Verify Proposal Creation Form
 
@@ -1148,15 +1148,15 @@ Then if these criteria are met then I will be able to create a proposal. If thes
 - When I click on the proposal discussion link.
 - Then I should be able to set my username.
 
-## 8M: Comment on Any Proposed Governance Action Anonymously
+## 8M: Disable Comment For Anonymous User on Any Proposed Governance Action
 
-**User Story:** As an Ada Holder without a username, I want to comment on any proposed governance action.
+**User Story:** As an Ada Holder without a username, I want to be unable to comment on any proposed governance action.
 
 ### Acceptance Criteria
 
 - Given that I am an Ada Holder and have not set a username.
 - When I view any proposed governance action.
-- Then I should be able to comment on it anonymously.
+- Then I should not be permitted to comment on it anonymously.
 
 ## 8N: Reply to Comments of Proposed Governance Action
 
@@ -1168,16 +1168,6 @@ Then if these criteria are met then I will be able to create a proposal. If thes
 - When I view any proposed governance action having some comments.
 - Then I should be able to reply to the existing comment.
 
-## 8O: Update the Display Name on Setting Username
-
-**User Story:** As an Ada Holder without a username, I want to automatically update my display name wherever it appears when I change my username.
-
-### Acceptance Criteria
-
-- Given that I am an Ada Holder and have not set a username.
-- When I change the username.
-- Then it should automatically update my display name wherever it appears.
-
 ## 8P: Vote on Proposed Governance Action Poll
 
 **User Story:** As an Ada Holder, I want to vote directly on the poll of proposed governance action.
@@ -1188,25 +1178,25 @@ Then if these criteria are met then I will be able to create a proposal. If thes
 - When I navigate to the individual proposed governance action having a poll.
 - Then I should be able to vote on that poll.
 
-## 8Q: Cancel Poll on Proposed Governance Action
+## 8Q: Close Poll on Proposed Governance Action
 
-**User Story:** As an owner of the proposed governance action, I want to cancel the added poll.
+**User Story:** As an owner of the proposed governance action, I want to close the added poll.
 
 ### Acceptance Criteria
 
 - Given that I am an owner of the proposed governance action with an added poll.
 - When I view that proposed governance action.
-- Then I should be able to cancel the poll.
+- Then I should be able to close the poll.
 
-## 8R: Disable Vote on Canceling Poll of Proposed Governance Action
+## 8R: Disable Vote on Close Poll of Proposed Governance Action
 
-**User Story:** As an owner of the proposed governance action, I want the voting to be disabled and display the current poll result on canceling the poll.
+**User Story:** As an owner of the proposed governance action, I want the voting to be disabled and display the current poll result on close the poll.
 
 ### Acceptance Criteria
 
 - Given that, I am an owner of the proposed governance action with an poll added.
-- When I cancel the added poll.
-- Then the voting must be disabled for other ssers and the latest updated poll result must be displayed
+- When I close the added poll.
+- Then the voting must be disabled for other users and the latest updated poll result must be displayed
 
 ## 8S: Disable Create Proposal on Disconnected State
 
@@ -1227,6 +1217,19 @@ Then if these criteria are met then I will be able to create a proposal. If thes
 - Given that, I am an Ada Holder with a vote on the poll of specific proposed governance action.
 - When I view that proposed governance action.
 - Then I should be able to change my vote.
+
+## 8U: Username Validation
+
+**User Story:** As an Ada Holder without a username, I want the username I have entered into the username input field to be valid.
+
+### Acceptance Criteria
+
+- Given that, I am an Ada Holder and have not set a username.
+- If/When I entered the username on the username-input field then it will be checked against the following criteria:
+  - It must not be empty.
+  - Only lowercase letters, numbers, underscores, and periods are allowed.
+  - It must be between 1 and 30 characters and cannot start with a period or underscore.
+- If these criteria are met, I will proceed to the next step. If the criteria are not met, I will not proceed further. Instead, I will receive feedback on what is wrong with the data I have entered, so that I can rectify it.
 
 # CIP-1694
 
